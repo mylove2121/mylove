@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: ui-sans-serif, system-ui, Arial;
+            color: #fff;
+
+
+            --bg0: #0b1209;
+            --bg1: #162415;
+            --gridB: rgba(180, 255, 120, .04);
+
+            background:
+                linear-gradient(180deg, rgba(180, 255, 120, .04), rgba(0, 0, 0, .65)),
+                radial-gradient(1200px 800px at 10% 10%, rgba(160, 255, 100, .08), transparent 60%),
+                radial-gradient(900px 700px at 90% 20%, rgba(255, 255, 120, .05), transparent 60%),
+                linear-gradient(180deg, var(--bg1), var(--bg0));
+
+            background-attachment: fixed, fixed, fixed, fixed, fixed;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+
+            background:
+                linear-gradient(to right, var(--gridB) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--gridB) 1px, transparent 1px);
+
+            background-size: 44px 44px;
+            opacity: .60;
+            pointer-events: none;
+
+            mask-image: radial-gradient(80% 60% at 50% 20%, black 60%, transparent 100%);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #442
+        }
+
+        header h1 {
+            color: #ff4f8b
+        }
+
+        .nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 12px
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: #b8cfbc
+        }
+
+        .hero p {
+            color: #bbb;
+            margin-top: 10px
+        }
+
+        .search {
+            margin: 30px 0;
+            display: flex;
+            gap: 10px
+        }
+
+        .search input {
+            outline: none;
+            box-shadow: none;
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            background: rgba(22, 32, 20, .88);
+            border: 1px solid rgba(180, 255, 120, .08);
+            color: #ffffff;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(255px, 240px));
+            gap: 20px;
+            justify-content: start;
+        }
+
+        .card {
+            background: rgba(22, 32, 20, .88);
+            border: 1px solid rgba(180, 255, 120, .08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .28);
+            border-radius: 16px;
+            padding: 20px;
+            transition: .2s;
+            text-align: center;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(180, 255, 120, .28);
+            box-shadow: 0 12px 35px rgba(180, 255, 120, .06);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ff4f8b;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            margin-bottom: 12px
+        }
+
+        .card h3 {
+            margin-bottom: 8px
+        }
+
+        .card p {
+            color: #bbb;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            display: block;
+
+            background: linear-gradient(180deg, #c8f07a, #9ec94e);
+            color: #111707;
+            font-weight: 700;
+
+            padding: 10px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            width: 140px;
+            margin-top: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            padding: 40px 0
+        }
+
+        .logo {
+            width: 84px;
+            height: 84px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 2px;
+            border: 1px solid #444
+        }
+
+        .titleRow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .titleRow h3 {
+            order: -1;
+            margin: 0;
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero">
+            <h2>GPT Sites</h2>
+            <p>find the best GPT sites</p>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search sites...">
+        </div>
+
+        <div class="cards">
+
+
+            <!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="earnlab.png" alt="logo">
+                    <h3>EarnLab</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="https://earnlab.com/earn" target="_blank">Visit</a>
+            </div>
+
+            <!--  -->
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="gemsloot.png" alt="logo">
+                    <h3>Gemsloot</h3>
+                </div>
+                <p>60-70% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="rewardjoy.jpg" alt="logo">
+                    <h3>RewardJoy</h3>
+                </div>
+                <p>80-85% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="bigcashweb.jpg" alt="logo">
+                    <h3>Bigcashweb</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="cashearn.jpg" alt="logo">
+                    <h3>Cashearn</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="cashhut.jpg" alt="logo">
+                    <h3>Cashhut</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="cashinstyle.svg" alt="logo">
+                    <h3>Cashinstyle</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="cashtask.png" alt="logo">
+                    <h3>Cashtask</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="chequity.jpg" alt="logo">
+                    <h3>Chequity</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="cointiply.png" alt="logo">
+                    <h3>Coinitiply</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="earnably.png" alt="logo">
+                    <h3>Earnably</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="earnloop.jpg" alt="logo">
+                    <h3>Earnloop</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="freecash.jpg" alt="logo">
+                    <h3>Freecash</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="freeward.png" alt="logo">
+                    <h3>Freeward</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="gain.png" alt="logo">
+                    <h3>Gain.gg</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="gainify.png" alt="logo">
+                    <h3>Gainify</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="gaintplay.png" alt="logo">
+                    <h3>Gaintplay</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="gamehag.jpg" alt="logo">
+                    <h3>Gamehag</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="gg2u.jpg" alt="logo">
+                    <h3>GG2u</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="grindbux.jpg" alt="logo">
+                    <h3>Grindbux</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="handbucks.png" alt="logo">
+                    <h3>Handbucks</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="idle-empire.png" alt="logo">
+                    <h3>Idle-Empire</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="jumptask.jpg" alt="logo">
+                    <h3>Jumptask</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="kash.jpg" alt="logo">
+                    <h3>Kash</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="kashrewards.png" alt="logo">
+                    <h3>KashRewards</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="nitroloot.svg" alt="logo">
+                    <h3>NitroLoot</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="paidcash.png" alt="logo">
+                    <h3>PaidCash</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="primeopinion.jpg" alt="logo">
+                    <h3>PrimeOpinion</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="prizebear.png" alt="logo">
+                    <h3>PrizeBear</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="prizerebel.jpg" alt="logo">
+                    <h3>PrizeRebel</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="rbxrise.png" alt="logo">
+                    <h3>RbxRise</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="rewardxp.jpg" alt="logo">
+                    <h3>RewardXP</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="scrambly.png" alt="logo">
+                    <h3>Scrambly</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="splitdrop.png" alt="logo">
+                    <h3>SplitDrop</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="timebucks.png" alt="logo">
+                    <h3>TimeBucks</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+
+            <div class="card">
+                <div class="titleRow"><img class="logo" src="ZemCrypto.png" alt="logo">
+                    <h3>ZemCrypto</h3>
+                </div>
+                <p>80-90% Rates</p><a class="btn" href="DEIN-REF-LINK-HIER" target="_blank">Visit</a>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="footer">© 2026 Deine Ref Seite</div>
+    </div>
+
+    <script>
+        const searchInput = document.querySelector(".search input");
+        const cards = document.querySelectorAll(".card");
+
+        searchInput.addEventListener("keyup", function () {
+            const value = this.value.toLowerCase();
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+
+                if (text.includes(value)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
