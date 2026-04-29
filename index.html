@@ -18,16 +18,13 @@
             font-family: ui-sans-serif, system-ui, Arial;
             color: #fff;
 
-            --bg0: #0b1209;
-            --bg1: #162415;
-            --gridB: rgba(180, 255, 120, .04);
-
+            /* 🔥 FULL BACKGROUND IMAGE */
             background:
-                linear-gradient(180deg, rgba(180, 255, 120, .04), rgba(0, 0, 0, .65)),
-                radial-gradient(1200px 800px at 10% 10%, rgba(160, 255, 100, .08), transparent 60%),
-                radial-gradient(900px 700px at 90% 20%, rgba(255, 255, 120, .05), transparent 60%),
-                linear-gradient(180deg, var(--bg1), var(--bg0));
+                linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
+                url("background.png");
 
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
         }
 
@@ -44,7 +41,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.45);
+            filter: brightness(0.5);
         }
 
         .hero-overlay {
@@ -83,29 +80,30 @@
             flex: 1;
             padding: 14px;
             border-radius: 10px;
-            background: rgba(22, 32, 20, .88);
-            border: 1px solid rgba(180, 255, 120, .1);
+            background: rgba(22, 32, 20, .85);
+            border: 1px solid rgba(180, 255, 120, .15);
             color: #fff;
         }
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(255px, 240px));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
         .card {
-            background: rgba(22, 32, 20, .88);
+            background: rgba(22, 32, 20, .85);
             border: 1px solid rgba(180, 255, 120, .1);
             border-radius: 16px;
             padding: 20px;
             text-align: center;
             transition: .2s;
+            backdrop-filter: blur(6px);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: rgba(180, 255, 120, .3);
+            border-color: rgba(180, 255, 120, .4);
         }
 
         .logo {
@@ -136,9 +134,9 @@
 
 <body>
 
-    <!-- 🔥 HERO BANNER -->
+    <!-- HERO -->
     <div class="hero-banner">
-        <img src="banner.png" alt="REFHUNTER Banner">
+        <img src="banner.png" alt="banner">
         <div class="hero-overlay">
             <h1>REFHUNTER</h1>
             <p>Find the best GPT sites</p>
@@ -146,10 +144,7 @@
     </div>
 
     <div class="container">
-        <div class="hero">
-            <h2>REFHUNTER</h2>
-            <p>Find the best GPT sites</p>
-        </div>
+
         <div class="search">
             <input type="text" placeholder="Search sites...">
         </div>
