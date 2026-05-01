@@ -21,7 +21,6 @@ html {
 body {
     width: 83.33%;
     margin: 0 auto;
-
     font-family: ui-sans-serif, system-ui, Arial;
     color: #fff;
 
@@ -29,15 +28,16 @@ body {
         radial-gradient(ellipse at top, rgba(120,255,120,0.06), transparent 60%),
         radial-gradient(ellipse at 50% 30%, rgba(0,255,100,0.05), transparent 70%),
         linear-gradient(180deg, #0b140b 0%, #0f1f0f 30%, #0a0a0a 100%);
+
+    background-attachment: fixed;
 }
 
-/* HERO (smaller) */
+/* HERO */
 .hero-banner {
     position: relative;
     width: 100%;
-    height: 20vh; /* reduced from 38vh */
-    min-height: 140px;
-
+    height: 38vh;
+    min-height: 240px;
     background: linear-gradient(180deg,#0b140b 0%,#0f1f0f 40%,#0a0a0a 100%);
 }
 
@@ -61,16 +61,16 @@ body {
 /* HERO TEXT */
 .hero-overlay {
     position: absolute;
-    top: 20px;
-    left: 40px;
+    top: 40px;
+    left: 60px;
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(6px);
-    padding: 12px 20px;
-    border-radius: 10px;
+    padding: 16px 26px;
+    border-radius: 12px;
 }
 
 .hero-overlay h1 {
-    font-size: 36px; /* smaller text */
+    font-size: 56px;
     font-weight: 800;
     background: linear-gradient(90deg,#b6ff5c,#6aff00);
     -webkit-background-clip: text;
@@ -81,26 +81,7 @@ body {
 .container {
     max-width: 1400px;
     margin: auto;
-    padding: 20px 20px 40px;
-}
-
-/* SEARCH BAR */
-.searchBar {
-    max-width: 500px;
-    margin: 0 auto 25px;
-}
-
-.searchBar input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    background: rgba(20,30,20,0.9);
-    border: 1px solid rgba(120,255,120,0.3);
-    color: #fff;
-
-    box-shadow:
-        0 0 6px rgba(120,255,120,0.4),
-        inset 0 0 4px rgba(120,255,120,0.2);
+    padding: 30px 20px 40px;
 }
 
 /* GRID */
@@ -133,14 +114,13 @@ body {
 /* BADGE */
 .badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
-
+    top: -10px;
+    right: 1px;
     font-size: 11px;
     padding: 5px 12px;
     border-radius: 999px;
 
-    color: #fff;
+    color: #FFFFFF;
     background: rgba(120,255,120,0.12);
     border: 1px solid rgba(120,255,120,0.6);
 
@@ -150,7 +130,14 @@ body {
         inset 0 0 6px rgba(120,255,120,0.3);
 }
 
-/* TEXT */
+/* STARS */
+.stars {
+    margin-top: 10px;
+    color: #ffea00;
+    text-shadow: 0 0 6px rgba(255,230,0,0.7);
+}
+
+/* ROW */
 .titleRow {
     display: flex;
     align-items: center;
@@ -163,9 +150,13 @@ body {
     border-radius: 10px;
 }
 
-.stars {
-    margin-top: 10px;
-    color: #ffea00;
+.card h3 {
+    font-size: 15px;
+}
+
+.card p {
+    font-size: 12px;
+    color: #aaa;
 }
 
 /* BUTTON */
@@ -196,13 +187,21 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-    .cards { grid-template-columns: repeat(3, 1fr); }
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
+
 @media (max-width: 700px) {
-    .cards { grid-template-columns: repeat(2, 1fr); }
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
+
 @media (max-width: 500px) {
-    .cards { grid-template-columns: 1fr; }
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
