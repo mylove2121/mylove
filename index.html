@@ -134,47 +134,83 @@ body {
     100% { transform: translateX(100%) skewX(-20deg); opacity: 0; }
 }
 
-/* GREEN BADGE (top right) */
+/* ✨ LUXURY GREEN BADGE */
 .badge {
     position: absolute;
     top: -10px;
     right: 1px;
     font-size: 11px;
-    padding: 5px 12px;
+    padding: 5px 14px;
     border-radius: 999px;
 
-    color: #FFFFFF;
-    background: rgba(120,255,120,0.12);
+    color: #dfffdf;
+
+    background: linear-gradient(145deg, rgba(40,80,40,0.6), rgba(10,20,10,0.9));
     border: 1px solid rgba(120,255,120,0.6);
 
     box-shadow:
-        0 0 6px rgba(120,255,120,0.8),
-        0 0 12px rgba(120,255,120,0.4),
-        inset 0 0 6px rgba(120,255,120,0.3);
+        0 0 8px rgba(120,255,120,0.8),
+        0 0 18px rgba(120,255,120,0.3),
+        inset 0 0 6px rgba(120,255,120,0.25);
 
-    animation: badgeGlow 2s infinite alternate;
+    overflow: hidden;
+
+    animation: badgeGlow 2.2s infinite alternate;
 }
 
-/* RED BADGE (top left) */
+/* subtle luxury shine */
+.badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%);
+    transform: translateX(-100%) skewX(-20deg);
+}
+
+.badge:hover::after {
+    animation: shine 1.2s ease;
+}
+
+/* 🔥 LUXURY RED BADGE (NO PULSE, CONTINUOUS SWEEP) */
 .badge-red {
     position: absolute;
     top: -10px;
     left: 10px;
 
     font-size: 11px;
-    padding: 5px 12px;
+    padding: 5px 14px;
     border-radius: 999px;
 
-    color: #fff;
-    background: rgba(255,80,80,0.12);
+    color: #ffeaea;
+
+    background: linear-gradient(145deg, rgba(80,20,20,0.7), rgba(20,5,5,0.95));
     border: 1px solid rgba(255,80,80,0.7);
 
     box-shadow:
-        0 0 6px rgba(255,80,80,0.8),
-        0 0 12px rgba(255,80,80,0.4),
+        0 0 10px rgba(255,80,80,0.7),
+        0 0 20px rgba(255,80,80,0.3),
         inset 0 0 6px rgba(255,80,80,0.3);
 
-    animation: badgeGlowRed 2s infinite alternate;
+    overflow: hidden;
+}
+
+/* continuous sweep */
+.badge-red::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+    transform: translateX(-100%) skewX(-20deg);
+    animation: badgeSweep 3s linear infinite;
+}
+
+@keyframes badgeSweep {
+    0% {
+        transform: translateX(-100%) skewX(-20deg);
+    }
+    100% {
+        transform: translateX(100%) skewX(-20deg);
+    }
 }
 
 @keyframes badgeGlow {
@@ -186,24 +222,9 @@ body {
     }
     100% {
         box-shadow:
-            0 0 12px rgba(120,255,120,1),
-            0 0 25px rgba(120,255,120,0.6),
+            0 0 14px rgba(120,255,120,1),
+            0 0 28px rgba(120,255,120,0.6),
             inset 0 0 8px rgba(120,255,120,0.4);
-    }
-}
-
-@keyframes badgeGlowRed {
-    0% {
-        box-shadow:
-            0 0 6px rgba(255,80,80,0.6),
-            0 0 12px rgba(255,80,80,0.3),
-            inset 0 0 4px rgba(255,80,80,0.2);
-    }
-    100% {
-        box-shadow:
-            0 0 12px rgba(255,80,80,1),
-            0 0 25px rgba(255,80,80,0.6),
-            inset 0 0 8px rgba(255,80,80,0.4);
     }
 }
 
@@ -282,7 +303,7 @@ body {
 <div class="cards">
     <div class="card">
         <div class="badge"><b>♠ Gamdom +25%</b></div>
-        <div class="badge-red"><b>🔥 Hot Offer</b></div>
+        <div class="badge-red"><b>👑 Top 1</b></div>
 
         <div class="titleRow">
             <img class="logo" src="earnlab.png">
@@ -295,6 +316,7 @@ body {
         <div class="stars">★★★★★</div>
         <a class="btn" href="https://earnlab.com/r/mylove"><b>Register ↗</b></a>
     </div>
+</div>
 
             <!--  -->
 
