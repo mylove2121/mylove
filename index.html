@@ -2,198 +2,166 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REFHUNTER</title>
-    <link rel="icon" type="image/png" href="REFHUNTER.PNG">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REFHUNTER</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: ui-sans-serif, system-ui, Arial;
-            color: #fff;
+body {
+    font-family: ui-sans-serif, system-ui, Arial;
+    color: #fff;
 
-            background:
-                linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
-                url("backround.png");
+    background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
+        url("backround.png");
 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-        /* ✅ TRUE FULL IMAGE BANNER */
-        .hero-banner {
-            position: relative;
-            width: 100%;
-            padding-top: 0;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(180,255,120,.15);
+/* ✅ PERFECT BALANCE */
+.hero-banner {
+    width: 100%;
+    height: 320px; /* 👈 balanced height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    border-bottom: 1px solid rgba(180,255,120,.15);
+}
 
-            /* let height be natural */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 👈 FULL IMAGE visible */
+    object-position: center;
+}
 
-        .hero-banner img {
-            width: 100%;
-            height: auto;
+/* Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 40px;
+    left: 60px;
 
-            /* 🔥 KEY FIX */
-            object-fit: contain;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
 
-            /* optional slight darkening */
-            filter: brightness(0.6);
-        }
+    padding: 16px 26px;
+    border-radius: 12px;
 
-        /* overlay stays on top */
-        .hero-overlay {
-            position: absolute;
-            left: 60px;
-            bottom: 20px;
+    border: 1px solid rgba(140,255,0,0.2);
+}
 
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(6px);
+.hero-overlay h1 {
+    font-size: 56px;
+    font-weight: 800;
 
-            padding: 16px 24px;
-            border-radius: 12px;
+    background: linear-gradient(90deg, #b6ff5c, #6aff00, #b6ff5c);
+    background-size: 200%;
 
-            border: 1px solid rgba(140,255,0,0.2);
-        }
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-        .hero-overlay h1 {
-            font-size: 56px;
-            font-weight: 800;
-            letter-spacing: 2px;
+    animation: shine 6s linear infinite;
 
-            font-family: 'Arial Black', sans-serif;
+    text-shadow:
+        0 0 10px rgba(140,255,0,0.7),
+        0 0 20px rgba(100,255,0,0.4);
+}
 
-            background: linear-gradient(90deg, #b6ff5c, #6aff00, #b6ff5c);
-            background-size: 200%;
+@keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+.hero-overlay p {
+    margin-top: 8px;
+    color: #ccc;
+    font-size: 16px;
+}
 
-            animation: shine 6s linear infinite;
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 20px;
+}
 
-            text-shadow:
-                0 0 10px rgba(140,255,0,0.7),
-                0 0 20px rgba(100,255,0,0.4),
-                0 0 40px rgba(80,255,0,0.2);
-        }
+.search {
+    margin: 30px 0;
+}
 
-        @keyframes shine {
-            0% { background-position: 0%; }
-            100% { background-position: 200%; }
-        }
+.search input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(22, 32, 20, .85);
+    border: 1px solid rgba(180, 255, 120, .15);
+    color: #fff;
+}
 
-        .hero-overlay p {
-            margin-top: 6px;
-            color: #ccc;
-            font-size: 16px;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
 
-        .container {
-            max-width: 1400px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+.card {
+    background: rgba(22, 32, 20, .85);
+    border: 1px solid rgba(180, 255, 120, .1);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: .2s;
+}
 
-        .search {
-            margin: 30px 0;
-            display: flex;
-            gap: 10px;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(180, 255, 120, .4);
+}
 
-        .search input {
-            flex: 1;
-            padding: 14px;
-            border-radius: 10px;
-            background: rgba(22, 32, 20, .85);
-            border: 1px solid rgba(180, 255, 120, .15);
-            color: #fff;
-        }
+.logo {
+    width: 84px;
+    height: 84px;
+    margin-bottom: 10px;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: linear-gradient(180deg, #c8f07a, #9ec94e);
+    color: #111;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .card {
-            background: rgba(22, 32, 20, .85);
-            border: 1px solid rgba(180, 255, 120, .1);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            transition: .2s;
-            backdrop-filter: blur(6px);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(180, 255, 120, .4);
-        }
-
-        .logo {
-            width: 84px;
-            height: 84px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-
-            object-fit: contain;
-            background: rgba(0,0,0,0.3);
-            padding: 6px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            background: linear-gradient(180deg, #c8f07a, #9ec94e);
-            color: #111;
-            padding: 10px 16px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .footer {
-            text-align: center;
-            color: #777;
-            padding: 40px 0;
-        }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .hero-overlay {
-                left: 20px;
-                bottom: 15px;
-            }
-
-            .hero-overlay h1 {
-                font-size: 34px;
-            }
-        }
-    </style>
+.footer {
+    text-align: center;
+    color: #777;
+    padding: 40px 0;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="hero-banner">
-        <img src="banner1.png">
-        <div class="hero-overlay">
-            <h1>REFHUNTER</h1>
-            <p>Best Ref Links • Highest Rates</p>
-        </div>
+<div class="hero-banner">
+    <img src="banner1.png">
+    <div class="hero-overlay">
+        <h1>REFHUNTER</h1>
+        <p>Best Ref Links • Highest Rates</p>
     </div>
+</div>
 
-    <div class="container">
+<div class="container">
 
         <div class="search">
             <input type="text" placeholder="Search sites...">
