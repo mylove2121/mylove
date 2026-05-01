@@ -22,15 +22,17 @@
                 linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
                 url("backround.png");
 
-            background-size: 120%;
-            background-position: center top;
-            background-attachment: scroll;
+            /* ✅ FIXED BACKGROUND */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
+        /* ✅ CLEAN BANNER SIZE */
         .hero-banner {
             position: relative;
             width: 100%;
-            height: 260px;
+            height: 200px; /* smaller */
             overflow: hidden;
             border-bottom: 1px solid rgba(180,255,120,.15);
         }
@@ -39,27 +41,32 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.5);
+
+            /* ✅ CONTROL CROPPING */
+            object-position: center 30%;
+
+            filter: brightness(0.55);
         }
 
-        /* 🔥 NEUER CLEAN LOOK */
+        /* 🔥 CLEAN OVERLAY */
         .hero-overlay {
             position: absolute;
-            top: 60px;
-            left: 80px;
+            top: 50%;
+            left: 60px;
+            transform: translateY(-50%);
 
             background: rgba(0,0,0,0.25);
             backdrop-filter: blur(6px);
 
-            padding: 20px 30px;
+            padding: 16px 24px;
             border-radius: 12px;
 
             border: 1px solid rgba(140,255,0,0.2);
         }
 
-        /* ✨ SHARP + ANIMATED TEXT */
+        /* ✨ TEXT */
         .hero-overlay h1 {
-            font-size: 72px;
+            font-size: 56px;
             font-weight: 800;
             letter-spacing: 2px;
 
@@ -77,9 +84,6 @@
                 0 0 10px rgba(140,255,0,0.7),
                 0 0 20px rgba(100,255,0,0.4),
                 0 0 40px rgba(80,255,0,0.2);
-
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
         }
 
         @keyframes shine {
@@ -87,17 +91,10 @@
             100% { background-position: 200%; }
         }
 
-        .hero-overlay h1:hover {
-            text-shadow:
-                0 0 20px rgba(140,255,0,1),
-                0 0 40px rgba(100,255,0,0.8),
-                0 0 80px rgba(80,255,0,0.6);
-        }
-
         .hero-overlay p {
-            margin-top: 10px;
+            margin-top: 6px;
             color: #ccc;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .container {
@@ -147,6 +144,11 @@
             height: 84px;
             border-radius: 10px;
             margin-bottom: 10px;
+
+            /* ✅ FIX LOGO FIT */
+            object-fit: contain;
+            background: rgba(0,0,0,0.3);
+            padding: 6px;
         }
 
         .btn {
@@ -164,6 +166,26 @@
             text-align: center;
             color: #777;
             padding: 40px 0;
+        }
+
+        /* ✅ MOBILE FIX */
+        @media (max-width: 768px) {
+            .hero-banner {
+                height: 160px;
+            }
+
+            .hero-overlay {
+                left: 20px;
+                padding: 12px 18px;
+            }
+
+            .hero-overlay h1 {
+                font-size: 36px;
+            }
+
+            .hero-overlay p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
