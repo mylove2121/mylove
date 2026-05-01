@@ -28,16 +28,14 @@ body {
         radial-gradient(ellipse at top, rgba(120,255,120,0.06), transparent 60%),
         radial-gradient(ellipse at 50% 30%, rgba(0,255,100,0.05), transparent 70%),
         linear-gradient(180deg, #0b140b 0%, #0f1f0f 30%, #0a0a0a 100%);
-
-    background-attachment: fixed;
 }
 
-/* HERO */
+/* HERO (VERY THIN) */
 .hero-banner {
     position: relative;
     width: 100%;
-    height: 38vh;
-    min-height: 240px;
+    height: 6vh;        /* ~90% smaller */
+    min-height: 60px;   /* keeps it visible on small screens */
     background: linear-gradient(180deg,#0b140b 0%,#0f1f0f 40%,#0a0a0a 100%);
 }
 
@@ -58,23 +56,27 @@ body {
     opacity: 0.4;
 }
 
-/* HERO TEXT */
+/* HERO TEXT (scaled down to fit) */
 .hero-overlay {
     position: absolute;
-    top: 40px;
-    left: 60px;
+    top: 8px;
+    left: 20px;
     background: rgba(0,0,0,0.4);
     backdrop-filter: blur(6px);
-    padding: 16px 26px;
-    border-radius: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
 }
 
 .hero-overlay h1 {
-    font-size: 56px;
+    font-size: 20px;
     font-weight: 800;
     background: linear-gradient(90deg,#b6ff5c,#6aff00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.hero-overlay p {
+    font-size: 10px;
 }
 
 /* CONTAINER */
@@ -134,7 +136,6 @@ body {
 .stars {
     margin-top: 10px;
     color: #ffea00;
-    text-shadow: 0 0 6px rgba(255,230,0,0.7);
 }
 
 /* ROW */
@@ -148,15 +149,6 @@ body {
     width: 46px;
     height: 46px;
     border-radius: 10px;
-}
-
-.card h3 {
-    font-size: 15px;
-}
-
-.card p {
-    font-size: 12px;
-    color: #aaa;
 }
 
 /* BUTTON */
@@ -187,21 +179,13 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    .cards { grid-template-columns: repeat(3, 1fr); }
 }
-
 @media (max-width: 700px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .cards { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 500px) {
-    .cards {
-        grid-template-columns: 1fr;
-    }
+    .cards { grid-template-columns: 1fr; }
 }
 </style>
 </head>
