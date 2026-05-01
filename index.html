@@ -20,14 +20,13 @@ body {
     background-position: center;
 }
 
-/* HERO (MATTE BANNER) */
+/* HERO */
 .hero-banner {
     position: relative;
     width: 100%;
     height: 38vh;
     min-height: 240px;
 
-    /* matte dark green */
     background: linear-gradient(
         180deg,
         #0b140b 0%,
@@ -36,12 +35,10 @@ body {
     );
 }
 
-/* subtle top glow */
 .hero-banner::before {
     content: "";
     position: absolute;
     inset: 0;
-
     background: radial-gradient(
         ellipse at top,
         rgba(120,255,120,0.08),
@@ -49,7 +46,6 @@ body {
     );
 }
 
-/* bottom glow line */
 .hero-banner::after {
     content: "";
     position: absolute;
@@ -64,11 +60,10 @@ body {
         #6aff00,
         transparent
     );
-
     opacity: 0.4;
 }
 
-/* TEXT OVERLAY */
+/* HERO TEXT */
 .hero-overlay {
     position: absolute;
     top: 40px;
@@ -87,35 +82,40 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* CONTAINER */
-.container {
-    max-width: 1400px;
-    margin: auto;
-    padding: 40px 20px;
+/* SEARCH WRAPPER (NEW) */
+.searchWrapper {
+    width: 100%;
+    padding: 20px 20px 10px;
+    display: flex;
+    justify-content: center;
 }
 
-/* SEARCH + FILTER */
+/* SEARCH BAR */
 .searchBar {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1100px;
 }
 
-.searchBar input {
-    flex: 1;
-    padding: 14px;
-    border-radius: 10px;
-    background: rgba(22, 32, 20, .85);
-    border: 1px solid rgba(180, 255, 120, .15);
-    color: #fff;
-}
-
+.searchBar input,
 .searchBar select {
     padding: 14px;
     border-radius: 10px;
     background: rgba(22, 32, 20, .85);
     border: 1px solid rgba(180, 255, 120, .15);
     color: #fff;
+}
+
+.searchBar input {
+    flex: 1;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 20px 20px 40px;
 }
 
 /* GRID */
@@ -223,17 +223,16 @@ body {
     </div>
 </div>
 
-<div class="container">
-
-<!-- SEARCH + FILTER -->
-<div class="searchBar">
-    <input type="text" id="searchInput" placeholder="Search sites...">
-    
-    <select id="filterSelect">
-        <option value="all">All</option>
-        <option value="top">Top Rated</option>
-        <option value="high">High Rates</option>
-    </select>
+<!-- SEARCH DIRECTLY UNDER BANNER -->
+<div class="searchWrapper">
+    <div class="searchBar">
+        <input type="text" id="searchInput" placeholder="Search sites...">
+        
+        <select id="filterSelect">
+            <option value="all">All</option>
+            <option value="top">Top Rated</option>
+            <option value="high">High Rates</option>
+        </select>
     
     
 
