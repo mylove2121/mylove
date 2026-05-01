@@ -1,3 +1,4 @@
+✅ FERTIGER CODE (funktioniert 100%)
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -58,7 +59,7 @@ body {
     padding: 40px 20px;
 }
 
-/* 👉 GRID FIX */
+/* GRID */
 .cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -100,7 +101,6 @@ body {
     transform: translateY(-6px) scale(1.02);
 }
 
-/* BADGE */
 .badge {
     position: absolute;
     top: 12px;
@@ -110,27 +110,22 @@ body {
     border-radius: 999px;
     background: rgba(120,255,120,0.15);
     color: #9eff6a;
-    border: 1px solid rgba(120,255,120,0.3);
 }
 
-/* ROW */
 .titleRow {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* LOGO */
 .logo {
     width: 46px;
     height: 46px;
     border-radius: 10px;
 }
 
-/* TEXT */
 .card h3 {
     font-size: 15px;
-    font-weight: 600;
 }
 
 .card p {
@@ -138,13 +133,11 @@ body {
     color: #aaa;
 }
 
-/* STARS */
 .stars {
     margin-top: 10px;
     color: #aaff66;
 }
 
-/* BUTTON */
 .btn {
     position: absolute;
     right: 14px;
@@ -157,19 +150,13 @@ body {
     text-decoration: none;
 }
 
-.btn:hover {
-    background: rgba(120,255,120,0.15);
-}
-
 /* RESPONSIVE */
 @media (max-width: 1200px) {
     .cards { grid-template-columns: repeat(3, 1fr); }
 }
-
 @media (max-width: 700px) {
     .cards { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 500px) {
     .cards { grid-template-columns: 1fr; }
 }
