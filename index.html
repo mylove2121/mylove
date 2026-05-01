@@ -34,8 +34,8 @@ body {
 .hero-banner {
     position: relative;
     width: 100%;
-    height: 6vh;        /* ~90% smaller */
-    min-height: 60px;   /* keeps it visible on small screens */
+    height: 6vh;
+    min-height: 60px;
     background: linear-gradient(180deg,#0b140b 0%,#0f1f0f 40%,#0a0a0a 100%);
 }
 
@@ -56,7 +56,7 @@ body {
     opacity: 0.4;
 }
 
-/* HERO TEXT (scaled down to fit) */
+/* HERO TEXT */
 .hero-overlay {
     position: absolute;
     top: 8px;
@@ -98,6 +98,8 @@ body {
 /* CARD */
 .card {
     position: relative;
+    overflow: hidden; /* required for shine */
+
     background: radial-gradient(circle at top left, rgba(40,80,40,0.6), rgba(20,30,20,0.95));
     border: 1px solid rgba(120,255,120,0.15);
     border-radius: 18px;
@@ -111,6 +113,44 @@ body {
         0 0 10px rgba(120,255,120,0.8),
         0 0 25px rgba(120,255,120,0.4),
         inset 0 0 10px rgba(120,255,120,0.15);
+}
+
+/* ✨ SHINE EFFECT (added only) */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+    opacity: 0;
+}
+
+.card:hover::after {
+    animation: shine 0.8s ease forwards;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        left: 125%;
+        opacity: 0;
+    }
 }
 
 /* BADGE */
