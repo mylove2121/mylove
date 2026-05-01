@@ -114,7 +114,7 @@ body {
         inset 0 0 10px rgba(120,255,120,0.15);
 }
 
-/* GREEN BADGE (top right) */
+/* GREEN BADGE */
 .badge {
     position: absolute;
     top: -10px;
@@ -126,9 +126,9 @@ body {
     background: rgba(120,255,120,0.12);
 
     border: 1px solid rgba(120,255,120,0.6);
-    outline: 1px solid rgba(255,255,255,0.15); /* thin white border */
 
     box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.25), /* thin white border */
         0 0 6px rgba(120,255,120,0.8),
         0 0 12px rgba(120,255,120,0.4),
         inset 0 0 6px rgba(120,255,120,0.3);
@@ -136,7 +136,7 @@ body {
     animation: badgeGlow 2s infinite alternate;
 }
 
-/* RED BADGE (top left) */
+/* RED BADGE */
 .badge-red {
     position: absolute;
     top: -10px;
@@ -148,9 +148,9 @@ body {
     background: rgba(255,80,80,0.12);
 
     border: 1px solid rgba(255,80,80,0.7);
-    outline: 1px solid rgba(255,255,255,0.15); /* thin white border */
 
     box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.25), /* thin white border */
         0 0 6px rgba(255,80,80,0.8),
         0 0 12px rgba(255,80,80,0.4),
         inset 0 0 6px rgba(255,80,80,0.3);
@@ -159,7 +159,7 @@ body {
     overflow: hidden;
 }
 
-/* CONTINUOUS SWEEP */
+/* SWEEP */
 .badge-red::after {
     content: "";
     position: absolute;
@@ -171,47 +171,23 @@ body {
         transparent 60%
     );
     transform: translateX(-100%) skewX(-20deg);
-    pointer-events: none;
     animation: badgeSweep 3.5s linear infinite;
 }
 
 @keyframes badgeSweep {
-    0% {
-        transform: translateX(-100%) skewX(-20deg);
-    }
-    100% {
-        transform: translateX(120%) skewX(-20deg);
-    }
+    0% { transform: translateX(-100%) skewX(-20deg); }
+    100% { transform: translateX(120%) skewX(-20deg); }
 }
 
+/* GLOW */
 @keyframes badgeGlow {
-    0% {
-        box-shadow:
-            0 0 6px rgba(120,255,120,0.6),
-            0 0 12px rgba(120,255,120,0.3),
-            inset 0 0 4px rgba(120,255,120,0.2);
-    }
-    100% {
-        box-shadow:
-            0 0 12px rgba(120,255,120,1),
-            0 0 25px rgba(120,255,120,0.6),
-            inset 0 0 8px rgba(120,255,120,0.4);
-    }
+    0% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 6px rgba(120,255,120,0.6); }
+    100% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 12px rgba(120,255,120,1); }
 }
 
 @keyframes badgeGlowRed {
-    0% {
-        box-shadow:
-            0 0 6px rgba(255,80,80,0.6),
-            0 0 12px rgba(255,80,80,0.3),
-            inset 0 0 4px rgba(255,80,80,0.2);
-    }
-    100% {
-        box-shadow:
-            0 0 12px rgba(255,80,80,1),
-            0 0 25px rgba(255,80,80,0.6),
-            inset 0 0 8px rgba(255,80,80,0.4);
-    }
+    0% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 6px rgba(255,80,80,0.6); }
+    100% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 12px rgba(255,80,80,1); }
 }
 
 /* STARS */
@@ -246,7 +222,6 @@ body {
     box-shadow:
         0 0 6px rgba(120,255,120,0.6),
         inset 0 0 4px rgba(120,255,120,0.2);
-    transition: 0.2s;
 }
 
 .btn:hover {
@@ -255,25 +230,6 @@ body {
         0 0 10px rgba(120,255,120,1),
         0 0 20px rgba(120,255,120,0.6),
         inset 0 0 6px rgba(120,255,120,0.4);
-}
-
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
-    .cards {
-        grid-template-columns: 1fr;
-    }
 }
 </style>
 </head>
