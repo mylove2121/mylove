@@ -58,19 +58,28 @@ body {
     padding: 40px 20px;
 }
 
-/* SEARCH */
-.search {
+/* SEARCH + FILTER */
+.searchBar {
+    display: flex;
+    gap: 10px;
     margin-bottom: 30px;
 }
 
-.search input {
-    width: 100%;
+.searchBar input {
+    flex: 1;
     padding: 14px;
     border-radius: 10px;
     background: rgba(22, 32, 20, .85);
     border: 1px solid rgba(180, 255, 120, .15);
     color: #fff;
-    font-size: 14px;
+}
+
+.searchBar select {
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(22, 32, 20, .85);
+    border: 1px solid rgba(180, 255, 120, .15);
+    color: #fff;
 }
 
 /* GRID */
@@ -94,11 +103,11 @@ body {
     transform: translateY(-6px);
 }
 
-/* 🔥 NEON BADGE (JETZT RECHTS) */
+/* BADGE RIGHT */
 .badge {
     position: absolute;
     top: 12px;
-    right: 12px;   /* ✅ FIX */
+    right: 12px;
     font-size: 11px;
     padding: 5px 12px;
     border-radius: 999px;
@@ -111,20 +120,6 @@ body {
         0 0 6px rgba(120,255,120,0.8),
         0 0 12px rgba(120,255,120,0.4),
         inset 0 0 6px rgba(120,255,120,0.3);
-
-    backdrop-filter: blur(6px);
-}
-
-/* EXTRA GLOW */
-.badge::after {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 999px;
-    background: linear-gradient(120deg, transparent, #7dff7d, transparent);
-    opacity: 0.6;
-    filter: blur(6px);
-    z-index: -1;
 }
 
 /* STARS */
@@ -149,7 +144,6 @@ body {
 
 .card h3 {
     font-size: 15px;
-    font-weight: 600;
 }
 
 .card p {
@@ -169,27 +163,15 @@ body {
     text-decoration: none;
 }
 
-.btn:hover {
-    background: rgba(120,255,120,0.15);
-}
-
 /* RESPONSIVE */
 @media (max-width: 1200px) {
     .cards { grid-template-columns: repeat(3, 1fr); }
 }
-
 @media (max-width: 700px) {
     .cards { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 500px) {
     .cards { grid-template-columns: 1fr; }
-}
-
-.footer {
-    text-align: center;
-    color: #777;
-    padding: 40px 0;
 }
 </style>
 </head>
@@ -206,9 +188,17 @@ body {
 
 <div class="container">
 
-<div class="search">
+<!-- 🔍 SEARCH + FILTER -->
+<div class="searchBar">
     <input type="text" id="searchInput" placeholder="Search sites...">
+    
+    <select id="filterSelect">
+        <option value="all">All</option>
+        <option value="top">Top Rated</option>
+        <option value="high">High Rates</option>
+    </select>
 </div>
+    
     
 
             <!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
