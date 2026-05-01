@@ -58,7 +58,21 @@ body {
     padding: 40px 20px;
 }
 
-/* 🔥 GRID FIX (5 CARDS) */
+/* SEARCH */
+.search {
+    margin-bottom: 30px;
+}
+
+.search input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(22, 32, 20, .85);
+    border: 1px solid rgba(180, 255, 120, .15);
+    color: #fff;
+}
+
+/* GRID */
 .cards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -73,44 +87,10 @@ body {
     border-radius: 18px;
     padding: 18px;
     transition: 0.25s;
-    overflow: hidden;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
-    padding: 1px;
-    background: linear-gradient(120deg, transparent, rgba(120,255,120,0.6), transparent);
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.card:hover::before {
-    opacity: 1;
 }
 
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
-}
-
-/* BADGE */
-.badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(120,255,120,0.15);
-    color: #9eff6a;
-    border: 1px solid rgba(120,255,120,0.3);
+    transform: translateY(-6px);
 }
 
 /* ROW */
@@ -120,14 +100,12 @@ body {
     gap: 12px;
 }
 
-/* LOGO */
 .logo {
     width: 46px;
     height: 46px;
     border-radius: 10px;
 }
 
-/* TEXT */
 .card h3 {
     font-size: 15px;
     font-weight: 600;
@@ -136,23 +114,17 @@ body {
 .card p {
     font-size: 12px;
     color: #aaa;
-}
-
-/* STARS */
-.stars {
-    margin-top: 10px;
-    color: #aaff66;
+    margin-top: 6px;
 }
 
 /* BUTTON */
 .btn {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
+    display: inline-block;
+    margin-top: 10px;
     font-size: 13px;
     color: #7dff7d;
     border: 1px solid rgba(120,255,120,0.3);
-    padding: 5px 9px;
+    padding: 6px 10px;
     border-radius: 8px;
     text-decoration: none;
 }
