@@ -104,22 +104,19 @@ body {
     transition: 0.25s;
 }
 
-/* ✅ CARD GLOW ON HOVER */
 .card:hover {
     transform: translateY(-6px);
-
     box-shadow:
         0 0 10px rgba(120,255,120,0.8),
         0 0 25px rgba(120,255,120,0.4),
         inset 0 0 10px rgba(120,255,120,0.15);
 }
 
-/* BADGE */
+/* ✅ BADGE TOP RIGHT FIXED */
 .badge {
     position: absolute;
-    top: -10px;
-    right: 1px;
-    transform: translateX(-50%);
+    top: 12px;
+    right: 12px;
 
     font-size: 11px;
     padding: 5px 12px;
@@ -164,13 +161,12 @@ body {
     color: #aaa;
 }
 
-/* ✅ BUTTON WITH GLOW */
+/* BUTTON */
 .btn {
     display: inline-block;
     margin-top: 10px;
     font-size: 13px;
     color: #7dff7d;
-
     border: 1px solid rgba(120,255,120,0.4);
     padding: 6px 10px;
     border-radius: 8px;
@@ -183,10 +179,8 @@ body {
     transition: 0.2s;
 }
 
-/* stronger glow on hover */
 .btn:hover {
     color: #cfff8f;
-
     box-shadow:
         0 0 10px rgba(120,255,120,1),
         0 0 20px rgba(120,255,120,0.6),
