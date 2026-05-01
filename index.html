@@ -12,8 +12,17 @@
     box-sizing: border-box;
 }
 
-/* BACKGROUND */
+/* ✅ GLOBAL ZOOM (+20%) */
+html {
+    transform: scale(1.2);
+    transform-origin: top center;
+}
+
+/* compensate overflow */
 body {
+    width: 83.33%; /* 100 / 1.2 */
+    margin: 0 auto;
+
     font-family: ui-sans-serif, system-ui, Arial;
     color: #fff;
 
@@ -91,7 +100,7 @@ body {
 .container {
     max-width: 1400px;
     margin: auto;
-    padding: 30px 20px 40px; /* slight top spacing since search removed */
+    padding: 30px 20px 40px;
 }
 
 /* GRID */
