@@ -265,6 +265,9 @@
     </div>
 
     <div class="container">
+
+        <input id="searchInput" type="text" placeholder="Search..." style="width:100%;padding:10px;margin-bottom:20px;border-radius:8px;border:none;outline:none;">
+
     
 <!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
 <div class="cards">
@@ -794,7 +797,7 @@
     </div>
 
     <script>
-        const searchInput = document.querySelector(".search input");
+        const searchInput = document.getElementById("searchInput");
         const cards = document.querySelectorAll(".card");
 
         searchInput.addEventListener("keyup", function () {
@@ -804,7 +807,7 @@
                 const text = card.innerText.toLowerCase();
 
                 if (text.includes(value)) {
-                    card.style.display = "block";
+                    card.style.display = "";
                 } else {
                     card.style.display = "none";
                 }
