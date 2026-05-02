@@ -1286,35 +1286,7 @@ document.querySelectorAll('.btn').forEach(link => {
     link.setAttribute('rel', 'noopener noreferrer');
 });
 </script>
-    <script>
-const allCards = document.querySelectorAll(".card");
-
-// SETTINGS
-const cardsPerLoad = 20; // ~4 rows (5 cards per row)
-let visibleCount = cardsPerLoad;
-
-// hide all cards after initial batch
-allCards.forEach((card, index) => {
-    if (index >= visibleCount) {
-        card.style.display = "none";
-    }
-});
-
-// load more on scroll
-window.addEventListener("scroll", () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
-        const nextCount = visibleCount + cardsPerLoad;
-
-        allCards.forEach((card, index) => {
-            if (index < nextCount) {
-                card.style.display = "";
-            }
-        });
-
-        visibleCount = nextCount;
-    }
-});
-</script>
+    
 </body>
 
 </html>
