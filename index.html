@@ -192,9 +192,32 @@
             }
         }
 
+        /* ⭐ UPDATED STARS ONLY */
         .stars {
             margin-top: 10px;
             color: #ffea00;
+            text-shadow:
+                0 0 6px #ffea00,
+                0 0 12px #ffea00,
+                0 0 20px #ffd000,
+                0 0 30px #ffea00,
+                0 0 40px #fff200;
+            animation: starGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes starGlow {
+            0% {
+                text-shadow:
+                    0 0 6px #ffea00,
+                    0 0 12px #ffea00;
+            }
+            100% {
+                text-shadow:
+                    0 0 12px #fff200,
+                    0 0 24px #ffd000,
+                    0 0 36px #ffea00,
+                    0 0 50px #fff200;
+            }
         }
 
         .titleRow {
