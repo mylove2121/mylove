@@ -6,7 +6,7 @@
 <title>Refhunter</title>
 
 <!-- FAVICON -->
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="logo1.png">
 
 <style>
 * {
@@ -120,33 +120,16 @@ body {
 .badge { /* ... */ }
 .badge-red { /* ... */ }
 
-/* ⭐ GLOWING STARS */
+/* ⭐ GLOWING STARS (NO SWEEP) */
 .stars {
     margin-top: 10px;
     color: #ffea00;
-    position: relative;
     text-shadow:
         0 0 5px #ffea00,
         0 0 10px #ffea00,
         0 0 20px #ffd000,
         0 0 30px #ffea00;
     animation: starGlow 1.5s ease-in-out infinite alternate;
-}
-
-/* sparkle sweep */
-.stars::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent 40%,
-        rgba(255,255,255,0.8) 50%,
-        transparent 60%
-    );
-    transform: translateX(-100%) skewX(-20deg);
-    animation: starSweep 3s linear infinite;
-    pointer-events: none;
 }
 
 @keyframes starGlow {
@@ -162,11 +145,6 @@ body {
             0 0 30px #ffea00,
             0 0 40px #fff200;
     }
-}
-
-@keyframes starSweep {
-    0% { transform: translateX(-100%) skewX(-20deg); }
-    100% { transform: translateX(120%) skewX(-20deg); }
 }
 
 .titleRow {
