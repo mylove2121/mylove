@@ -169,7 +169,28 @@ box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25),
 inset 0 0 6px rgba(120,255,120,0.3);
 animation: badgeGlow 2s infinite alternate;
 }
+/* ORANGE BADGE */
+.badge-orange {
+position: absolute;
+top: -10px;
+right: 1px;
+font-size: 11px;
+padding: 5px 12px;
+border-radius: 999px;
+color: #fff;
+background: rgba(255,140,0,0.12);
+border: 1px solid rgba(255,140,0,0.7);
+box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25),
+0 0 6px rgba(255,140,0,0.8),
+0 0 12px rgba(255,140,0,0.4),
+inset 0 0 6px rgba(255,140,0,0.3);
+animation: badgeGlowOrange 2s infinite alternate;
+}
 
+@keyframes badgeGlowOrange {
+0% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 6px rgba(255,140,0,0.6); }
+100% { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 12px rgba(255,140,0,1); }
+}
 /* RED BADGE */
 .badge-red {
 position: absolute;
