@@ -40,7 +40,29 @@ body {
     display: flex;
     gap: 8px;
 }
+.filter-btn {
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(120,255,120,0.25);
+    background: rgba(20,30,20,0.9);
+    color: #b6ffb6;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 6px rgba(120,255,120,0.2);
+}
 
+.filter-btn:hover {
+    border-color: #6aff00;
+    box-shadow: 0 0 8px rgba(120,255,120,0.6);
+}
+
+.filter-btn.active {
+    background: rgba(120,255,120,0.15);
+    border-color: #6aff00;
+    box-shadow: 0 0 10px rgba(120,255,120,0.8);
+    color: #cfff8f;
+}
 /* ✅ FORCE NO ZOOM ON MOBILE */
 @media (max-width: 768px) {
 
