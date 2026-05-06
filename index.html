@@ -64,22 +64,68 @@ body {
     color: #cfff8f;
 }
 /* ✅ FORCE NO ZOOM ON MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 768px) {@media (max-width: 768px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+        margin: 0 auto;
+        gap: 12px;
+    }
+
+    .search-wrapper {
+        max-width: 500px;
+        margin: 0 auto 25px;
+    }
+
+    .container {
+        padding: 20px 12px;
+    }
 
     .search-row {
-        flex-direction: column;
-        align-items: stretch;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #searchInput {
+        flex: 1;
     }
 
     .filter-buttons {
-        width: 100%;
-        justify-content: space-between;
-        margin-left: 0;
+        display: flex;
+        gap: 8px;
+        margin-left: 10px;
     }
 
     .filter-btn {
-        flex: 1;
-        text-align: center;
+        font-size: 12px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(120,255,120,0.25);
+        background: rgba(20,30,20,0.9);
+        color: #b6ffb6;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 0 6px rgba(120,255,120,0.2);
+    }
+
+    .filter-btn:hover {
+        border-color: #6aff00;
+        box-shadow: 0 0 8px rgba(120,255,120,0.6);
+    }
+
+    .filter-btn.active {
+        background: rgba(120,255,120,0.15);
+        border-color: #6aff00;
+        box-shadow:
+            0 0 10px rgba(120,255,120,0.8),
+            0 0 20px rgba(120,255,120,0.4);
+        color: #cfff8f;
+    }
+
+    .card {
+        padding: 14px;
     }
 }
 
