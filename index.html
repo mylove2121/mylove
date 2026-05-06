@@ -35,29 +35,26 @@ body {
 #searchInput {
     width: 100%;
     padding: 14px 16px;
+    padding-left: 40px; /* Platz für Lupe */
     border-radius: 14px;
-    border: 2px solid rgba(120,255,120,0.4);
+    border: 1px solid rgba(120,255,120,0.25);
     outline: none;
+    color: #b6ffb6;
     font-size: 14px;
 
-    /* 🔥 TEXT FARBE */
-    color: #b6ffb6;
+    background:
+        radial-gradient(circle at top left, rgba(40,80,40,0.6), rgba(20,30,20,0.95));
 
-    /* BACKGROUND */
-    background: radial-gradient(circle at top left, rgba(40,80,40,0.6), rgba(20,30,20,0.95));
-
-    /* ICON */
+    /* 🔍 LUPE */
     background-image: url("data:image/svg+xml;utf8,<svg fill='%236aff00' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z'/></svg>");
     background-repeat: no-repeat;
     background-position: 12px center;
     background-size: 16px;
 
-    padding-left: 40px;
-
     box-shadow: 0 0 6px rgba(120,255,120,0.25), inset 0 0 6px rgba(120,255,120,0.12);
+    backdrop-filter: blur(4px);
     transition: 0.25s;
 }
-
 #searchInput::placeholder {
     color: rgba(182,255,182,0.6); /* softer neon green */
 }
