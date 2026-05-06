@@ -192,7 +192,7 @@ body {
     box-shadow: 0 0 8px rgba(120,255,120,0.6);
 }
 
-/* BADGES */
+/* BADGES (DESKTOP) */
 .badge,
 .badge-orange,
 .badge-red {
@@ -202,7 +202,54 @@ body {
     padding: 5px 12px;
     border-radius: 999px;
     color: #fff;
-    animation: none;
+    white-space: nowrap;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+    .card {
+        padding: 10px;
+    }
+
+    .badge,
+    .badge-orange,
+    .badge-red {
+        top: 6px;              /* 🔥 INSIDE statt outside */
+        font-size: 9px;        /* kleiner */
+        padding: 3px 8px;      /* kompakter */
+        transform: scale(0.9); /* leichte Skalierung */
+    }
+
+    .badge {
+        right: 6px;
+    }
+
+    .badge-orange {
+        right: 6px;
+    }
+
+    .badge-red {
+        left: 6px;
+    }
+
+    /* TEXT FIX */
+    .titleRow h3 {
+        font-size: 13px;
+    }
+
+    .titleRow p {
+        font-size: 11px;
+    }
+
+    .stars {
+        font-size: 11px;
+    }
+
+    .btn {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
 }
 
 .badge {
