@@ -159,24 +159,23 @@ animation: badgeGlowRed 2s infinite alternate;
 100% { box-shadow: 0 0 12px rgba(255,80,80,1); }
 }
 
-/* STARS (lighter) */
+/* STARS */
 .stars {
 margin-top: 10px;
 color: #ffea00;
 text-shadow: 0 0 6px #ffea00;
+transition: 0.2s ease;
 }
 
-/* TITLE */
-.titleRow {
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-.logo {
-width: 46px;
-height: 46px;
-border-radius: 10px;
+/* SHINY ON HOVER */
+.card:hover .stars {
+text-shadow:
+0 0 10px #fff200,
+0 0 20px #ffd000,
+0 0 30px #ffea00,
+0 0 45px #fff200,
+0 0 60px #fff200;
+transform: scale(1.08);
 }
 
 /* BUTTON */
@@ -1259,7 +1258,7 @@ box-shadow: 0 0 8px rgba(120,255,120,0.7);
 
 
     </div>
-    <div class="footer">© Last updated 4th May 2026</div>
+    <div class="footer">© Last updated 6th May 2026</div>
     </div>
 
     <script>
