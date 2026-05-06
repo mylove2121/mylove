@@ -1547,16 +1547,26 @@ buttons.forEach(btn => {
 
 /* ---------------- LINKS FIX ---------------- */
 document.querySelectorAll('.btn').forEach(link => {
-    const href = link.getAttribute("href");
+    let href = link.getAttribute("href");
 
+    // if empty → fallback to homepage (based on title)
     if (!href || href.trim() === "") {
-        link.style.opacity = "0.5";
-        link.style.pointerEvents = "none";
-        link.innerText = "Coming Soon";
-    } else {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
+
+        const card = link.closest(".card");
+        const name = card.querySelector("h3")?.innerText.toLowerCase();
+
+        // simple auto domain fallback
+        if (name) {
+            href = "https://" + name.replace(/\s+/g, "") + ".com";
+        } else {
+            href = "#";
+        }
+
+        link.setAttribute("href", href);
     }
+
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
 });
 </script>
     
