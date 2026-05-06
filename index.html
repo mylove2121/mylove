@@ -25,7 +25,21 @@ body {
         radial-gradient(ellipse at 50% 30%, rgba(0,255,100,0.05), transparent 70%),
         linear-gradient(180deg, #0b140b 0%, #0f1f0f 30%, #0a0a0a 100%);
 }
+/* DESKTOP SEARCH LAYOUT FIX */
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
+#searchInput {
+    flex: 1;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+}
 @media (max-width: 768px) {
     body {
         zoom: 1;
