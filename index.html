@@ -227,8 +227,8 @@ grid-template-columns: repeat(3, 1fr);
     
 <!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
 <div class="cards">
-<div class="card">
-                <div class="badge"><b>+25% Commission</b></div>
+<div class="card" data-pinned="true">               
+    <div class="badge"><b>+25% Commission</b></div>
        <div class="badge-red"><b>Premium</b></div>
     <div class="titleRow">
         <img class="logo" src="splitdrop5.png.png">
@@ -240,8 +240,8 @@ grid-template-columns: repeat(3, 1fr);
     <div class="stars">★★★★★</div>
     <a class="btn" href="https://splitdrop.com/friend/19291"><b>Register ↗</b></a>
 </div>
-    <div class="card">
-        <div class="badge"><b>Gamdom +25%</b></div>
+<div class="card" data-pinned="true">
+    <div class="badge"><b>Gamdom +25%</b></div>
         <div class="badge-red"><b>Premium</b></div>
         <div class="titleRow">
             <img class="logo" src="earnlab.png">
@@ -255,8 +255,8 @@ grid-template-columns: repeat(3, 1fr);
     </div>
             <!--  -->
 
-          <div class="card">
-        <div class="badge"><b>Roobet +20%</b></div>
+<div class="card" data-pinned="true">
+    <div class="badge"><b>Roobet +20%</b></div>
         <div class="badge-red"><b>Premium</b></div>
         <div class="titleRow">
             <img class="logo" src="gemsloot.png">
@@ -1277,20 +1277,25 @@ const searchInput = document.getElementById("searchInput");
 const cardsContainer = document.querySelector(".cards");
 let cards = Array.from(document.querySelectorAll(".card"));
 
-/* ⭐ GET STAR COUNT */
 function getStars(card) {
     const starsText = card.querySelector(".stars")?.innerText || "";
     return (starsText.match(/★/g) || []).length;
 }
 
-/* 🔤 GET TITLE */
 function getTitle(card) {
     return card.querySelector("h3")?.innerText.toLowerCase() || "";
 }
 
-/* 🔥 SORT FUNCTION */
+function isPinned(card) {
+    return card.dataset.pinned === "true";
+}
+
 function sortCards() {
     cards.sort((a, b) => {
+
+        if (isPinned(a) && !isPinned(b)) return -1;
+        if (!isPinned(a) && isPinned(b)) return 1;
+
         const starDiff = getStars(b) - getStars(a);
         if (starDiff !== 0) return starDiff;
 
@@ -1300,10 +1305,8 @@ function sortCards() {
     cards.forEach(card => cardsContainer.appendChild(card));
 }
 
-/* RUN SORT ON LOAD */
 sortCards();
 
-/* 🔍 SEARCH (with debounce) */
 let timeout;
 
 searchInput.addEventListener("keyup", function () {
