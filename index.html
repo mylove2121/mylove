@@ -36,24 +36,30 @@ body {
     width: 100%;
     padding: 14px 16px;
     border-radius: 14px;
-    border: 2px solid #ff2c75; /* 🔥 pink border */
+    border: 2px solid rgba(120,255,120,0.4);
     outline: none;
-    color: #fff;
     font-size: 14px;
-    background: #1a0f14; /* dark purple/black */
-    
-    /* 👇 icon inside input */
-    background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff2c75' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z'/></svg>");
+
+    /* 🔥 TEXT FARBE */
+    color: #b6ffb6;
+
+    /* BACKGROUND */
+    background: radial-gradient(circle at top left, rgba(40,80,40,0.6), rgba(20,30,20,0.95));
+
+    /* ICON */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%236aff00' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z'/></svg>");
     background-repeat: no-repeat;
     background-position: 12px center;
     background-size: 16px;
 
-    padding-left: 40px; /* space for icon */
-    transition: 0.2s;
+    padding-left: 40px;
+
+    box-shadow: 0 0 6px rgba(120,255,120,0.25), inset 0 0 6px rgba(120,255,120,0.12);
+    transition: 0.25s;
 }
 
 #searchInput::placeholder {
-    color: #d08aa0;
+    color: rgba(182,255,182,0.6); /* softer neon green */
 }
 
 #searchInput:focus {
