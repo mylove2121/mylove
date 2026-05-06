@@ -1549,20 +1549,9 @@ buttons.forEach(btn => {
 document.querySelectorAll('.btn').forEach(link => {
     let href = link.getAttribute("href");
 
-    // if empty → fallback to homepage (based on title)
+    // wenn leer → redirect zu deiner Seite
     if (!href || href.trim() === "") {
-
-        const card = link.closest(".card");
-        const name = card.querySelector("h3")?.innerText.toLowerCase();
-
-        // simple auto domain fallback
-        if (name) {
-            href = "https://" + name.replace(/\s+/g, "") + ".com";
-        } else {
-            href = "#";
-        }
-
-        link.setAttribute("href", href);
+        link.setAttribute("href", "https://refhunter.site/");
     }
 
     link.setAttribute('target', '_blank');
