@@ -40,11 +40,14 @@ body {
     display: flex;
     gap: 8px;
 }
+/* ✅ FORCE NO ZOOM ON MOBILE */
 @media (max-width: 768px) {
+    html {
+        zoom: 1 !important;
+    }
+
     body {
-        zoom: 1;
-        transform: scale(1);
-        transform-origin: top left;
+        zoom: 1 !important;
     }
 }
 
