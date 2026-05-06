@@ -33,7 +33,31 @@ body {
 }
 
 #searchInput {
-    flex: 1;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 2px solid #ff2c75; /* 🔥 pink border */
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    background: #1a0f14; /* dark purple/black */
+    
+    /* 👇 icon inside input */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff2c75' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    background-size: 16px;
+
+    padding-left: 40px; /* space for icon */
+    transition: 0.2s;
+}
+
+#searchInput::placeholder {
+    color: #d08aa0;
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 10px #ff2c75;
 }
 
 .filter-buttons {
