@@ -205,6 +205,45 @@ box-shadow: 0 0 8px rgba(120,255,120,0.7);
 .cards {
 grid-template-columns: repeat(3, 1fr);
 }
+        /* SEARCH ROW */
+.search-row {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+/* BUTTON GROUP */
+.filter-buttons {
+display: flex;
+gap: 6px;
+}
+
+/* BUTTON STYLE */
+.filter-btn {
+font-size: 12px;
+padding: 8px 12px;
+border-radius: 10px;
+border: 1px solid rgba(120,255,120,0.3);
+background: rgba(20,30,20,0.8);
+color: #b6ffb6;
+cursor: pointer;
+transition: 0.2s;
+white-space: nowrap;
+}
+
+/* HOVER */
+.filter-btn:hover {
+border-color: #6aff00;
+box-shadow: 0 0 8px rgba(120,255,120,0.6);
+}
+
+/* ACTIVE */
+.filter-btn.active {
+background: rgba(120,255,120,0.15);
+border-color: #6aff00;
+box-shadow: 0 0 10px rgba(120,255,120,0.8);
+color: #cfff8f;
+}
 }
 </style>
 </head>
@@ -221,8 +260,18 @@ grid-template-columns: repeat(3, 1fr);
 <div class="container">
 
 <div class="search-wrapper">
-<span class="search-icon">🔍</span>
-<input id="searchInput" type="text" placeholder="Search sites...">
+    
+    <div class="search-row">
+        <span class="search-icon">🔍</span>
+        <input id="searchInput" type="text" placeholder="Search sites...">
+
+        <div class="filter-buttons">
+            <button class="filter-btn active">ALL</button>
+            <button class="filter-btn">NEW</button>
+            <button class="filter-btn">PREMIUM</button>
+        </div>
+    </div>
+
 </div>
     
 <!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
