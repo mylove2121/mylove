@@ -42,15 +42,24 @@ body {
 }
 /* ✅ FORCE NO ZOOM ON MOBILE */
 @media (max-width: 768px) {
-    html {
-        zoom: 1 !important;
+
+    .search-row {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    body {
-        zoom: 1 !important;
+    .filter-buttons {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
     }
+
+    .filter-btn {
+        flex: 1;
+        text-align: center;
+    }
+
 }
-
 /* SEARCH */
 .search-wrapper {
     width: 100%;
