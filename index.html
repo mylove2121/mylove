@@ -1274,21 +1274,49 @@ grid-template-columns: repeat(3, 1fr);
 
     <script>
 const searchInput = document.getElementById("searchInput");
-const cards = document.querySelectorAll(".card");
+const cardsContainer = document.querySelector(".cards");
+let cards = Array.from(document.querySelectorAll(".card"));
 
+/* ⭐ GET STAR COUNT */
+function getStars(card) {
+    const starsText = card.querySelector(".stars")?.innerText || "";
+    return (starsText.match(/★/g) || []).length;
+}
+
+/* 🔤 GET TITLE */
+function getTitle(card) {
+    return card.querySelector("h3")?.innerText.toLowerCase() || "";
+}
+
+/* 🔥 SORT FUNCTION */
+function sortCards() {
+    cards.sort((a, b) => {
+        const starDiff = getStars(b) - getStars(a);
+        if (starDiff !== 0) return starDiff;
+
+        return getTitle(a).localeCompare(getTitle(b));
+    });
+
+    cards.forEach(card => cardsContainer.appendChild(card));
+}
+
+/* RUN SORT ON LOAD */
+sortCards();
+
+/* 🔍 SEARCH (with debounce) */
 let timeout;
 
 searchInput.addEventListener("keyup", function () {
-clearTimeout(timeout);
+    clearTimeout(timeout);
 
-timeout = setTimeout(() => {
-const value = searchInput.value.toLowerCase();
+    timeout = setTimeout(() => {
+        const value = searchInput.value.toLowerCase();
 
-cards.forEach(card => {
-const text = card.innerText.toLowerCase();
-card.style.display = text.includes(value) ? "" : "none";
-});
-}, 150);
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            card.style.display = text.includes(value) ? "" : "none";
+        });
+    }, 150);
 });
 </script>
 
