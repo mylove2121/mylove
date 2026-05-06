@@ -1430,7 +1430,11 @@ body {
 const searchInput = document.getElementById("searchInput");
 const cardsContainer = document.querySelector(".cards");
 let cards = Array.from(document.querySelectorAll(".card"));
+const buttons = document.querySelectorAll(".filter-btn");
 
+let activeFilter = "all";
+
+/* ---------------- SORT ---------------- */
 function getStars(card) {
     const starsText = card.querySelector(".stars")?.innerText || "";
     return (starsText.match(/★/g) || []).length;
@@ -1461,57 +1465,59 @@ function sortCards() {
 
 sortCards();
 
-let timeout;
+/* ---------------- FILTER + SEARCH COMBINED ---------------- */
+function updateView() {
+    const searchValue = searchInput.value.toLowerCase();
 
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        const isNew = card.innerText.toLowerCase().includes("new");
+        const isPremium = card.innerText.toLowerCase().includes("premium");
+
+        let matchesFilter = false;
+
+        if (activeFilter === "all") matchesFilter = true;
+        if (activeFilter === "new") matchesFilter = isNew;
+        if (activeFilter === "premium") matchesFilter = isPremium;
+
+        const matchesSearch = text.includes(searchValue);
+
+        card.style.display = (matchesFilter && matchesSearch) ? "" : "none";
+    });
+}
+
+/* SEARCH */
+let timeout;
 searchInput.addEventListener("keyup", function () {
     clearTimeout(timeout);
-
-    timeout = setTimeout(() => {
-        const value = searchInput.value.toLowerCase();
-
-        cards.forEach(card => {
-            const text = card.innerText.toLowerCase();
-            card.style.display = text.includes(value) ? "" : "none";
-        });
-    }, 150);
+    timeout = setTimeout(updateView, 120);
 });
-</script>
 
-    <script>
-const buttons = document.querySelectorAll(".filter-btn");
-
+/* FILTER BUTTONS */
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
 
-        /* ACTIVE STATE */
         buttons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
-        const type = btn.innerText.toLowerCase();
-
-        document.querySelectorAll(".card").forEach(card => {
-
-            const isNew = card.innerText.toLowerCase().includes("new");
-            const isPremium = card.innerText.toLowerCase().includes("premium");
-
-            if (type === "all") {
-                card.style.display = "";
-            } else if (type === "new") {
-                card.style.display = isNew ? "" : "none";
-            } else if (type === "premium") {
-                card.style.display = isPremium ? "" : "none";
-            }
-        });
-
+        activeFilter = btn.innerText.toLowerCase();
+        updateView();
     });
 });
-</script>
-💥 RESULT
 
-<script>
+/* ---------------- LINKS FIX ---------------- */
 document.querySelectorAll('.btn').forEach(link => {
-link.setAttribute('target', '_blank');
-link.setAttribute('rel', 'noopener noreferrer');
+    const href = link.getAttribute("href");
+
+    if (!href || href.trim() === "") {
+        link.style.opacity = "0.5";
+        link.style.pointerEvents = "none";
+        link.innerText = "Coming Soon";
+    } else {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    }
 });
 </script>
     
