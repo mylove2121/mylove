@@ -338,7 +338,7 @@ body {
 
     }
 
-   /* HUNTER ARROW */
+  /* HUNTER ARROW */
 .card {
     overflow: visible;
 }
@@ -349,11 +349,11 @@ body {
 
     position: absolute;
 
-    width: 120px;
-    height: 3px;
+    width: 140px;
+    height: 5px;
 
-    left: -140px;
-    bottom: 41px;
+    left: -170px;
+    bottom: 40px;
 
     opacity: 0;
 
@@ -363,17 +363,17 @@ body {
         linear-gradient(
             90deg,
             rgba(120,255,120,0),
-            rgba(120,255,120,0.35),
-            #6aff00 45%,
+            #3f5f2d 20%,
+            #6aff00 55%,
             #dfffba 100%
         );
 
     box-shadow:
-        0 0 8px rgba(120,255,120,0.9),
-        0 0 18px rgba(120,255,120,0.55),
-        0 0 28px rgba(120,255,120,0.25);
+        0 0 10px rgba(120,255,120,0.9),
+        0 0 22px rgba(120,255,120,0.55),
+        0 0 35px rgba(120,255,120,0.25);
 
-    transform: rotate(-5deg);
+    transform: rotate(-4deg);
 
     pointer-events: none;
 }
@@ -384,34 +384,62 @@ body {
 
     position: absolute;
 
-    left: -26px;
-    bottom: 35px;
+    left: -34px;
+    bottom: 31px;
 
     width: 0;
     height: 0;
 
     opacity: 0;
 
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 18px solid #dfffba;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 28px solid #dfffba;
 
     filter:
-        drop-shadow(0 0 8px rgba(120,255,120,1))
-        drop-shadow(0 0 16px rgba(120,255,120,0.5));
+        drop-shadow(0 0 10px rgba(120,255,120,1))
+        drop-shadow(0 0 18px rgba(120,255,120,0.6));
 
-    transform: rotate(-5deg);
+    transform: rotate(-4deg);
 
     pointer-events: none;
 }
 
-/* FEATHERS */
+/* FEDERN */
+.card .arrow-feather {
+    position: absolute;
+
+    width: 16px;
+    height: 10px;
+
+    left: -155px;
+    bottom: 37px;
+
+    opacity: 0;
+
+    background: #6aff00;
+
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+
+    filter:
+        drop-shadow(0 0 6px rgba(120,255,120,0.9));
+
+    transform: rotate(-4deg);
+
+    pointer-events: none;
+}
+
+/* HOVER */
 .card:hover::after {
-    animation: hunterArrowLine 1.9s cubic-bezier(.22,.61,.36,1);
+    animation: hunterArrowLine 2.2s cubic-bezier(.22,.61,.36,1);
 }
 
 .card:hover::before {
-    animation: hunterArrowHead 1.9s cubic-bezier(.22,.61,.36,1);
+    animation: hunterArrowHead 2.2s cubic-bezier(.22,.61,.36,1);
+}
+
+.card:hover .arrow-feather {
+    animation: hunterArrowFeather 2.2s cubic-bezier(.22,.61,.36,1);
 }
 
 /* LINE */
@@ -420,20 +448,20 @@ body {
     0% {
         transform:
             translateX(0)
-            rotate(-5deg)
-            scaleX(0.65);
+            rotate(-4deg)
+            scaleX(0.75);
 
         opacity: 0;
     }
 
-    12% {
+    10% {
         opacity: 1;
     }
 
     100% {
         transform:
-            translateX(270px)
-            rotate(-5deg)
+            translateX(300px)
+            rotate(-4deg)
             scaleX(1);
 
         opacity: 0;
@@ -446,21 +474,45 @@ body {
     0% {
         transform:
             translateX(0)
-            rotate(-5deg)
-            scale(0.8);
+            rotate(-4deg)
+            scale(0.9);
 
         opacity: 0;
     }
 
-    12% {
+    10% {
         opacity: 1;
     }
 
     100% {
         transform:
-            translateX(270px)
-            rotate(-5deg)
+            translateX(300px)
+            rotate(-4deg)
             scale(1);
+
+        opacity: 0;
+    }
+}
+
+/* FEATHER */
+@keyframes hunterArrowFeather {
+
+    0% {
+        transform:
+            translateX(0)
+            rotate(-4deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateX(300px)
+            rotate(-4deg);
 
         opacity: 0;
     }
@@ -609,6 +661,7 @@ body {
     </div>
 
     <div class="card" data-pinned="true">
+        <div class="arrow-feather"></div>
             <div class="badge-red"><b>Premium</b></div>
     <div class="badge"><b>+5$ Signup Bonus</b></div>
         <div class="titleRow">
