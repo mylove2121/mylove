@@ -338,108 +338,165 @@ body {
 
     }
 
-    /* HUNTER ARROW EFFECT */
+    /* HUNTER ARROWS */
 .card {
-    position: relative;
+    overflow: visible;
 }
 
 .card::before,
-.card::after {
-    content: "";
+.card::after,
+.card .arrow1,
+.card .arrow2,
+.card .arrow3,
+.card .arrow4 {
+    content: "➶";
     position: absolute;
-    pointer-events: none;
+    font-size: 16px;
+    color: #8dff5a;
     opacity: 0;
+    pointer-events: none;
+    text-shadow:
+        0 0 6px rgba(120,255,120,0.8),
+        0 0 12px rgba(120,255,120,0.5);
 }
 
-/* MAIN ARROW */
+/* START POSITIONS */
 .card::before {
-    width: 70px;
-    height: 2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,255,100,0),
-            rgba(120,255,120,1)
-        );
-
-    top: 35%;
-    left: -80px;
-
-    transform: rotate(18deg);
-
-    box-shadow:
-        0 0 8px rgba(120,255,120,0.9),
-        0 0 16px rgba(120,255,120,0.5);
+    left: -20px;
+    top: 20%;
 }
 
-/* ARROW HEAD */
 .card::after {
-    width: 10px;
-    height: 10px;
-
-    border-top: 2px solid #6aff00;
-    border-right: 2px solid #6aff00;
-
-    top: 35%;
-    left: -10px;
-
-    transform: rotate(63deg);
-
-    filter: drop-shadow(0 0 6px #6aff00);
+    right: -20px;
+    top: 38%;
 }
 
-/* ANIMATION */
+.card .arrow1 {
+    left: -15px;
+    top: 58%;
+}
+
+.card .arrow2 {
+    right: -15px;
+    top: 72%;
+}
+
+.card .arrow3 {
+    left: 10%;
+    top: -10px;
+}
+
+.card .arrow4 {
+    right: 10%;
+    bottom: -10px;
+}
+
+/* HOVER */
 .card:hover::before {
-    animation: hunterArrowLine 0.7s ease-out forwards;
+    animation: hunterArrow 1.4s linear infinite;
 }
 
 .card:hover::after {
-    animation: hunterArrowHead 0.7s ease-out forwards;
+    animation: hunterArrow2 1.7s linear infinite;
 }
 
-/* EXTRA PARTICLES */
-.card:hover {
-    background-image:
-        radial-gradient(circle at 20% 40%, rgba(120,255,120,0.10), transparent 2px),
-        radial-gradient(circle at 40% 60%, rgba(120,255,120,0.12), transparent 2px),
-        radial-gradient(circle at 70% 30%, rgba(120,255,120,0.08), transparent 2px);
+.card:hover .arrow1 {
+    animation: hunterArrow3 1.8s linear infinite;
 }
 
-@keyframes hunterArrowLine {
+.card:hover .arrow2 {
+    animation: hunterArrow4 1.5s linear infinite;
+}
 
+.card:hover .arrow3 {
+    animation: hunterArrow5 1.9s linear infinite;
+}
+
+.card:hover .arrow4 {
+    animation: hunterArrow6 1.6s linear infinite;
+}
+
+/* ANIMATIONS */
+@keyframes hunterArrow {
     0% {
-        left: -80px;
-        top: 35%;
+        transform: translate(0,0) rotate(25deg) scale(0.6);
         opacity: 0;
     }
-
-    15% {
+    20% {
         opacity: 1;
     }
-
     100% {
-        left: 45%;
-        top: 82%;
+        transform: translate(140px,80px) rotate(25deg) scale(1);
         opacity: 0;
     }
 }
 
-@keyframes hunterArrowHead {
-
+@keyframes hunterArrow2 {
     0% {
-        left: -10px;
-        top: 35%;
+        transform: translate(0,0) rotate(160deg) scale(0.6);
         opacity: 0;
     }
-
-    15% {
+    20% {
         opacity: 1;
     }
-
     100% {
-        left: 62%;
-        top: 82%;
+        transform: translate(-140px,90px) rotate(160deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes hunterArrow3 {
+    0% {
+        transform: translate(0,0) rotate(15deg) scale(0.6);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(120px,-40px) rotate(15deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes hunterArrow4 {
+    0% {
+        transform: translate(0,0) rotate(200deg) scale(0.6);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-120px,-60px) rotate(200deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes hunterArrow5 {
+    0% {
+        transform: translate(0,0) rotate(90deg) scale(0.6);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0,140px) rotate(90deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes hunterArrow6 {
+    0% {
+        transform: translate(0,0) rotate(-90deg) scale(0.6);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0,-140px) rotate(-90deg) scale(1);
         opacity: 0;
     }
 }
@@ -531,7 +588,11 @@ body {
     
     <div class="cards">
         
-    <div class="card" data-pinned="true">               
+    <div class="card" data-pinned="true">    
+        <span class="arrow1"></span>
+<span class="arrow2"></span>
+<span class="arrow3"></span>
+<span class="arrow4"></span>
     <div class="badge"><b>+25% Commission</b></div>
        <div class="badge-red"><b>Premium</b></div>
     <div class="titleRow">
