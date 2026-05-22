@@ -338,148 +338,79 @@ body {
 
     }
 
-/* BEAUTIFUL HUNTER ARROW RAIN */
+/* GREEN HUNTER ARROW RAIN */
 .card{
     position: relative;
     overflow: hidden;
 }
 
-.card::before,
-.card::after{
+/* RAIN LAYER */
+.card::before{
     content:"";
     position:absolute;
     inset:0;
     pointer-events:none;
     opacity:0;
-    z-index:20;
-}
+    z-index:15;
 
-/* 10 ARROWS */
-.card::before{
     background-image:
+
+    /* 20 HUNTER ARROWS */
     url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 34'>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 80'>\
 <defs>\
-<linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='0%'>\
-<stop offset='0%' stop-color='%2300ff66' stop-opacity='0'/>\
-<stop offset='35%' stop-color='%236aff00'/>\
-<stop offset='100%' stop-color='%23d8ff72'/>\
+<linearGradient id='g' x1='0%' y1='0%' x2='0%' y2='100%'>\
+<stop offset='0%' stop-color='%23e8ff9d' stop-opacity='0.95'/>\
+<stop offset='100%' stop-color='%236aff00' stop-opacity='0.2'/>\
 </linearGradient>\
 </defs>\
 \
-<rect x='0' y='15' width='180' height='4' rx='4' fill='url(%23g)' opacity='0.95'/>\
-<polygon points='8,17 24,9 24,25' fill='%236aff00'/>\
-<polygon points='20,17 34,11 34,23' fill='%239dff5e'/>\
-<rect x='28' y='15' width='160' height='4' rx='4' fill='%23b7ff7a'/>\
-<polygon points='188,2 258,17 188,32 212,17' fill='%23d8ff72'/>\
-<polygon points='168,6 220,17 168,14 190,17' fill='%239dff5e' opacity='0.95'/>\
-<polygon points='168,28 220,17 168,20 190,17' fill='%239dff5e' opacity='0.95'/>\
-<circle cx='185' cy='17' r='3' fill='white' opacity='0.95'/>\
-</svg>");
-
-    background-repeat:no-repeat;
-
-    background-size:
-    70px 10px,
-    62px 9px,
-    75px 11px,
-    60px 9px,
-    68px 10px;
-
-    background-position:
-    5% -40px,
-    25% -120px,
-    48% -80px,
-    70% -160px,
-    88% -60px;
-}
-
-.card::after{
-    background-image:
-    url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 34'>\
-<defs>\
-<linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='0%'>\
-<stop offset='0%' stop-color='%2300ff66' stop-opacity='0'/>\
-<stop offset='35%' stop-color='%236aff00'/>\
-<stop offset='100%' stop-color='%23d8ff72'/>\
-</linearGradient>\
-</defs>\
+<!-- ARROW HEAD -->\
+<polygon points='10,80 0,60 6,60 6,12 14,12 14,60 20,60' fill='url(%23g)'/>\
 \
-<rect x='0' y='15' width='180' height='4' rx='4' fill='url(%23g)' opacity='0.95'/>\
-<polygon points='8,17 24,9 24,25' fill='%236aff00'/>\
-<polygon points='20,17 34,11 34,23' fill='%239dff5e'/>\
-<rect x='28' y='15' width='160' height='4' rx='4' fill='%23b7ff7a'/>\
-<polygon points='188,2 258,17 188,32 212,17' fill='%23d8ff72'/>\
-<polygon points='168,6 220,17 168,14 190,17' fill='%239dff5e' opacity='0.95'/>\
-<polygon points='168,28 220,17 168,20 190,17' fill='%239dff5e' opacity='0.95'/>\
-<circle cx='185' cy='17' r='3' fill='white' opacity='0.95'/>\
+<!-- SHAFT -->\
+<rect x='8' y='6' width='4' height='56' rx='2' fill='%239dff5e' opacity='0.9'/>\
+\
+<!-- FEATHERS -->\
+<polygon points='2,0 10,12 6,18' fill='%236aff00' opacity='0.8'/>\
+<polygon points='18,0 10,12 14,18' fill='%23b7ff7a' opacity='0.8'/>\
 </svg>");
 
-    background-repeat:no-repeat;
+    background-repeat: repeat;
 
-    background-size:
-    64px 9px,
-    72px 10px,
-    58px 8px,
-    76px 11px,
-    66px 9px;
+    /* THIN ELEGANT ARROWS */
+    background-size: 22px 90px;
 
-    background-position:
-    12% -180px,
-    34% -90px,
-    58% -150px,
-    80% -70px,
-    95% -130px;
+    filter:
+        drop-shadow(0 0 6px rgba(106,255,0,0.45))
+        drop-shadow(0 0 14px rgba(106,255,0,0.2));
 }
 
+/* START RAIN */
 .card:hover::before{
     opacity:1;
-    animation:arrowRain1 1.6s linear infinite;
+    animation: hunterRain 1.6s linear infinite;
 }
 
-.card:hover::after{
-    opacity:1;
-    animation:arrowRain2 2s linear infinite;
-}
+/* RAIN FALL */
+@keyframes hunterRain{
 
-@keyframes arrowRain1{
     from{
         background-position:
-        5% -40px,
-        25% -120px,
-        48% -80px,
-        70% -160px,
-        88% -60px;
+        0px -120px,
+        40px -220px,
+        80px -340px,
+        120px -180px,
+        160px -300px;
     }
 
     to{
         background-position:
-        5% 260px,
-        25% 320px,
-        48% 290px,
-        70% 350px,
-        88% 280px;
-    }
-}
-
-@keyframes arrowRain2{
-    from{
-        background-position:
-        12% -180px,
-        34% -90px,
-        58% -150px,
-        80% -70px,
-        95% -130px;
-    }
-
-    to{
-        background-position:
-        12% 340px,
-        34% 280px,
-        58% 360px,
-        80% 260px,
-        95% 330px;
+        0px 320px,
+        40px 420px,
+        80px 540px,
+        120px 380px,
+        160px 500px;
     }
 }
 }
