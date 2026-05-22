@@ -338,165 +338,90 @@ body {
 
     }
 
-    /* HUNTER ARROWS */
+   /* HUNTER ARROWS */
 .card {
     overflow: visible;
 }
 
 .card::before,
-.card::after,
-.card .arrow1,
-.card .arrow2,
-.card .arrow3,
-.card .arrow4 {
-    content: "➶";
+.card::after {
+    content: "➵";
     position: absolute;
-    font-size: 16px;
-    color: #8dff5a;
+    font-size: 15px;
+    color: #9dff70;
     opacity: 0;
     pointer-events: none;
+
     text-shadow:
-        0 0 6px rgba(120,255,120,0.8),
-        0 0 12px rgba(120,255,120,0.5);
+        0 0 6px rgba(120,255,120,0.9),
+        0 0 14px rgba(120,255,120,0.5);
 }
 
-/* START POSITIONS */
+/* LEFT ARROW */
 .card::before {
-    left: -20px;
-    top: 20%;
+    left: -18px;
+    top: 32%;
 }
 
+/* RIGHT ARROW */
 .card::after {
-    right: -20px;
-    top: 38%;
-}
-
-.card .arrow1 {
-    left: -15px;
-    top: 58%;
-}
-
-.card .arrow2 {
-    right: -15px;
-    top: 72%;
-}
-
-.card .arrow3 {
-    left: 10%;
-    top: -10px;
-}
-
-.card .arrow4 {
-    right: 10%;
-    bottom: -10px;
+    right: -18px;
+    top: 62%;
 }
 
 /* HOVER */
 .card:hover::before {
-    animation: hunterArrow 1.4s linear infinite;
+    animation: hunterArrowLeft 1.8s linear infinite;
 }
 
 .card:hover::after {
-    animation: hunterArrow2 1.7s linear infinite;
+    animation: hunterArrowRight 2s linear infinite;
 }
 
-.card:hover .arrow1 {
-    animation: hunterArrow3 1.8s linear infinite;
+/* EXTRA GHOST ARROWS */
+.card:hover::before {
+    box-shadow:
+        35px 18px 0 -2px rgba(157,255,112,0.8),
+        70px 36px 0 -3px rgba(157,255,112,0.5),
+        105px 54px 0 -4px rgba(157,255,112,0.3);
 }
 
-.card:hover .arrow2 {
-    animation: hunterArrow4 1.5s linear infinite;
-}
-
-.card:hover .arrow3 {
-    animation: hunterArrow5 1.9s linear infinite;
-}
-
-.card:hover .arrow4 {
-    animation: hunterArrow6 1.6s linear infinite;
+.card:hover::after {
+    box-shadow:
+        -35px -18px 0 -2px rgba(157,255,112,0.8),
+        -70px -36px 0 -3px rgba(157,255,112,0.5),
+        -105px -54px 0 -4px rgba(157,255,112,0.3);
 }
 
 /* ANIMATIONS */
-@keyframes hunterArrow {
+@keyframes hunterArrowLeft {
     0% {
-        transform: translate(0,0) rotate(25deg) scale(0.6);
+        transform: translate(0,0) rotate(20deg) scale(0.7);
         opacity: 0;
     }
+
     20% {
         opacity: 1;
     }
+
     100% {
-        transform: translate(140px,80px) rotate(25deg) scale(1);
+        transform: translate(135px,75px) rotate(20deg) scale(1);
         opacity: 0;
     }
 }
 
-@keyframes hunterArrow2 {
+@keyframes hunterArrowRight {
     0% {
-        transform: translate(0,0) rotate(160deg) scale(0.6);
+        transform: translate(0,0) rotate(200deg) scale(0.7);
         opacity: 0;
     }
-    20% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-140px,90px) rotate(160deg) scale(1);
-        opacity: 0;
-    }
-}
 
-@keyframes hunterArrow3 {
-    0% {
-        transform: translate(0,0) rotate(15deg) scale(0.6);
-        opacity: 0;
-    }
     20% {
         opacity: 1;
     }
-    100% {
-        transform: translate(120px,-40px) rotate(15deg) scale(1);
-        opacity: 0;
-    }
-}
 
-@keyframes hunterArrow4 {
-    0% {
-        transform: translate(0,0) rotate(200deg) scale(0.6);
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
     100% {
-        transform: translate(-120px,-60px) rotate(200deg) scale(1);
-        opacity: 0;
-    }
-}
-
-@keyframes hunterArrow5 {
-    0% {
-        transform: translate(0,0) rotate(90deg) scale(0.6);
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0,140px) rotate(90deg) scale(1);
-        opacity: 0;
-    }
-}
-
-@keyframes hunterArrow6 {
-    0% {
-        transform: translate(0,0) rotate(-90deg) scale(0.6);
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0,-140px) rotate(-90deg) scale(1);
+        transform: translate(-135px,-75px) rotate(200deg) scale(1);
         opacity: 0;
     }
 }
