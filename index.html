@@ -336,7 +336,82 @@ body {
     color: #cfff8f;
     box-shadow: 0 0 8px rgba(120,255,120,0.7);
 }
+/* ARROW SHOOT EFFECT */
+.card {
+    overflow: hidden;
+}
 
+.card::before,
+.card::after {
+    content: "➜";
+    position: absolute;
+    font-size: 14px;
+    color: #6aff00;
+    opacity: 0;
+    pointer-events: none;
+    text-shadow: 0 0 8px #6aff00;
+}
+
+/* LEFT ARROW */
+.card::before {
+    left: -20px;
+    top: 65%;
+}
+
+/* TOP ARROW */
+.card::after {
+    right: 20px;
+    top: -20px;
+}
+
+/* HOVER TRIGGER */
+.card:hover::before {
+    animation: shootLeft 0.8s ease-out forwards;
+}
+
+.card:hover::after {
+    animation: shootTop 0.8s ease-out forwards;
+}
+
+@keyframes shootLeft {
+    0% {
+        left: -20px;
+        top: 65%;
+        opacity: 0;
+        transform: scale(0.6) rotate(0deg);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 65%;
+        top: 82%;
+        opacity: 0;
+        transform: scale(1.2) rotate(8deg);
+    }
+}
+
+@keyframes shootTop {
+    0% {
+        right: 20px;
+        top: -20px;
+        opacity: 0;
+        transform: scale(0.6) rotate(-20deg);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        right: 28%;
+        top: 82%;
+        opacity: 0;
+        transform: scale(1.2) rotate(10deg);
+    }
+}
 /* MOBILE */
 @media (max-width: 768px) {
 
