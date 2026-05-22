@@ -338,120 +338,148 @@ body {
 
     }
 
- /* ARROW RAIN */
-.card::before,
-.card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0;
-    z-index: 15;
+/* BEAUTIFUL HUNTER ARROW RAIN */
+.card{
+    position: relative;
+    overflow: hidden;
 }
 
-/* FIRST 5 ARROWS */
+.card::before,
+.card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    z-index:20;
+}
+
+/* 10 ARROWS */
 .card::before{
     background-image:
     url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 70'>\
-<polygon points='12,0 22,18 16,18 16,52 8,52 8,18 2,18' fill='%23baff7a'/>\
-<rect x='10' y='18' width='4' height='38' rx='2' fill='%236aff00'/>\
-<polygon points='6,60 12,70 18,60' fill='%239dff5e'/>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 34'>\
+<defs>\
+<linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='0%'>\
+<stop offset='0%' stop-color='%2300ff66' stop-opacity='0'/>\
+<stop offset='35%' stop-color='%236aff00'/>\
+<stop offset='100%' stop-color='%23d8ff72'/>\
+</linearGradient>\
+</defs>\
+\
+<rect x='0' y='15' width='180' height='4' rx='4' fill='url(%23g)' opacity='0.95'/>\
+<polygon points='8,17 24,9 24,25' fill='%236aff00'/>\
+<polygon points='20,17 34,11 34,23' fill='%239dff5e'/>\
+<rect x='28' y='15' width='160' height='4' rx='4' fill='%23b7ff7a'/>\
+<polygon points='188,2 258,17 188,32 212,17' fill='%23d8ff72'/>\
+<polygon points='168,6 220,17 168,14 190,17' fill='%239dff5e' opacity='0.95'/>\
+<polygon points='168,28 220,17 168,20 190,17' fill='%239dff5e' opacity='0.95'/>\
+<circle cx='185' cy='17' r='3' fill='white' opacity='0.95'/>\
 </svg>");
 
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
 
     background-size:
-        20px 58px,
-        18px 54px,
-        16px 50px,
-        22px 62px,
-        18px 56px;
+    70px 10px,
+    62px 9px,
+    75px 11px,
+    60px 9px,
+    68px 10px;
 
     background-position:
-        8% -80px,
-        28% -120px,
-        50% -60px,
-        72% -140px,
-        90% -100px;
+    5% -40px,
+    25% -120px,
+    48% -80px,
+    70% -160px,
+    88% -60px;
 }
 
-/* SECOND 5 ARROWS */
 .card::after{
     background-image:
     url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 70'>\
-<polygon points='12,0 22,18 16,18 16,52 8,52 8,18 2,18' fill='%23d8ff72'/>\
-<rect x='10' y='18' width='4' height='38' rx='2' fill='%23a6ff4d'/>\
-<polygon points='6,60 12,70 18,60' fill='%236aff00'/>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 34'>\
+<defs>\
+<linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='0%'>\
+<stop offset='0%' stop-color='%2300ff66' stop-opacity='0'/>\
+<stop offset='35%' stop-color='%236aff00'/>\
+<stop offset='100%' stop-color='%23d8ff72'/>\
+</linearGradient>\
+</defs>\
+\
+<rect x='0' y='15' width='180' height='4' rx='4' fill='url(%23g)' opacity='0.95'/>\
+<polygon points='8,17 24,9 24,25' fill='%236aff00'/>\
+<polygon points='20,17 34,11 34,23' fill='%239dff5e'/>\
+<rect x='28' y='15' width='160' height='4' rx='4' fill='%23b7ff7a'/>\
+<polygon points='188,2 258,17 188,32 212,17' fill='%23d8ff72'/>\
+<polygon points='168,6 220,17 168,14 190,17' fill='%239dff5e' opacity='0.95'/>\
+<polygon points='168,28 220,17 168,20 190,17' fill='%239dff5e' opacity='0.95'/>\
+<circle cx='185' cy='17' r='3' fill='white' opacity='0.95'/>\
 </svg>");
 
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
 
     background-size:
-        18px 54px,
-        20px 58px,
-        16px 50px,
-        22px 62px,
-        18px 56px;
+    64px 9px,
+    72px 10px,
+    58px 8px,
+    76px 11px,
+    66px 9px;
 
     background-position:
-        16% -140px,
-        38% -80px,
-        60% -120px,
-        82% -60px,
-        96% -130px;
+    12% -180px,
+    34% -90px,
+    58% -150px,
+    80% -70px,
+    95% -130px;
 }
 
-/* HOVER START */
 .card:hover::before{
-    opacity: 1;
-    animation: arrowRain1 1.8s linear infinite;
+    opacity:1;
+    animation:arrowRain1 1.6s linear infinite;
 }
 
 .card:hover::after{
-    opacity: 1;
-    animation: arrowRain2 2.2s linear infinite;
+    opacity:1;
+    animation:arrowRain2 2s linear infinite;
 }
 
-/* RAIN */
 @keyframes arrowRain1{
     from{
         background-position:
-            8% -80px,
-            28% -120px,
-            50% -60px,
-            72% -140px,
-            90% -100px;
+        5% -40px,
+        25% -120px,
+        48% -80px,
+        70% -160px,
+        88% -60px;
     }
 
     to{
         background-position:
-            8% 220px,
-            28% 260px,
-            50% 240px,
-            72% 280px,
-            90% 250px;
+        5% 260px,
+        25% 320px,
+        48% 290px,
+        70% 350px,
+        88% 280px;
     }
 }
 
 @keyframes arrowRain2{
     from{
         background-position:
-            16% -140px,
-            38% -80px,
-            60% -120px,
-            82% -60px,
-            96% -130px;
+        12% -180px,
+        34% -90px,
+        58% -150px,
+        80% -70px,
+        95% -130px;
     }
 
     to{
         background-position:
-            16% 260px,
-            38% 220px,
-            60% 280px,
-            82% 240px,
-            96% 270px;
+        12% 340px,
+        34% 280px,
+        58% 360px,
+        80% 260px,
+        95% 330px;
     }
 }
 }
