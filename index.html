@@ -418,34 +418,34 @@ drop-shadow(0 0 6px rgba(106,255,0,0.12));
 
 /* HOVER */
 .card:hover::before{
-    opacity:1;
-    animation: hunterRain1 2.1s linear infinite;
+    opacity:0.45;
+    animation: hunterRain1 8s linear infinite;
 }
 
 .card:hover::after{
-    opacity:1;
-    animation: hunterRain2 3.2s linear infinite;
+    opacity:0.22;
+    animation: hunterRain2 13s linear infinite;
 }
 
-/* RANDOM RAIN */
+/* REALISTIC ARROW RAIN */
 @keyframes hunterRain1{
 
 0%{
 background-position:
-0px -120px,
-42px -320px,
-88px -220px,
-133px -470px,
-177px -160px;
+12px -900px,
+88px -200px,
+170px -1400px,
+250px -500px,
+340px -1100px;
 }
 
 100%{
 background-position:
--8px 520px,
-55px 760px,
-72px 640px,
-148px 900px,
-162px 580px;
+-20px 1300px,
+110px 1700px,
+150px 900px,
+290px 2100px,
+300px 1400px;
 }
 }
 
@@ -453,20 +453,20 @@ background-position:
 
 0%{
 background-position:
-20px -420px,
-66px -160px,
-111px -500px,
-155px -260px,
-201px -380px;
+40px -1700px,
+130px -400px,
+220px -1200px,
+310px -300px,
+390px -2000px;
 }
 
 100%{
 background-position:
-8px 920px,
-82px 610px,
-98px 1100px,
-171px 720px,
-189px 840px;
+10px 1400px,
+160px 900px,
+200px 1800px,
+340px 1200px,
+370px 2200px;
 }
 }
 }
