@@ -337,6 +337,112 @@ body {
     box-shadow: 0 0 8px rgba(120,255,120,0.7);
 
     }
+
+    /* HUNTER ARROW EFFECT */
+.card {
+    position: relative;
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* MAIN ARROW */
+.card::before {
+    width: 70px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,255,100,0),
+            rgba(120,255,120,1)
+        );
+
+    top: 35%;
+    left: -80px;
+
+    transform: rotate(18deg);
+
+    box-shadow:
+        0 0 8px rgba(120,255,120,0.9),
+        0 0 16px rgba(120,255,120,0.5);
+}
+
+/* ARROW HEAD */
+.card::after {
+    width: 10px;
+    height: 10px;
+
+    border-top: 2px solid #6aff00;
+    border-right: 2px solid #6aff00;
+
+    top: 35%;
+    left: -10px;
+
+    transform: rotate(63deg);
+
+    filter: drop-shadow(0 0 6px #6aff00);
+}
+
+/* ANIMATION */
+.card:hover::before {
+    animation: hunterArrowLine 0.7s ease-out forwards;
+}
+
+.card:hover::after {
+    animation: hunterArrowHead 0.7s ease-out forwards;
+}
+
+/* EXTRA PARTICLES */
+.card:hover {
+    background-image:
+        radial-gradient(circle at 20% 40%, rgba(120,255,120,0.10), transparent 2px),
+        radial-gradient(circle at 40% 60%, rgba(120,255,120,0.12), transparent 2px),
+        radial-gradient(circle at 70% 30%, rgba(120,255,120,0.08), transparent 2px);
+}
+
+@keyframes hunterArrowLine {
+
+    0% {
+        left: -80px;
+        top: 35%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 45%;
+        top: 82%;
+        opacity: 0;
+    }
+}
+
+@keyframes hunterArrowHead {
+
+    0% {
+        left: -10px;
+        top: 35%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 62%;
+        top: 82%;
+        opacity: 0;
+    }
+}
 }
 /* MOBILE */
 @media (max-width: 768px) {
