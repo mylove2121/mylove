@@ -338,80 +338,136 @@ body {
 
     }
 
-/* GREEN HUNTER ARROW RAIN */
+/* HUNTER RAIN */
 .card{
     position: relative;
     overflow: hidden;
 }
 
-/* RAIN LAYER */
-.card::before{
+/* LAYER 1 */
+.card::before,
+.card::after{
     content:"";
     position:absolute;
-    inset:0;
+    inset:-40%;
     pointer-events:none;
     opacity:0;
     z-index:15;
+}
 
-    background-image:
+/* THIN GREEN ARROWS */
+.card::before{
 
-    /* 20 HUNTER ARROWS */
-    url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 80'>\
+background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 90'>\
 <defs>\
 <linearGradient id='g' x1='0%' y1='0%' x2='0%' y2='100%'>\
-<stop offset='0%' stop-color='%23e8ff9d' stop-opacity='0.95'/>\
-<stop offset='100%' stop-color='%236aff00' stop-opacity='0.2'/>\
+<stop offset='0%' stop-color='%23ecffb0' stop-opacity='0.65'/>\
+<stop offset='100%' stop-color='%236aff00' stop-opacity='0.05'/>\
 </linearGradient>\
 </defs>\
 \
-<!-- ARROW HEAD -->\
-<polygon points='10,80 0,60 6,60 6,12 14,12 14,60 20,60' fill='url(%23g)'/>\
-\
 <!-- SHAFT -->\
-<rect x='8' y='6' width='4' height='56' rx='2' fill='%239dff5e' opacity='0.9'/>\
+<rect x='8' y='8' width='2' height='58' rx='2' fill='url(%23g)'/>\
+\
+<!-- HEAD -->\
+<polygon points='9,90 0,70 6,70 6,56 12,56 12,70 18,70' fill='%23bfff85' opacity='0.75'/>\
 \
 <!-- FEATHERS -->\
-<polygon points='2,0 10,12 6,18' fill='%236aff00' opacity='0.8'/>\
-<polygon points='18,0 10,12 14,18' fill='%23b7ff7a' opacity='0.8'/>\
+<polygon points='2,0 9,10 6,18' fill='%236aff00' opacity='0.25'/>\
+<polygon points='16,0 9,10 12,18' fill='%23bfff85' opacity='0.25'/>\
 </svg>");
 
-    background-repeat: repeat;
+background-size:
+18px 90px;
 
-    /* THIN ELEGANT ARROWS */
-    background-size: 22px 90px;
+background-repeat:repeat;
 
-    filter:
-        drop-shadow(0 0 6px rgba(106,255,0,0.45))
-        drop-shadow(0 0 14px rgba(106,255,0,0.2));
+filter:
+drop-shadow(0 0 4px rgba(106,255,0,0.18));
 }
 
-/* START RAIN */
+/* SECOND RANDOM LAYER */
+.card::after{
+
+background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 90'>\
+<defs>\
+<linearGradient id='g' x1='0%' y1='0%' x2='0%' y2='100%'>\
+<stop offset='0%' stop-color='%23ffffff' stop-opacity='0.35'/>\
+<stop offset='100%' stop-color='%236aff00' stop-opacity='0.03'/>\
+</linearGradient>\
+</defs>\
+\
+<rect x='8' y='10' width='1.6' height='54' rx='2' fill='url(%23g)'/>\
+\
+<polygon points='9,90 1,72 6,72 6,58 12,58 12,72 17,72' fill='%23dfff9a' opacity='0.45'/>\
+\
+<polygon points='3,0 9,10 7,17' fill='%236aff00' opacity='0.16'/>\
+<polygon points='15,0 9,10 11,17' fill='%23dfff9a' opacity='0.16'/>\
+</svg>");
+
+background-size:
+15px 82px;
+
+background-repeat:repeat;
+
+filter:
+drop-shadow(0 0 6px rgba(106,255,0,0.12));
+}
+
+/* HOVER */
 .card:hover::before{
     opacity:1;
-    animation: hunterRain 1.6s linear infinite;
+    animation: hunterRain1 2.1s linear infinite;
 }
 
-/* RAIN FALL */
-@keyframes hunterRain{
+.card:hover::after{
+    opacity:1;
+    animation: hunterRain2 3.2s linear infinite;
+}
 
-    from{
-        background-position:
-        0px -120px,
-        40px -220px,
-        80px -340px,
-        120px -180px,
-        160px -300px;
-    }
+/* RANDOM RAIN */
+@keyframes hunterRain1{
 
-    to{
-        background-position:
-        0px 320px,
-        40px 420px,
-        80px 540px,
-        120px 380px,
-        160px 500px;
-    }
+0%{
+background-position:
+0px -120px,
+42px -320px,
+88px -220px,
+133px -470px,
+177px -160px;
+}
+
+100%{
+background-position:
+-8px 520px,
+55px 760px,
+72px 640px,
+148px 900px,
+162px 580px;
+}
+}
+
+@keyframes hunterRain2{
+
+0%{
+background-position:
+20px -420px,
+66px -160px,
+111px -500px,
+155px -260px,
+201px -380px;
+}
+
+100%{
+background-position:
+8px 920px,
+82px 610px,
+98px 1100px,
+171px 720px,
+189px 840px;
+}
 }
 }
 /* MOBILE */
