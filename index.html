@@ -343,85 +343,144 @@ body {
     overflow: visible;
 }
 
+/* ALLE 4 PFEILE */
 .card::before,
-.card::after {
-    content: "➵";
+.card::after,
+.card .a1,
+.card .a2 {
+    content: "";
     position: absolute;
-    font-size: 15px;
-    color: #9dff70;
+    width: 34px;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(180,255,180,0),
+        #9dff70,
+        #d8ffb0
+    );
+
+    border-radius: 999px;
+
     opacity: 0;
     pointer-events: none;
 
-    text-shadow:
-        0 0 6px rgba(120,255,120,0.9),
-        0 0 14px rgba(120,255,120,0.5);
+    box-shadow:
+        0 0 8px rgba(120,255,120,0.9),
+        0 0 16px rgba(120,255,120,0.5);
 }
 
-/* LEFT ARROW */
+/* PFEILSPITZE */
+.card::before::after,
+.card::after::after,
+.card .a1::after,
+.card .a2::after {
+    content: "";
+}
+
+/* POSITIONEN */
 .card::before {
-    left: -18px;
-    top: 32%;
+    left: -25px;
+    top: 25%;
+    transform: rotate(18deg);
 }
 
-/* RIGHT ARROW */
 .card::after {
-    right: -18px;
+    right: -25px;
+    top: 40%;
+    transform: rotate(200deg);
+}
+
+.card .a1 {
+    left: -25px;
     top: 62%;
+    transform: rotate(-10deg);
+}
+
+.card .a2 {
+    right: -25px;
+    top: 78%;
+    transform: rotate(190deg);
 }
 
 /* HOVER */
 .card:hover::before {
-    animation: hunterArrowLeft 1.8s linear infinite;
+    animation: arrowFly1 1.6s linear infinite;
 }
 
 .card:hover::after {
-    animation: hunterArrowRight 2s linear infinite;
+    animation: arrowFly2 1.9s linear infinite;
 }
 
-/* EXTRA GHOST ARROWS */
-.card:hover::before {
-    box-shadow:
-        35px 18px 0 -2px rgba(157,255,112,0.8),
-        70px 36px 0 -3px rgba(157,255,112,0.5),
-        105px 54px 0 -4px rgba(157,255,112,0.3);
+.card:hover .a1 {
+    animation: arrowFly3 1.7s linear infinite;
 }
 
-.card:hover::after {
-    box-shadow:
-        -35px -18px 0 -2px rgba(157,255,112,0.8),
-        -70px -36px 0 -3px rgba(157,255,112,0.5),
-        -105px -54px 0 -4px rgba(157,255,112,0.3);
+.card:hover .a2 {
+    animation: arrowFly4 2s linear infinite;
 }
 
 /* ANIMATIONS */
-@keyframes hunterArrowLeft {
+@keyframes arrowFly1 {
     0% {
-        transform: translate(0,0) rotate(20deg) scale(0.7);
+        transform: translate(0,0) rotate(18deg) scale(0.7);
         opacity: 0;
     }
 
-    20% {
+    15% {
         opacity: 1;
     }
 
     100% {
-        transform: translate(135px,75px) rotate(20deg) scale(1);
+        transform: translate(150px,85px) rotate(18deg) scale(1);
         opacity: 0;
     }
 }
 
-@keyframes hunterArrowRight {
+@keyframes arrowFly2 {
     0% {
         transform: translate(0,0) rotate(200deg) scale(0.7);
         opacity: 0;
     }
 
-    20% {
+    15% {
         opacity: 1;
     }
 
     100% {
-        transform: translate(-135px,-75px) rotate(200deg) scale(1);
+        transform: translate(-150px,95px) rotate(200deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes arrowFly3 {
+    0% {
+        transform: translate(0,0) rotate(-10deg) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(160px,-35px) rotate(-10deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes arrowFly4 {
+    0% {
+        transform: translate(0,0) rotate(190deg) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-160px,-55px) rotate(190deg) scale(1);
         opacity: 0;
     }
 }
