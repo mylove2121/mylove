@@ -337,74 +337,180 @@ body {
     box-shadow: 0 0 8px rgba(120,255,120,0.7);
 
     }
-/* 🔥 NEON GREEN FIRE EFFECT */
-.card:hover .btn {
+/* 🔥 BUTTON BASE */
+.btn {
     position: relative;
+    z-index: 1;
     overflow: visible;
+}
 
-    border-color: #6aff00;
-    color: #d9ffb3;
+/* 🔥 ACTIVATE ONLY WHEN CARD HOVER */
+.card:hover .btn {
+
+    border-color: #7dff7d;
 
     box-shadow:
-        0 0 5px rgba(106,255,0,0.7),
-        0 0 10px rgba(106,255,0,0.6),
-        0 0 18px rgba(106,255,0,0.5),
-        0 0 28px rgba(106,255,0,0.35);
+        0 0 6px rgba(106,255,0,0.8),
+        0 0 14px rgba(106,255,0,0.7),
+        0 0 28px rgba(106,255,0,0.5);
 
-    animation: neonFirePulse 1.8s infinite alternate;
+    animation: neonButtonFlicker 0.12s infinite alternate;
 }
 
-/* FIRE LAYER */
+/* 🔥 OUTER FIRE */
 .card:hover .btn::before {
     content: "";
+
     position: absolute;
-    inset: -4px;
-    border-radius: 10px;
+    left: -6px;
+    right: -6px;
+    top: -6px;
+    bottom: -6px;
+
+    border-radius: 12px;
+
+    z-index: -2;
 
     background:
-        radial-gradient(circle at 20% 120%, rgba(106,255,0,0.9), transparent 35%),
-        radial-gradient(circle at 50% 130%, rgba(120,255,120,0.8), transparent 38%),
-        radial-gradient(circle at 80% 120%, rgba(180,255,120,0.9), transparent 35%);
+        radial-gradient(circle at 10% 100%, rgba(0,255,100,0.95), transparent 28%),
+        radial-gradient(circle at 25% 120%, rgba(120,255,0,0.9), transparent 30%),
+        radial-gradient(circle at 40% 105%, rgba(0,255,80,1), transparent 28%),
+        radial-gradient(circle at 55% 125%, rgba(180,255,0,0.9), transparent 30%),
+        radial-gradient(circle at 72% 105%, rgba(0,255,120,1), transparent 28%),
+        radial-gradient(circle at 88% 120%, rgba(120,255,0,0.95), transparent 30%);
 
-    filter: blur(6px);
-    opacity: 0.9;
-    z-index: -1;
+    filter: blur(7px);
 
-    animation: fireMove 1.6s infinite ease-in-out alternate;
+    opacity: 0.95;
+
+    animation:
+        greenFireMove 0.9s infinite ease-in-out,
+        greenFireFlicker 0.14s infinite alternate;
 }
 
-/* PULSE */
-@keyframes neonFirePulse {
+/* 🔥 INNER FIRE */
+.card:hover .btn::after {
+    content: "";
+
+    position: absolute;
+    inset: -2px;
+
+    border-radius: 10px;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(200,255,180,0.9),
+            rgba(0,255,120,0.45),
+            rgba(0,255,80,0)
+        );
+
+    filter: blur(4px);
+
+    animation:
+        innerFirePulse 0.18s infinite alternate,
+        innerFireWave 1.2s infinite ease-in-out;
+}
+
+/* 🔥 BUTTON LIGHT FLICKER */
+@keyframes neonButtonFlicker {
+
     0% {
-        box-shadow:
-            0 0 4px rgba(106,255,0,0.6),
-            0 0 10px rgba(106,255,0,0.5),
-            0 0 18px rgba(106,255,0,0.4);
+        transform: translateY(0px);
+        filter: brightness(1);
+    }
+
+    20% {
+        transform: translateY(-0.5px);
+        filter: brightness(1.15);
+    }
+
+    40% {
+        transform: translateY(0.4px);
+        filter: brightness(0.92);
+    }
+
+    60% {
+        transform: translateY(-0.6px);
+        filter: brightness(1.2);
+    }
+
+    80% {
+        transform: translateY(0.2px);
+        filter: brightness(0.95);
     }
 
     100% {
-        box-shadow:
-            0 0 8px rgba(106,255,0,1),
-            0 0 18px rgba(106,255,0,0.9),
-            0 0 34px rgba(106,255,0,0.7);
+        transform: translateY(-0.3px);
+        filter: brightness(1.1);
     }
 }
 
-/* FIRE MOVEMENT */
-@keyframes fireMove {
+/* 🔥 FLAME MOTION */
+@keyframes greenFireMove {
+
     0% {
-        transform: translateY(2px) scaleX(1);
-        opacity: 0.7;
+        transform: scaleX(1) translateY(1px);
     }
 
     50% {
-        transform: translateY(-2px) scaleX(1.04);
-        opacity: 1;
+        transform: scaleX(1.05) translateY(-3px);
     }
 
     100% {
-        transform: translateY(-5px) scaleX(0.97);
-        opacity: 0.85;
+        transform: scaleX(0.97) translateY(-6px);
+    }
+}
+
+/* 🔥 RANDOM FIRE FLICKER */
+@keyframes greenFireFlicker {
+
+    0% { opacity: 0.7; }
+    15% { opacity: 1; }
+    30% { opacity: 0.75; }
+    45% { opacity: 0.95; }
+    60% { opacity: 0.65; }
+    75% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+/* 🔥 INNER GLOW */
+@keyframes innerFirePulse {
+
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.9;
+        transform: scale(1.03);
+    }
+}
+
+/* 🔥 WAVY ENERGY */
+@keyframes innerFireWave {
+
+    0% {
+        transform: skewX(0deg);
+    }
+
+    25% {
+        transform: skewX(1deg);
+    }
+
+    50% {
+        transform: skewX(-1deg);
+    }
+
+    75% {
+        transform: skewX(0.5deg);
+    }
+
+    100% {
+        transform: skewX(0deg);
     }
 }
 
