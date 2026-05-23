@@ -337,180 +337,169 @@ body {
     box-shadow: 0 0 8px rgba(120,255,120,0.7);
 
     }
-/* 🔥 BUTTON BASE */
-.btn {
+/* BUTTON */
+.btn{
     position: relative;
-    z-index: 1;
     overflow: visible;
+    z-index: 2;
 }
 
-/* 🔥 ACTIVATE ONLY WHEN CARD HOVER */
-.card:hover .btn {
-
-    border-color: #7dff7d;
+/* ONLY ON CARD HOVER */
+.card:hover .btn{
+    border-color:#6aff00;
 
     box-shadow:
-        0 0 6px rgba(106,255,0,0.8),
-        0 0 14px rgba(106,255,0,0.7),
-        0 0 28px rgba(106,255,0,0.5);
+        0 0 10px #6aff00,
+        0 0 20px rgba(106,255,0,.8),
+        0 0 40px rgba(106,255,0,.6);
 
-    animation: neonButtonFlicker 0.12s infinite alternate;
+    animation: btnFlicker .12s infinite alternate;
 }
 
-/* 🔥 OUTER FIRE */
-.card:hover .btn::before {
-    content: "";
+/* MAIN FIRE */
+.card:hover .btn::before{
+    content:"";
 
-    position: absolute;
-    left: -6px;
-    right: -6px;
-    top: -6px;
-    bottom: -6px;
+    position:absolute;
 
-    border-radius: 12px;
+    left:-10px;
+    right:-10px;
+    bottom:-8px;
+    top:-8px;
 
-    z-index: -2;
+    border-radius:14px;
+
+    z-index:-1;
 
     background:
-        radial-gradient(circle at 10% 100%, rgba(0,255,100,0.95), transparent 28%),
-        radial-gradient(circle at 25% 120%, rgba(120,255,0,0.9), transparent 30%),
-        radial-gradient(circle at 40% 105%, rgba(0,255,80,1), transparent 28%),
-        radial-gradient(circle at 55% 125%, rgba(180,255,0,0.9), transparent 30%),
-        radial-gradient(circle at 72% 105%, rgba(0,255,120,1), transparent 28%),
-        radial-gradient(circle at 88% 120%, rgba(120,255,0,0.95), transparent 30%);
+        radial-gradient(circle at 10% 100%, #6aff00 0%, transparent 22%),
+        radial-gradient(circle at 25% 110%, #00ff88 0%, transparent 24%),
+        radial-gradient(circle at 40% 100%, #91ff00 0%, transparent 22%),
+        radial-gradient(circle at 58% 115%, #00ff66 0%, transparent 25%),
+        radial-gradient(circle at 75% 100%, #7bff00 0%, transparent 22%),
+        radial-gradient(circle at 90% 110%, #00ff99 0%, transparent 24%);
 
-    filter: blur(7px);
+    filter: blur(8px);
 
-    opacity: 0.95;
+    transform-origin: bottom center;
 
     animation:
-        greenFireMove 0.9s infinite ease-in-out,
-        greenFireFlicker 0.14s infinite alternate;
+        flameRise .9s infinite ease-in-out,
+        flameFlicker .16s infinite;
 }
 
-/* 🔥 INNER FIRE */
-.card:hover .btn::after {
-    content: "";
+/* EXTRA FIRE LAYER */
+.card:hover .btn::after{
+    content:"";
 
-    position: absolute;
-    inset: -2px;
+    position:absolute;
 
-    border-radius: 10px;
+    left:-6px;
+    right:-6px;
+    top:-14px;
+    bottom:-2px;
 
-    z-index: -1;
+    border-radius:14px;
+
+    z-index:-2;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(200,255,180,0.9),
-            rgba(0,255,120,0.45),
-            rgba(0,255,80,0)
-        );
+        radial-gradient(circle at 15% 120%, rgba(106,255,0,.95) 0%, transparent 18%),
+        radial-gradient(circle at 35% 130%, rgba(0,255,120,.95) 0%, transparent 20%),
+        radial-gradient(circle at 55% 120%, rgba(145,255,0,.95) 0%, transparent 18%),
+        radial-gradient(circle at 75% 130%, rgba(0,255,120,.95) 0%, transparent 20%);
 
-    filter: blur(4px);
+    filter: blur(14px);
+
+    opacity:.9;
 
     animation:
-        innerFirePulse 0.18s infinite alternate,
-        innerFireWave 1.2s infinite ease-in-out;
+        flameChaos 0.7s infinite alternate,
+        flamePulse .2s infinite alternate;
 }
 
-/* 🔥 BUTTON LIGHT FLICKER */
-@keyframes neonButtonFlicker {
-
-    0% {
-        transform: translateY(0px);
-        filter: brightness(1);
+/* FLICKER */
+@keyframes btnFlicker{
+    0%{
+        transform:translateY(0px);
+        filter:brightness(1);
     }
 
-    20% {
-        transform: translateY(-0.5px);
-        filter: brightness(1.15);
-    }
-
-    40% {
-        transform: translateY(0.4px);
-        filter: brightness(0.92);
-    }
-
-    60% {
-        transform: translateY(-0.6px);
-        filter: brightness(1.2);
-    }
-
-    80% {
-        transform: translateY(0.2px);
-        filter: brightness(0.95);
-    }
-
-    100% {
-        transform: translateY(-0.3px);
-        filter: brightness(1.1);
+    100%{
+        transform:translateY(-1px);
+        filter:brightness(1.25);
     }
 }
 
-/* 🔥 FLAME MOTION */
-@keyframes greenFireMove {
+/* FIRE GOING UP */
+@keyframes flameRise{
 
-    0% {
-        transform: scaleX(1) translateY(1px);
+    0%{
+        transform:
+            scaleY(1)
+            scaleX(1)
+            translateY(2px);
     }
 
-    50% {
-        transform: scaleX(1.05) translateY(-3px);
+    50%{
+        transform:
+            scaleY(1.35)
+            scaleX(.95)
+            translateY(-6px);
     }
 
-    100% {
-        transform: scaleX(0.97) translateY(-6px);
-    }
-}
-
-/* 🔥 RANDOM FIRE FLICKER */
-@keyframes greenFireFlicker {
-
-    0% { opacity: 0.7; }
-    15% { opacity: 1; }
-    30% { opacity: 0.75; }
-    45% { opacity: 0.95; }
-    60% { opacity: 0.65; }
-    75% { opacity: 1; }
-    100% { opacity: 0.8; }
-}
-
-/* 🔥 INNER GLOW */
-@keyframes innerFirePulse {
-
-    0% {
-        opacity: 0.4;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 0.9;
-        transform: scale(1.03);
+    100%{
+        transform:
+            scaleY(1.1)
+            scaleX(1.05)
+            translateY(-10px);
     }
 }
 
-/* 🔥 WAVY ENERGY */
-@keyframes innerFireWave {
+/* RANDOM FIRE */
+@keyframes flameFlicker{
 
-    0% {
-        transform: skewX(0deg);
+    0%{ opacity:.65; }
+    20%{ opacity:1; }
+    40%{ opacity:.75; }
+    60%{ opacity:.95; }
+    80%{ opacity:.7; }
+    100%{ opacity:1; }
+}
+
+/* CHAOTIC FLAMES */
+@keyframes flameChaos{
+
+    0%{
+        transform:
+            translateX(-2px)
+            skewX(1deg);
     }
 
-    25% {
-        transform: skewX(1deg);
+    50%{
+        transform:
+            translateX(2px)
+            skewX(-2deg);
     }
 
-    50% {
-        transform: skewX(-1deg);
+    100%{
+        transform:
+            translateX(-1px)
+            skewX(2deg);
+    }
+}
+
+/* FIRE ENERGY */
+@keyframes flamePulse{
+
+    0%{
+        opacity:.5;
+        transform:scale(1);
     }
 
-    75% {
-        transform: skewX(0.5deg);
-    }
-
-    100% {
-        transform: skewX(0deg);
+    100%{
+        opacity:1;
+        transform:scale(1.08);
     }
 }
 
