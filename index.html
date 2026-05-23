@@ -226,29 +226,40 @@ body {
 /* fire glow bottom */
 .card::after{
     content:"";
-
     position:absolute;
-    left:0;
-    right:0;
-    bottom:-8px;
 
-    height:120px;
+    left:-10%;
+    width:120%;
+    bottom:-12px;
+
+    height:170px;
 
     background:
-        radial-gradient(circle at 10% 100%, rgba(50,255,50,.85), transparent 35%),
-        radial-gradient(circle at 25% 100%, rgba(120,255,80,.95), transparent 28%),
-        radial-gradient(circle at 40% 100%, rgba(50,255,50,.9), transparent 30%),
-        radial-gradient(circle at 60% 100%, rgba(120,255,80,.95), transparent 28%),
-        radial-gradient(circle at 75% 100%, rgba(50,255,50,.9), transparent 30%),
-        radial-gradient(circle at 90% 100%, rgba(120,255,80,.95), transparent 28%);
-
-    filter:
-        blur(3px)
-        drop-shadow(0 0 12px #39ff14);
+        url("fire.gif") center bottom / cover no-repeat;
 
     opacity:.95;
 
     pointer-events:none;
+
+    mix-blend-mode:screen;
+
+    filter:
+        drop-shadow(0 0 8px #39ff14)
+        drop-shadow(0 0 18px #39ff14)
+        saturate(1.4);
+
+    z-index:2;
+}
+    .btn{
+    z-index:5;
+}
+    .titleRow,
+.stars,
+.badge,
+.badge-red,
+.badge-orange{
+    position:relative;
+    z-index:4;
 }
 
 /* HOVER */
