@@ -349,25 +349,32 @@ body {
 
 /* LOGO BOX */
 .logo{
-    width:138px;
-    height:138px;
+    width:92px;
+    height:92px;
 
     object-fit:contain;
+    display:block;
 
-    padding:22px;
+    border-radius:22px;
 
-    border-radius:26px;
+    padding:0;
 
     background:
         radial-gradient(circle at top,
-        rgba(50,255,50,.12),
-        rgba(0,20,0,.9));
+        rgba(50,255,50,.10),
+        rgba(0,20,0,.75));
 
     border:1px solid rgba(120,255,120,.18);
 
     box-shadow:
-        inset 0 0 18px rgba(120,255,120,.08),
-        0 0 12px rgba(0,255,80,.08);
+        inset 0 0 18px rgba(120,255,120,.06),
+        0 0 12px rgba(0,255,80,.06);
+
+    margin-bottom:24px;
+}
+    .titleRow img{
+    opacity:1 !important;
+    visibility:visible !important;
 }
 
 /* TITLE */
