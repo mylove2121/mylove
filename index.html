@@ -249,12 +249,17 @@ body {
 .badge-orange,
 .badge-red{
     position:absolute;
-    top:16px;
+    top:12px;
 
-    font-size:12px;
+    max-width:42%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+
+    font-size:clamp(9px, 0.7vw, 12px);
     font-weight:700;
 
-    padding:7px 12px;
+    padding:6px 10px;
 
     border-radius:10px;
 
@@ -269,7 +274,7 @@ body {
 
 /* GREEN BADGE */
 .badge{
-    right:14px;
+    right:10px;
 
     color:#dfff95;
 
@@ -285,7 +290,7 @@ body {
 
 /* RED BADGE */
 .badge-red{
-    left:14px;
+    left:10px;
 
     background:
         linear-gradient(
@@ -301,7 +306,7 @@ body {
 
 /* ORANGE BADGE */
 .badge-orange{
-    left:14px;
+    left:10px;
 
     background:
         linear-gradient(
