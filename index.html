@@ -670,23 +670,62 @@ body {
 
 
 /* BUTTON */
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 13px;
-    color: #7dff7d;
-    border: 1px solid rgba(120,255,120,0.4);
-    padding: 6px 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    box-shadow: 0 0 4px rgba(120,255,120,0.4);
+/* BUTTON */
+.btn{
+    position:absolute;
+
+    left:18px;
+    right:18px;
+    bottom:20px;
+
+    height:62px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    font-size:19px;
+    font-weight:800;
+    letter-spacing:.3px;
+
+    color:#b8ff8f;
+    text-decoration:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,45,15,.96),
+            rgba(5,18,5,.98)
+        );
+
+    border:1px solid rgba(120,255,120,.55);
+
+    box-shadow:
+        0 0 14px rgba(120,255,120,.18),
+        inset 0 0 14px rgba(120,255,120,.06);
+
+    transition:.18s ease;
+
+    z-index:5;
 }
 
-.btn:hover {
-    color: #cfff8f;
-    box-shadow: 0 0 8px rgba(120,255,120,0.7);
+/* HOVER */
+.btn:hover{
+    transform:translateY(-2px);
 
-    }
+    color:#e4ffb7;
+
+    border-color:#6aff00;
+
+    box-shadow:
+        0 0 18px rgba(120,255,120,.45),
+        0 0 30px rgba(120,255,120,.18),
+        inset 0 0 18px rgba(120,255,120,.08);
+}
 
 
 }
