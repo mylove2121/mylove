@@ -127,6 +127,37 @@ body {
 
     transition: 0.2s;
 }
+    /* TOP (ICON + TEXT SIDE BY SIDE) */
+.top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text h3 {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.text p {
+    font-size: 12px;
+    color: #6dff35;
+    margin: 0;
+}
 
 .card:hover {
     transform: translateY(-4px);
