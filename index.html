@@ -9,7 +9,6 @@
 
 <style>
 
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -29,7 +28,8 @@ body {
 .hero-banner {
     position: relative;
     width: 100%;
-    height: 60px;
+    height: 6vh;
+    min-height: 60px;
     background: linear-gradient(180deg,#0b140b,#0f1f0f,#0a0a0a);
 }
 
@@ -55,11 +55,11 @@ body {
     font-size: 10px;
 }
 
-/* CONTAINER */
+/* 🔥 WIDER CONTAINER */
 .container {
-    max-width: 1400px;
+    max-width: 1750px;   /* <- WICHTIG: breiter */
     margin: auto;
-    padding: 30px 20px;
+    padding: 30px 14px 40px;
 }
 
 /* SEARCH */
@@ -103,128 +103,89 @@ body {
     background: rgba(120,255,120,0.15);
 }
 
-/* GRID (6 pro Reihe wie gewünscht) */
+/* 🔥 GRID FIX (WIDER CARDS) */
 .cards {
+    width: 100%;
     display: grid;
+
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
+    gap: 10px; /* <- kleiner = breitere cards */
 }
 
-/* CARD — SaaS STYLE (wie gpt-sites Layout) */
+/* CARD */
 .card {
     position: relative;
-    height: 200px;              /* gleiche Höhe wie Referenz */
+    height: 185px;
     border-radius: 18px;
     padding: 12px;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* wichtig: nicht center */
     align-items: center;
-
-    overflow: hidden;
+    justify-content: center;
 
     background: linear-gradient(180deg,#041104,#071707,#020702);
     border: 1px solid rgba(0,255,80,0.18);
 
-    transition: 0.18s ease;
+    transition: 0.2s;
 }
 
-/* HOVER (clean lift like reference) */
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(120,255,120,0.55);
-    box-shadow:
-        0 10px 30px rgba(0,255,80,0.12),
-        0 0 18px rgba(0,255,80,0.18);
+    border-color: rgba(120,255,120,0.5);
+    box-shadow: 0 0 22px rgba(0,255,80,0.18);
 }
 
-/* LOGO (top centered spacing like SaaS cards) */
+/* LOGO */
 .logo {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     border-radius: 12px;
-    margin-top: 10px;
 }
 
-/* TITLE BLOCK (center area like reference cards) */
+/* TITLE */
 .titleRow {
-    margin-top: 14px;
+    margin-top: 12px;
     text-align: center;
 }
 
 .titleRow h3 {
     font-size: 16px;
     font-weight: 800;
-    margin: 0;
 }
 
 .titleRow p {
     font-size: 12px;
     color: #6dff35;
-    margin-top: 2px;
 }
 
-/* STARS */
-.stars {
-    position: absolute;
-    left: 12px;
-    bottom: 52px;
-    font-size: 11px;
-    color: #ffea00;
-}
-
-/* BADGES (top left/right like reference layout) */
-.badge,
-.badge-red,
-.badge-orange,
-.badge-gold {
-    position: absolute;
-    top: 10px;
-    font-size: 10px;
-    padding: 5px 8px;
-    border-radius: 9px;
-}
-
-.badge { right: 10px; background: rgba(80,255,80,0.2); border: 1px solid #6aff00; }
-.badge-red { left: 10px; background: rgba(255,80,80,0.3); }
-.badge-orange { left: 10px; background: rgba(255,170,0,0.3); }
-.badge-gold { right: 10px; background: rgba(255,200,0,0.3); }
-
-/* BUTTON (fixed bottom like reference SaaS cards) */
+/* BUTTON */
 .btn {
     position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
 
-    height: 38px;
-    border-radius: 10px;
+    height: 42px;
+    border-radius: 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 13px;
-    font-weight: 700;
-
-    color: #b8ff8f;
     text-decoration: none;
+    font-weight: 700;
+    color: #b8ff8f;
 
     background: linear-gradient(180deg,#0f2d0f,#051205);
-    border: 1px solid rgba(120,255,120,0.35);
-
-    transition: 0.18s ease;
+    border: 1px solid rgba(120,255,120,0.4);
 }
 
-/* BUTTON HOVER */
 .btn:hover {
     transform: translateY(-2px);
     border-color: #6aff00;
-    box-shadow:
-        0 0 18px rgba(120,255,120,0.35),
-        0 0 30px rgba(120,255,120,0.15);
+    box-shadow: 0 0 18px rgba(120,255,120,0.4);
 }
 
 /* MOBILE */
@@ -232,6 +193,7 @@ body {
 
     .cards {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .search-row {
@@ -282,6 +244,27 @@ body {
         </div>
     </div>
 </div>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="badge">+25%</div>
+        <div class="badge-red">Premium</div>
+
+        <img class="logo" src="splitdrop5.png.png">
+
+        <div class="titleRow">
+            <h3>Splitdrop</h3>
+            <p>70-85% Rates</p>
+        </div>
+
+        <a class="btn" href="https://splitdrop.com/friend/19291">
+            Register ↗
+        </a>
+    </div>
+</div>
+</div>
+
 
     
 <!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
