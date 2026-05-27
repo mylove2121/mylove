@@ -111,7 +111,7 @@ body {
     gap: 10px;
 }
 
-/* CARD (NEW STRUCTURE LIKE REFERENCE) */
+/* CARD */
 .card {
     position: relative;
     height: 170px;
@@ -134,7 +134,7 @@ body {
     box-shadow: 0 0 22px rgba(0,255,80,0.18);
 }
 
-/* TOP AREA */
+/* TOP (ICON + TEXT SIDE BY SIDE) */
 .top {
     display: flex;
     align-items: center;
@@ -163,18 +163,12 @@ body {
     color: #6dff35;
 }
 
-/* BOTTOM AREA */
-.bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* STARS */
+/* MIDDLE (STARS) */
 .stars {
     font-size: 11px;
     color: #ffea00;
     letter-spacing: 1px;
+    margin-top: -6px;
 }
 
 /* BUTTON */
@@ -203,7 +197,13 @@ body {
 
     transition: 0.2s;
 }
-    
+
+.btn:hover {
+    transform: translateY(-2px);
+    border-color: #6aff00;
+    box-shadow: 0 0 18px rgba(120,255,120,0.4);
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
 
@@ -232,6 +232,20 @@ body {
 
     .btn {
         height: 52px;
+        width: 140px;
+        font-size: 14px;
+    }
+
+    .text h3 {
+        font-size: 18px;
+    }
+
+    .text p {
+        font-size: 13px;
+    }
+
+    .stars {
+        font-size: 14px;
     }
 }
 
@@ -264,22 +278,28 @@ body {
 <div class="cards">
 
     <div class="card">
-        <div class="badge">+25%</div>
-        <div class="badge-red">Premium</div>
 
-        <img class="logo" src="splitdrop5.png.png">
+        <div class="top">
+            <img class="logo" src="splitdrop5.png.png">
 
-        <div class="titleRow">
-            <h3>Splitdrop</h3>
-            <p>70-85% Rates</p>
+            <div class="text">
+                <h3>Splitdrop</h3>
+                <p>70-85% Rates</p>
+            </div>
         </div>
+
+        <div class="stars">★★★★★</div>
 
         <a class="btn" href="https://splitdrop.com/friend/19291">
             Register ↗
         </a>
+
     </div>
+
 </div>
+
 </div>
+
 
 
     
