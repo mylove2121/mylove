@@ -55,9 +55,9 @@ body {
     font-size: 10px;
 }
 
-/* 🔥 WIDER CONTAINER */
+/* CONTAINER */
 .container {
-    max-width: 1750px;   /* <- WICHTIG: breiter */
+    max-width: 1750px;
     margin: auto;
     padding: 30px 14px 40px;
 }
@@ -103,30 +103,27 @@ body {
     background: rgba(120,255,120,0.15);
 }
 
-/* 🔥 GRID FIX (WIDER CARDS) */
+/* GRID */
 .cards {
     display: grid;
-
     grid-template-columns: repeat(auto-fill, 300px);
     justify-content: center;
-
     gap: 10px;
 }
 
-/* CARD */
+/* CARD (NEW STRUCTURE LIKE REFERENCE) */
 .card {
     position: relative;
     height: 170px;
     border-radius: 18px;
-    padding: 12px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 14px;
 
     background: linear-gradient(180deg,#041104,#071707,#020702);
     border: 1px solid rgba(0,255,80,0.18);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     transition: 0.2s;
 }
@@ -137,44 +134,59 @@ body {
     box-shadow: 0 0 22px rgba(0,255,80,0.18);
 }
 
-/* LOGO */
+/* TOP AREA */
+.top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .logo {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
-/* TITLE */
-.titleRow {
-    margin-top: 12px;
-    text-align: center;
+.text {
+    display: flex;
+    flex-direction: column;
 }
 
-.titleRow h3 {
+.text h3 {
     font-size: 16px;
     font-weight: 800;
 }
 
-.titleRow p {
+.text p {
     font-size: 12px;
     color: #6dff35;
 }
 
-/* BUTTON */
+/* BOTTOM AREA */
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* STARS */
+.stars {
+    font-size: 11px;
+    color: #ffea00;
+    letter-spacing: 1px;
+}
+
+/* BUTTON (BOTTOM RIGHT SMALL) */
 .btn {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-
-    width: 110px;
-    height: 28px;
-
-    border-radius: 8px;
+    width: 90px;
+    height: 26px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border-radius: 8px;
 
     font-size: 11px;
     font-weight: 700;
@@ -184,8 +196,11 @@ body {
 
     background: linear-gradient(180deg,#0f2d0f,#051205);
     border: 1px solid rgba(120,255,120,0.4);
+}
 
-    transition: 0.2s;
+.btn:hover {
+    border-color: #6aff00;
+    box-shadow: 0 0 14px rgba(120,255,120,0.4);
 }
 
 /* MOBILE */
