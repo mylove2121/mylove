@@ -103,71 +103,79 @@ body {
     background: rgba(120,255,120,0.15);
 }
 
-/* GRID */
+/* GRID (6 pro Reihe wie gewünscht) */
 .cards {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 14px;
 }
 
-/* CARD */
+/* CARD — SaaS STYLE (wie gpt-sites Layout) */
 .card {
     position: relative;
-    height: 185px;
+    height: 200px;              /* gleiche Höhe wie Referenz */
     border-radius: 18px;
     padding: 12px;
 
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; /* wichtig: nicht center */
     align-items: center;
-    justify-content: center;
+
+    overflow: hidden;
 
     background: linear-gradient(180deg,#041104,#071707,#020702);
     border: 1px solid rgba(0,255,80,0.18);
 
-    transition: 0.2s;
+    transition: 0.18s ease;
 }
 
+/* HOVER (clean lift like reference) */
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(120,255,120,0.5);
-    box-shadow: 0 0 22px rgba(0,255,80,0.18);
+    border-color: rgba(120,255,120,0.55);
+    box-shadow:
+        0 10px 30px rgba(0,255,80,0.12),
+        0 0 18px rgba(0,255,80,0.18);
 }
 
-/* LOGO */
+/* LOGO (top centered spacing like SaaS cards) */
 .logo {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     object-fit: contain;
     border-radius: 12px;
+    margin-top: 10px;
 }
 
-/* TITLE */
+/* TITLE BLOCK (center area like reference cards) */
 .titleRow {
-    margin-top: 12px;
+    margin-top: 14px;
     text-align: center;
 }
 
 .titleRow h3 {
     font-size: 16px;
     font-weight: 800;
+    margin: 0;
 }
 
 .titleRow p {
     font-size: 12px;
     color: #6dff35;
+    margin-top: 2px;
 }
 
 /* STARS */
 .stars {
     position: absolute;
     left: 12px;
-    bottom: 50px;
+    bottom: 52px;
     font-size: 11px;
     color: #ffea00;
 }
 
-/* BADGES */
+/* BADGES (top left/right like reference layout) */
 .badge,
 .badge-red,
 .badge-orange,
@@ -176,7 +184,7 @@ body {
     top: 10px;
     font-size: 10px;
     padding: 5px 8px;
-    border-radius: 10px;
+    border-radius: 9px;
 }
 
 .badge { right: 10px; background: rgba(80,255,80,0.2); border: 1px solid #6aff00; }
@@ -184,34 +192,39 @@ body {
 .badge-orange { left: 10px; background: rgba(255,170,0,0.3); }
 .badge-gold { right: 10px; background: rgba(255,200,0,0.3); }
 
-/* BUTTON */
+/* BUTTON (fixed bottom like reference SaaS cards) */
 .btn {
     position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
 
-    height: 42px;
-    border-radius: 12px;
+    height: 38px;
+    border-radius: 10px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    text-decoration: none;
+    font-size: 13px;
     font-weight: 700;
+
     color: #b8ff8f;
+    text-decoration: none;
 
     background: linear-gradient(180deg,#0f2d0f,#051205);
-    border: 1px solid rgba(120,255,120,0.4);
+    border: 1px solid rgba(120,255,120,0.35);
 
-    transition: 0.2s;
+    transition: 0.18s ease;
 }
 
+/* BUTTON HOVER */
 .btn:hover {
     transform: translateY(-2px);
     border-color: #6aff00;
-    box-shadow: 0 0 18px rgba(120,255,120,0.4);
+    box-shadow:
+        0 0 18px rgba(120,255,120,0.35),
+        0 0 30px rgba(120,255,120,0.15);
 }
 
 /* MOBILE */
