@@ -1,76 +1,173 @@
-/* GRID (6 pro Reihe wie gewünscht) */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RefHunter | GPT Sites</title>
+
+<link rel="icon" type="image/png" href="logo4.png">
+
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, Arial;
+    color: #fff;
+    background:
+        radial-gradient(ellipse at top, rgba(120,255,120,0.06), transparent 60%),
+        radial-gradient(ellipse at 50% 30%, rgba(0,255,100,0.05), transparent 70%),
+        linear-gradient(180deg, #0b140b 0%, #0f1f0f 30%, #0a0a0a 100%);
+}
+
+/* HERO */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(180deg,#0b140b,#0f1f0f,#0a0a0a);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+.hero-overlay h1 {
+    font-size: 20px;
+    font-weight: 800;
+    background: linear-gradient(90deg,#b6ff5c,#6aff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-overlay p {
+    font-size: 10px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* SEARCH */
+.search-wrapper {
+    margin-bottom: 25px;
+}
+
+.search-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 14px 16px 14px 40px;
+    border-radius: 14px;
+    border: 1px solid rgba(120,255,120,0.25);
+    background: rgba(20,30,20,0.9);
+    color: #b6ffb6;
+    outline: none;
+}
+
+/* FILTER */
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(120,255,120,0.25);
+    background: rgba(20,30,20,0.9);
+    color: #b6ffb6;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    border-color: #6aff00;
+    background: rgba(120,255,120,0.15);
+}
+
+/* GRID */
 .cards {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 14px;
 }
 
-/* CARD — SaaS STYLE (wie gpt-sites Layout) */
+/* CARD */
 .card {
     position: relative;
-    height: 200px;              /* gleiche Höhe wie Referenz */
+    height: 185px;
     border-radius: 18px;
     padding: 12px;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* wichtig: nicht center */
     align-items: center;
-
-    overflow: hidden;
+    justify-content: center;
 
     background: linear-gradient(180deg,#041104,#071707,#020702);
     border: 1px solid rgba(0,255,80,0.18);
 
-    transition: 0.18s ease;
+    transition: 0.2s;
 }
 
-/* HOVER (clean lift like reference) */
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(120,255,120,0.55);
-    box-shadow:
-        0 10px 30px rgba(0,255,80,0.12),
-        0 0 18px rgba(0,255,80,0.18);
+    border-color: rgba(120,255,120,0.5);
+    box-shadow: 0 0 22px rgba(0,255,80,0.18);
 }
 
-/* LOGO (top centered spacing like SaaS cards) */
+/* LOGO */
 .logo {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     border-radius: 12px;
-    margin-top: 10px;
 }
 
-/* TITLE BLOCK (center area like reference cards) */
+/* TITLE */
 .titleRow {
-    margin-top: 14px;
+    margin-top: 12px;
     text-align: center;
 }
 
 .titleRow h3 {
     font-size: 16px;
     font-weight: 800;
-    margin: 0;
 }
 
 .titleRow p {
     font-size: 12px;
     color: #6dff35;
-    margin-top: 2px;
 }
 
 /* STARS */
 .stars {
     position: absolute;
     left: 12px;
-    bottom: 52px;
+    bottom: 50px;
     font-size: 11px;
     color: #ffea00;
 }
 
-/* BADGES (top left/right like reference layout) */
+/* BADGES */
 .badge,
 .badge-red,
 .badge-orange,
@@ -79,7 +176,7 @@
     top: 10px;
     font-size: 10px;
     padding: 5px 8px;
-    border-radius: 9px;
+    border-radius: 10px;
 }
 
 .badge { right: 10px; background: rgba(80,255,80,0.2); border: 1px solid #6aff00; }
@@ -87,39 +184,34 @@
 .badge-orange { left: 10px; background: rgba(255,170,0,0.3); }
 .badge-gold { right: 10px; background: rgba(255,200,0,0.3); }
 
-/* BUTTON (fixed bottom like reference SaaS cards) */
+/* BUTTON */
 .btn {
     position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
 
-    height: 38px;
-    border-radius: 10px;
+    height: 42px;
+    border-radius: 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 13px;
-    font-weight: 700;
-
-    color: #b8ff8f;
     text-decoration: none;
+    font-weight: 700;
+    color: #b8ff8f;
 
     background: linear-gradient(180deg,#0f2d0f,#051205);
-    border: 1px solid rgba(120,255,120,0.35);
+    border: 1px solid rgba(120,255,120,0.4);
 
-    transition: 0.18s ease;
+    transition: 0.2s;
 }
 
-/* BUTTON HOVER */
 .btn:hover {
     transform: translateY(-2px);
     border-color: #6aff00;
-    box-shadow:
-        0 0 18px rgba(120,255,120,0.35),
-        0 0 30px rgba(120,255,120,0.15);
+    box-shadow: 0 0 18px rgba(120,255,120,0.4);
 }
 
 /* MOBILE */
