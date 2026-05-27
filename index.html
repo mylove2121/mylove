@@ -178,23 +178,18 @@ body {
 .cards{
     max-width:1550px;
     margin:auto;
-
     display:grid;
     grid-template-columns:repeat(6,1fr);
-
     gap:14px;
 }
 
-/* CARD */
 .card{
     position:relative;
     overflow:hidden;
-
     border-radius:18px;
 
-    padding:12px;
-
     height:185px;
+    padding:12px;
 
     background:
     radial-gradient(circle at top,
@@ -211,6 +206,70 @@ body {
     border:1px solid rgba(0,255,80,0.18);
 
     transition:.18s ease;
+}
+
+.titleRow{
+    margin-top:28px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    gap:8px;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    padding:4px;
+}
+
+.titleRow h3{
+    font-size:16px;
+    font-weight:800;
+    margin:0;
+}
+
+.titleRow p{
+    font-size:12px;
+    margin-top:2px;
+}
+
+.stars{
+    position:absolute;
+
+    left:12px;
+    bottom:48px;
+
+    font-size:10px;
+}
+
+.btn{
+    position:absolute;
+
+    left:12px;
+    right:12px;
+    bottom:12px;
+
+    height:34px;
+
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:13px;
+    font-weight:700;
 }
 
 .card:hover{
@@ -697,25 +756,7 @@ padding:6px 8px;
     100% { box-shadow: 0 0 12px rgba(255,80,80,1); }
 }
 
-/* STARS */
-.stars {
-    margin-top: 10px;
-    color: #ffea00;
-    text-shadow: 0 0 6px #ffea00;
-}
 
-/* CENTER CONTENT */
-.titleRow{
-    margin-top:36px;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    text-align:center;
-
-    gap:10px;
-}
 
 /* IMPORTANT */
 .titleRow > div{
@@ -726,29 +767,7 @@ padding:6px 8px;
 }
 
 /* LOGO */
-.logo{
-    width:48px;
-    height:48px;
 
-    min-width:48px;
-
-    object-fit:contain;
-
-    border-radius:14px;
-
-    padding:6px;
-
-    background:
-    radial-gradient(circle at top,
-    rgba(50,255,50,.10),
-    rgba(0,20,0,.75));
-
-    border:1px solid rgba(120,255,120,.18);
-
-    box-shadow:
-    inset 0 0 12px rgba(120,255,120,.06),
-    0 0 8px rgba(0,255,80,.06);
-}
 
 /* TITLE */
 .titleRow h3{
