@@ -105,11 +105,12 @@ body {
 
 /* 🔥 GRID FIX (WIDER CARDS) */
 .cards {
-    width: 100%;
     display: grid;
 
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 5px; /* <- kleiner = breitere cards */
+    grid-template-columns: repeat(auto-fill, 220px);
+    justify-content: center;
+
+    gap: 5px;
 }
 
 /* CARD */
