@@ -1931,7 +1931,26 @@ document.querySelectorAll('.offer-toggle').forEach(toggle => {
 });
 
 </script>
+<script>
+document.querySelectorAll('.offerwalls ul').forEach(ul => {
 
+    const items = Array.from(ul.querySelectorAll('li'));
+
+    items.sort((a, b) =>
+        a.textContent
+            .trim()
+            .localeCompare(
+                b.textContent.trim(),
+                'de',
+                { sensitivity: 'base' }
+            )
+    );
+
+    ul.innerHTML = '';
+
+    items.forEach(item => ul.appendChild(item));
+});
+</script>
 </body>
 </html>
 
