@@ -351,6 +351,81 @@ body{
     border-color:rgba(120,255,120,0.8);
     box-shadow:0 0 14px rgba(0,255,100,0.18);
 }
+    /* OFFER TOGGLE */
+.offer-toggle{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+
+    width:110px;
+    height:30px;
+
+    border-radius:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    color:#9dff9d;
+
+    background:linear-gradient(180deg,#102610,#071407);
+
+    border:1px solid rgba(120,255,120,0.25);
+
+    transition:0.2s;
+}
+
+.offer-toggle:hover{
+    border-color:rgba(120,255,120,0.6);
+    box-shadow:0 0 12px rgba(0,255,120,0.12);
+}
+
+/* DROPDOWN */
+.offerwalls{
+    position:absolute;
+
+    left:10px;
+    right:10px;
+    bottom:48px;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    background:rgba(5,15,5,0.96);
+
+    border:1px solid rgba(120,255,120,0.18);
+
+    display:none;
+
+    z-index:30;
+}
+
+.offerwalls ul{
+    list-style:none;
+}
+
+.offerwalls li{
+    font-size:12px;
+    padding:5px 0;
+    color:#b8ffb8;
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.offerwalls li:last-child{
+    border-bottom:none;
+}
+
+/* ACTIVE */
+.card.active .offerwalls{
+    display:block;
+}
 
 /* MOBILE */
 @media (max-width:768px){
@@ -430,6 +505,15 @@ body{
     <div class="stars">★★★★★★</div>
     <a class="btn" href="https://splitdrop.com/friend/19291"><b>Register ↗</b></a>
     </div>
+        <div class="offer-toggle">Offerwalls ▼</div>
+<div class="offerwalls">
+    <ul>
+        <li>CPX Research</li>
+        <li>AdGate</li>
+        <li>Lootably</li>
+        <li>Ayet Studios</li>
+    </ul>
+</div>
         
     <div class="card" data-pinned="true">
     <div class="badges">
@@ -1660,7 +1744,44 @@ document.querySelectorAll('.btn').forEach(link => {
     link.setAttribute('rel', 'noopener noreferrer');
 });
 </script>
-    
-</body>
+    <script>
+/* DEIN AKTUELLER CODE */
+const searchInput = document.getElementById("searchInput");
+const cardsContainer = document.querySelector(".cards");
+let cards = Array.from(document.querySelectorAll(".card"));
+const buttons = document.querySelectorAll(".filter-btn");
 
+/* ... kompletter restlicher code ... */
+
+document.querySelectorAll('.btn').forEach(link => {
+    let href = link.getAttribute("href");
+
+    if (!href || href.trim() === "") {
+        link.setAttribute("href", "https://refhunter.site/");
+    }
+
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+});
+</script>
+
+<!-- HIER EINFÜGEN -->
+<script>
+
+document.querySelectorAll('.offer-toggle').forEach(toggle => {
+
+    toggle.addEventListener('click', () => {
+
+        const card = toggle.closest('.card');
+
+        card.classList.toggle('active');
+
+    });
+
+});
+
+</script>
+
+</body>
 </html>
+
