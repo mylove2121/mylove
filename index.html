@@ -252,17 +252,27 @@ body{
 
 /* GOLD */
 .badge-gold{
-    color:#ffd86b;
+    color:#fff3b0;
 
-    background:rgba(255,190,0,0.08);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,220,90,0.22),
+            rgba(255,180,0,0.10)
+        );
 
-    border-color:rgba(255,210,80,0.45);
+    border:1px solid rgba(255,220,120,0.75);
 
     box-shadow:
-        0 0 10px rgba(255,210,80,0.22),
-        inset 0 0 8px rgba(255,210,80,0.08);
-}
+        0 0 6px rgba(255,220,120,0.9),
+        0 0 14px rgba(255,200,0,0.55),
+        0 0 28px rgba(255,180,0,0.35),
+        inset 0 0 10px rgba(255,240,160,0.18);
 
+    text-shadow:
+        0 0 4px rgba(255,240,180,0.9),
+        0 0 10px rgba(255,220,120,0.7);
+}
 /* ORANGE */
 .badge-orange{
     color:#ffbe5c;
