@@ -170,7 +170,7 @@ body{
 .badge-green,
 .badge-red,
 .badge-gold,
-.badge-orange{
+.badge-white{
     min-height:22px;
 
     padding:0 10px;
@@ -273,19 +273,29 @@ body{
         0 0 4px rgba(255,240,180,0.9),
         0 0 10px rgba(255,220,120,0.7);
 }
-/* ORANGE */
+/* WHITE SHINE */
 .badge-orange{
-    color:#ffbe5c;
+    color:#ffffff;
 
-    background:rgba(255,140,0,0.08);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.20),
+            rgba(220,220,220,0.08)
+        );
 
-    border-color:rgba(255,170,60,0.45);
+    border:1px solid rgba(255,255,255,0.75);
 
     box-shadow:
-        0 0 10px rgba(255,170,60,0.22),
-        inset 0 0 8px rgba(255,170,60,0.08);
-}
+        0 0 6px rgba(255,255,255,0.95),
+        0 0 14px rgba(255,255,255,0.55),
+        0 0 26px rgba(255,255,255,0.35),
+        inset 0 0 10px rgba(255,255,255,0.15);
 
+    text-shadow:
+        0 0 4px rgba(255,255,255,0.95),
+        0 0 10px rgba(255,255,255,0.75);
+}
 
 /* TOP */
 .top{
