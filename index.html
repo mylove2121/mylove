@@ -3385,6 +3385,7 @@ let cards = Array.from(document.querySelectorAll(".card"));
 const buttons = document.querySelectorAll(".filter-btn");
 
 let activeFilter = "all";
+        const newFilterBtn = document.getElementById("newFilterBtn");
 
 /* ---------------- SORT ---------------- */
 function getStars(card) {
@@ -3423,8 +3424,9 @@ function updateView() {
 
     cards.forEach(card => {
         const text = card.innerText.toLowerCase();
-
-        const isNew = card.innerText.toLowerCase().includes("new");
+const isNew =
+    card.dataset.new === "true" ||
+    card.innerText.toLowerCase().includes("new");
         const isPremium = card.innerText.toLowerCase().includes("premium");
 
         let matchesFilter = false;
@@ -3438,7 +3440,21 @@ function updateView() {
         card.style.display = (matchesFilter && matchesSearch) ? "" : "none";
     });
 }
+newFilterBtn.addEventListener("click", () => {
 
+    buttons.forEach(b => b.classList.remove("active"));
+
+    activeFilter = "new";
+
+    newFilterBtn.classList.toggle("active");
+
+    if (!newFilterBtn.classList.contains("active")) {
+        activeFilter = "all";
+    }
+
+    updateView();
+
+});
 /* SEARCH */
 let timeout;
 searchInput.addEventListener("keyup", function () {
