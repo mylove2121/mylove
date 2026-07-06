@@ -109,6 +109,47 @@ body{
 #searchInput::placeholder{
     color:#8ca08c;
 }
+    .newFilterBtn{
+    margin-left:10px;
+
+    width:80px;
+    height:44px;
+
+    border:none;
+    outline:none;
+
+    cursor:pointer;
+
+    border-radius:14px;
+
+    color:#b8ff8f;
+    font-size:13px;
+    font-weight:700;
+
+    background:
+        linear-gradient(180deg,#071507,#041004);
+
+    border:1px solid rgba(120,255,120,0.18);
+
+    box-shadow:
+        inset 0 0 12px rgba(0,255,100,0.03),
+        0 0 12px rgba(0,0,0,0.22);
+
+    transition:.2s;
+}
+
+.newFilterBtn:hover{
+    border-color:rgba(120,255,120,.45);
+    box-shadow:0 0 18px rgba(0,255,100,.15);
+}
+
+.newFilterBtn.active{
+    border-color:rgba(120,255,120,.8);
+
+    box-shadow:
+        0 0 18px rgba(0,255,100,.35),
+        inset 0 0 10px rgba(0,255,100,.08);
+}
 
 /* GRID */
 .cards{
@@ -536,6 +577,9 @@ body{
             id="searchInput" 
             placeholder="Search New, GPT sites, Offerwalls..."
         >
+         <button id="newFilterBtn" class="newFilterBtn">
+        NEW
+    </button>
     </div>
 
     <div class="cards">
@@ -585,7 +629,7 @@ body{
     </div>
 
 
-         <div class="card" data-pinned="true">    
+    <div class="card" data-pinned="true">    
     <div class="badges">
     <div class="badge badge-blue"><b>New</b></div>
     <div class="badge badge-red"><b>Premium</b></div>
