@@ -1,0 +1,3616 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RefHunter | GPT Sites</title>
+
+<link rel="icon" type="image/png" href="logo4.png">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:ui-sans-serif,system-ui,Arial;
+    color:#fff;
+
+    background:
+        radial-gradient(ellipse at top, rgba(120,255,120,0.06), transparent 60%),
+        radial-gradient(ellipse at 50% 30%, rgba(0,255,100,0.05), transparent 70%),
+        linear-gradient(180deg,#0b140b 0%,#0f1f0f 30%,#0a0a0a 100%);
+}
+
+/* HERO */
+.hero-banner{
+    position:relative;
+    width:100%;
+    height:6vh;
+    min-height:60px;
+    background:linear-gradient(180deg,#0b140b,#0f1f0f,#0a0a0a);
+}
+
+.hero-overlay{
+    position:absolute;
+    top:8px;
+    left:20px;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(4px);
+    padding:6px 12px;
+    border-radius:8px;
+}
+
+.hero-overlay h1{
+    font-size:20px;
+    font-weight:800;
+    background:linear-gradient(90deg,#b6ff5c,#6aff00);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-overlay p{
+    font-size:10px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1750px;
+    margin:auto;
+    padding:30px 14px 40px;
+}
+
+/* SEARCHBAR */
+.searchWrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-bottom:24px;
+    padding:0 4px;
+}
+
+#searchInput{
+    width:100%;
+    max-width:500px;
+    height:44px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    padding:0 16px;
+
+    color:#fff;
+    font-size:14px;
+
+    background:
+        linear-gradient(180deg,#071507,#041004);
+
+    border:1px solid rgba(120,255,120,0.18);
+
+    box-shadow:
+        inset 0 0 12px rgba(0,255,100,0.03),
+        0 0 12px rgba(0,0,0,0.22);
+
+    transition:0.2s;
+}
+
+#searchInput:focus{
+    border-color:rgba(120,255,120,0.45);
+
+    box-shadow:
+        0 0 18px rgba(0,255,100,0.12);
+}
+
+#searchInput::placeholder{
+    color:#8ca08c;
+}
+    .newFilterBtn{
+    margin-left:10px;
+
+    width:80px;
+    height:44px;
+
+    border:none;
+    outline:none;
+
+    cursor:pointer;
+
+    border-radius:14px;
+
+    color:#b8ff8f;
+    font-size:13px;
+    font-weight:700;
+
+    background:
+        linear-gradient(180deg,#071507,#041004);
+
+    border:1px solid rgba(120,255,120,0.18);
+
+    box-shadow:
+        inset 0 0 12px rgba(0,255,100,0.03),
+        0 0 12px rgba(0,0,0,0.22);
+
+    transition:.2s;
+}
+
+.newFilterBtn:hover{
+    border-color:rgba(120,255,120,.45);
+    box-shadow:0 0 18px rgba(0,255,100,.15);
+}
+
+.newFilterBtn.active{
+    border-color:rgba(120,255,120,.8);
+
+    box-shadow:
+        0 0 18px rgba(0,255,100,.35),
+        inset 0 0 10px rgba(0,255,100,.08);
+}
+
+/* GRID */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,250px);
+    justify-content:center;
+    gap:10px;
+}
+
+/* CARD */
+.card{
+    position:relative;
+    height:150px;
+    border-radius:18px;
+    padding:14px;
+
+    background:linear-gradient(180deg,#041104,#071707,#020702);
+    border:1px solid rgba(0,255,80,0.18);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    overflow:visible;
+
+    transition:0.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(120,255,120,0.5);
+    box-shadow:0 0 22px rgba(0,255,80,0.18);
+
+    z-index:999;
+}
+
+/* BADGES WRAP */
+.badges{
+    position:absolute;
+    top:10px;
+    right:10px;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    justify-content:flex-end;
+    align-items:center;
+
+    gap:5px;
+
+    max-width:calc(100% - 20px);
+
+    z-index:20;
+}
+
+/* SINGLE BADGE */
+.badge,
+.badge-blue,
+.badge-green,
+.badge-red,
+.badge-gold,
+.badge-white{
+    min-height:22px;
+
+    padding:0 10px;
+
+    border-radius:999px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:.2px;
+
+    white-space:nowrap;
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    border:1px solid transparent;
+
+    box-shadow:
+        inset 0 0 10px rgba(255,255,255,0.04),
+        0 0 12px rgba(0,0,0,0.25);
+}
+
+/* DEFAULT GREEN */
+.badge{
+    color:#7dff8f;
+
+    background:rgba(0,255,90,0.08);
+
+    border-color:rgba(0,255,120,0.45);
+
+    box-shadow:
+        0 0 10px rgba(0,255,120,0.28),
+        inset 0 0 8px rgba(0,255,120,0.08);
+}
+
+/* BLUE */
+.badge-blue{
+    color:#55cfff;
+
+    background:rgba(0,110,255,0.08);
+
+    border-color:rgba(0,180,255,0.45);
+
+    box-shadow:
+        0 0 10px rgba(0,180,255,0.28),
+        inset 0 0 8px rgba(0,180,255,0.08);
+}
+
+/* GREEN */
+.badge-green{
+    color:#7dff8f;
+
+    background:rgba(0,255,90,0.08);
+
+    border-color:rgba(0,255,120,0.45);
+
+    box-shadow:
+        0 0 10px rgba(0,255,120,0.28),
+        inset 0 0 8px rgba(0,255,120,0.08);
+}
+
+/* RED */
+.badge-red{
+    color:#ff5d9e;
+
+    background:rgba(255,0,120,0.08);
+
+    border-color:rgba(255,80,150,0.45);
+
+    box-shadow:
+        0 0 10px rgba(255,80,150,0.25),
+        inset 0 0 8px rgba(255,80,150,0.08);
+}
+
+/* GOLD */
+.badge-gold{
+    color:#fff3b0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,220,90,0.22),
+            rgba(255,180,0,0.10)
+        );
+
+    border:1px solid rgba(255,220,120,0.75);
+
+    box-shadow:
+        0 0 6px rgba(255,210,80,0.28),
+        0 0 14px rgba(255,190,0,0.16),
+        inset 0 0 8px rgba(255,240,160,0.08);
+
+}
+/* WHITE SHINE */
+.badge-white{
+    position:absolute;
+
+    right:10px;
+
+    bottom:48px;
+
+    width:110px;
+    height:24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:999px;
+
+    z-index:60;
+
+    font-size:10px;
+    font-weight:700;
+
+    color:#ffffff;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.20),
+            rgba(220,220,220,0.08)
+        );
+
+    border:1px solid rgba(255,255,255,0.75);
+
+       box-shadow:
+        0 0 10px rgba(255,80,150,0.25),
+        inset 0 0 8px rgba(255,80,150,0.08);
+}
+
+/* TOP */
+.top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+}
+
+/* LOGO */
+.logo{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    border-radius:10px;
+    display:block;
+}
+
+/* TEXT */
+.text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    line-height:1.1;
+}
+
+.text h3{
+    font-size:17px;
+    font-weight:700;
+}
+
+.text p{
+    font-size:13px;
+    color:#9ad89a;
+    margin-top:4px;
+}
+
+/* STARS */
+.stars{
+    position:absolute;
+    top:36px;
+    right:10px;
+
+    font-size:14px;
+    font-weight:700;
+
+    color:#fff066;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 4px rgba(255,240,100,0.9),
+        0 0 10px rgba(255,220,0,0.9),
+        0 0 18px rgba(255,200,0,0.7);
+}
+
+/* BUTTON */
+.btn{
+    position:absolute;
+    right:10px;
+    bottom:10px;
+
+    width:110px;
+    height:30px;
+
+    border-radius:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+    font-weight:700;
+
+    text-decoration:none;
+    color:#b8ff8f;
+
+    background:linear-gradient(180deg,#0f2d0f,#051205);
+
+    border:1px solid rgba(120,255,120,0.4);
+
+    transition:0.2s;
+}
+
+.btn:hover{
+    border-color:rgba(120,255,120,0.8);
+    box-shadow:0 0 14px rgba(0,255,100,0.18);
+    }
+/* OFFER TOGGLE */
+.offer-toggle{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+
+    width:110px;
+    height:30px;
+
+    border-radius:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    color:#b8ff8f;
+
+    background:linear-gradient(180deg,#0f2d0f,#051205);
+
+    border:1px solid rgba(120,255,120,0.4);
+
+    transition:0.2s;
+    
+}
+
+.offer-toggle:hover{
+    border-color:rgba(120,255,120,0.8);
+    box-shadow:0 0 14px rgba(0,255,100,0.18);
+    }
+
+/* DROPDOWN */
+.offerwalls{
+    position:absolute;
+
+    left:10px;
+    right:10px;
+
+    top:145px;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    background:rgba(5,15,5,0.96);
+
+    border:1px solid rgba(120,255,120,0.18);
+
+    display:none;
+
+    z-index:9999;
+
+    box-shadow:0 0 18px rgba(0,0,0,0.35);
+}
+    /* ONLY OPEN WHILE HOVERING */
+.offer-toggle:hover + .offerwalls,
+.offerwalls:hover{
+    display:block;
+}
+
+.offerwalls ul{
+    list-style:none;
+}
+
+.offerwalls li{
+    font-size:12px;
+    padding:5px 0;
+    color:#b8ffb8;
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.offerwalls li:last-child{
+    border-bottom:none;
+}
+
+/* ACTIVE */
+.card.active .offerwalls{
+    display:block;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .card{
+        height:220px;
+    }
+
+    .logo{
+        width:56px;
+        height:56px;
+    }
+
+    .badges{
+        top:8px;
+        right:8px;
+        gap:6px;
+        max-width:75%;
+    }
+
+    .badge,
+    .badge-blue,
+    .badge-green,
+    .badge-red,
+    .badge-gold,
+    .badge-orange{
+        font-size:9px;
+        padding:4px 8px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero-banner">
+    <div class="hero-overlay">
+        <h1>REFHUNTER</h1>
+        <p>All GPT Sites</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- SEARCH -->
+    <div class="searchWrap">
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search New, GPT sites, Offerwalls, No Kyc, Facescan..."
+        >
+         <button id="newFilterBtn" class="newFilterBtn">
+        NEW
+    </button>
+    </div>
+
+    <div class="cards">
+
+<!-- überall wo class="card" steht ist jeweils ein Karten-Element.. da einfach dein ref link etc reinschreiben und copy pasten -->
+    
+        
+    <div class="card" data-pinned="true">    
+    <div class="badges">
+    <div class="badge badge-green"><b>+25% Referral</b></div>
+    <div class="badge badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+    No KYC   
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="splitdrop5.png.png">
+    <div>
+    <h3><b>Splitdrop</b></h3>
+    <p>70-85% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>besitos</li>
+         <li>GemiAd</li>
+         <li>HANGMYADS</li>
+         <li>Revenue Universe</li>
+         <li>mychips</li>
+         <li>AdGatemedia</li>
+         <li>Adtowall</li>
+        <li>Bitlabs</li>
+        <li>PRIZIUM</li>
+        <li>AdscendMedia</li>
+        <li>NOTIKME</li>
+        <li>MM WALL</li>
+        <li>timewall</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://splitdrop.com/friend/19291"><b>Register ↗</b></a>
+    </div>
+
+
+    <div class="card" data-pinned="true">    
+    <div class="badges">
+    <div class="badge badge-blue"><b>New</b></div>
+    <div class="badge badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+    No KYC   
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="freecoin.png">
+    <div>
+    <h3><b>Freecoin</b></h3>
+    <p>70-85% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>besitos</li>
+         <li>GemiAd</li>
+         <li>HANGMYADS</li>
+         <li>Revenue Universe</li>
+         <li>mychips</li>
+         <li>AdGatemedia</li>
+         <li>Adtowall</li>
+        <li>Bitlabs</li>
+        <li>PRIZIUM</li>
+        <li>AdscendMedia</li>
+        <li>NOTIKME</li>
+        <li>MM WALL</li>
+        <li>timewall</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://freecoin.ai/home.html?friend=6708"><b>Register ↗</b></a>
+    </div>
+        
+    <div class="card" data-pinned="true">
+    <div class="badges">
+    <div class="badge badge-green"><b>+25% Gamedom</b></div>
+    <div class="badge badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+    Facescan
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="earnlab2.png">
+    <div>
+    <h3><b>Earnlab</b></h3>
+    <p>80-90% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>besitos</li>
+         <li>HANGMYADS</li>
+        <li>Prime Earn</li>
+        <li>Tyr Rewards</li>
+         <li>Revenue Universe</li>
+         <li>mychips</li>
+         <li>AdGatemedia</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>ADGEM</li>
+        <li>MM WALL</li>
+        <li>timewall</li>
+        <li>Exclusives</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://earnlab.com/r/mylove"><b>Register ↗</b></a>
+    </div>
+            <!--  -->
+    <div class="card">
+    <div class="badges">
+    <div class="badge badge-green"><b>+20% Roobet</b></div>
+    <div class="badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+     KYC
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="gemsloot1.png">
+    <div>
+    <h3><b>Gemsloot</b></h3>
+    <p>70-85% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★★</div>
+         <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Waxrewards</li>
+         <li>Tyr Rewards</li>
+         <li>Prime Earn</li>
+         <li>HANGMYADS</li>
+         <li>Revenue Universe</li>
+         <li>mychips</li>
+         <li>AdGatemedia</li>
+         <li>Bitlabs</li>
+         <li>Adtowall</li>
+        <li>PRIZIUM</li>
+        <li>AdscendMedia</li>
+        <li>Farly</li>
+        <li>PixyLabs</li>
+        <li>MM WALL</li>
+        <li>timewall</li>
+        <li>Exclusives</li>
+
+    </ul>
+    </div>
+    <a class="btn" href="https://gemsloot.com/?aff=refhunter"><b>Register ↗</b></a>
+    </div>
+
+    <div class="card">
+    <div class="badges">
+    <div class="badge badge-gold">Old But Gold</div>
+    <div class="badge badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+     Facescan
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="lootup.png">
+    <div>
+    <h3><b>Lootup</b></h3>
+    <p>30-90% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>Ayet Studios</li>
+        <li>AdscendMedia</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>mychips</li>
+        <li>Tapjoy</li>
+         <li>Exclusives</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://lootup.me?refer=7492056"><b>Register ↗</b></a>
+    </div>
+
+    <div class="card" data-pinned="true">
+    <div class="badges">
+    <div class="badge badge-green"><b>+5$ On Signup</b></div>
+    <div class="badge badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+    Facescan   
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="earnx.png">
+    <div>
+    <h3><b>Earnx</b></h3>
+    <p>75-90% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>Ayet Studios</li>
+        <li>AdscendMedia</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Adtowall</li>
+         <li>mychips</li>
+         <li>NOTIKME</li>
+         <li>GemiAd</li>
+         <li>Monlix</li>
+         <li>timewall</li>
+         <li>Exclusives</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://earnx.gg/r/refhunter"><b>Register ↗</b></a>
+    </div>
+    
+    <div class="card">
+    <div class="badges">
+    </div>
+    <div class="badge-white">
+    No KYC   
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="earnfino.png">
+    <div>
+    <h3><b>Earnfino</b></h3>
+    <p>70-80% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+         <li>Ayet Studios</li>
+         <li>Exclusives</li>
+         <li>AdscendMedia</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>GemiAd</li>
+         <li>timewall</li>
+         <li>Adtowall</li>
+         <li>MM WALL</li>
+         <li>NOTIKME</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://earnfino.com/register?ref=REFHUNTER"><b>Register ↗</b></a>
+    </div>
+
+   <div class="card">
+       <div class="badge-white">
+    KYC   
+    </div>
+   <div class="titleRow">
+   <img class="logo" src="rubify1.png">
+   <div>
+   <h3><b>Rubify</b></h3>
+   <p>60-70% Rates</p>
+   </div>
+   </div>
+   <div class="stars">★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+        <li>?</li>
+    </ul>
+    </div>
+   <a class="btn" href="https://rubify.io/auth/sign-up?ref=6K3GYMP"><b>Register ↗</b></a>
+   </div>
+    
+    <div class="card">
+    <div class="badges">
+    <div class="badge badge-gold"><b>Old But Gold</b></div>
+    <div class="badge badge-red"><b>Premium</b></div>
+    </div>
+    <div class="badge-white">
+    KYC   
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="rewardjoy.jpg">
+    <div>
+    <h3><b>Rewardjoy</b></h3>
+    <p>80-85% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★★★★</div>
+    <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+    <div class="offerwalls">
+    <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+         <li>Prime Earn</li>
+         <li>Tyr Rewards</li>
+         <li>timewall</li>
+         <li>Bitlabs</li>
+         <li>AdGatemedia</li>
+        <li>MM WALL</li>
+        <li>PLAYFULL</li>
+    </ul>
+    </div>
+    <a class="btn" href="https://www.coinpayu.com/?r=2EX24APtFiyr"><b>Register ↗</b></a>
+    </div>
+    
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-green"><b>Growing ⬈</b></div>
+            </div>
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="bigcashweb.jpg">
+            <div>
+            <h3><b>Bigcashweb</b></h3>
+            <p>60-70% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                 <li>Ayet Studios</li>
+                 <li>ADGEM</li>
+                 <li>mychips</li>
+                 <li>Prime Earn</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://bigcashweb.com/refer/ihr7haqh"><b>Register ↗</b></a>
+            </div>
+    
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-green"><b>Growing ⬈</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cashearn.jpg">
+            <div>
+            <h3><b>Cashearn</b></h3>
+            <p>70-80% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>TOROX</li>
+                <li>LOOTABLY</li>
+                <li>NOTIKME</li>
+                <li>mychips</li>
+                <li>Adtowall</li>
+                <li>AdscendMedia</li>
+                <li>Waxrewards</li>
+                <li>GemiAd</li>
+                <li>Mobivortex</li>
+                <li>Revlum</li>
+                <li>Waxrewards</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cashearn.gg/r/LNTR89X"><b>Register ↗</b></a>
+            </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge=green"><b>Cashback Site</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="shopback.png">
+        <div>
+        <h3><b>Shopback</b></h3>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+        <a class="btn" href="https://app.shopback.com/pylRX9gKn3b"><b>Register ↗</b></a>
+        </div>
+    
+             <div class="card">
+             <div class="badge-white">
+             No KYC   
+             </div>
+            <div class="titleRow">
+            <img class="logo" src="sparkvey.png">
+            <div>
+            <h3><b>Sparkvey</b></h3>
+            <p>80-90% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>?</li>
+            </ul>
+            </div>
+            <a class="btn" href=""><b>Register ↗</b></a>
+            </div>
+    
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-gold"><b>Old But Gold</b></div>
+            </div>
+            <div class="badge-white">
+             No KYC   
+             </div>
+            <div class="titleRow">
+            <img class="logo" src="cashhut.jpg">
+            <div>
+            <h3><b>Cashhut</b></h3>
+            <p>65-75% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>Ayet Studios</li>
+                <li>LOOTABLY</li>
+                <li>NOTIKME</li>
+                <li>GemiAd</li>
+                <li>Adtowall</li>
+                <li>timewall</li>
+                <li>Bitlabs</li>
+                <li>MyLead</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cashhut.net/ref/KSBPHH"><b>Register ↗</b></a>
+            </div>
+    
+            <div class="card">
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cashpiko.png">
+            <div>
+            <h3><b>Cashpiko</b></h3>
+            <p>60-70% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+                <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>NOTIKME</li>
+                <li>Adtowall</li>
+                <li>NOTIKME</li>
+                <li>GemiAd</li>
+                <li>Gemora</li>
+                <li>Mobivortex</li>
+                <li>MM WALL</li>
+                <li>REVTOO</li>
+                <li>Admantium</li>
+                <li>Pubscale</li>
+                <li>ADSWEDMEDIA</li>
+                <li>UPWALL</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cashpiko.com/ref/OishGji3"><b>Register ↗</b></a>
+            </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="cashinstyle.svg">
+        <div>
+        <h3><b>Cashinstyle</b></h3>
+        <p>80-90% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+          <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+            <li>Ayet Studios</li>
+            <li>Exclusives</li>
+            <li>TOROX</li>
+            <li>LOOTABLY</li>
+            <li>Monlix</li>
+            <li>Revenue Universe</li>
+            <li>HANGMYADS</li>
+            <li>mychips</li>
+            <li>Adtowall</li>
+            <li>AdscendMedia</li>
+            <li>Prime Earn</li>
+            <li>Tyr Rewards</li>
+            <li>WANNADS</li>
+            <li>timewall</li>
+            <li>Bitlabs</li>
+            <li>AdGatemedia</li>
+            <li>MM WALL</li>
+            <li>MyLead</li>
+            <li>Inbrain</li>
+            <li>Wallads</li>
+            <li>Adjoe</li>
+            </ul>
+            </div>
+        <a class="btn" href="https://cashinstyle.com/?ref=Mylove"><b>Register ↗</b></a>
+        </div>
+    
+
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="cashtask.png">
+        <div>
+        <h3><b>Cashtask</b></h3>
+        <p>65-75% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+                <li>LOOTABLY</li>
+                <li>Monlix</li>
+                <li>Adtowall</li>
+                <li>AdscendMedia</li>
+                <li>GemiAd</li>
+                <li>Mobivortex</li>
+                <li>Waxrewards</li>
+                <li>timewall</li>    
+        </ul>
+        </div>
+        <a class="btn" href="https://cashtask.net/r/0V5U78Y"><b>Register ↗</b></a>
+        </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-gold"><b>Old But Gold</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="chequity.jpg">
+            <div>
+            <h3><b>Chequity</b></h3>
+            <p>75-85% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>HANGMYADS</li> 
+         <li>Adtowall</li>
+         <li>AdscendMedia</li>
+         <li>GemiAd</li>
+         <li>Waxrewards</li>
+         <li>WANNADS</li>
+         <li>timewall</li>
+         <li>Bitlabs</li>
+         <li>MyLead</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://chequity.io/r/F26AD754"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-red"><b>Premium</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cashinbucks.png">
+            <div>
+            <h3><b>Cashinbucks</b></h3>
+            <p>65-75% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>LOOTABLY</li>
+                <li>NOTIKME</li>
+                <li>ADBREAK</li>
+                <li>GemiAd</li>
+                <li>Mobivortex</li>
+                <li>timewall</li>
+                <li>PixyLabs</li>
+                <li>Spark Wall</li>
+                <li>KlinkLabs</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cashinbucks.com?ref=refhunter"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badhe-green"><b>Growing ⬈</b></div>
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cashcenter.png">
+            <div>
+            <h3><b>Cashcenter</b></h3>
+            <p>65-75% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>NOTIKME</li>
+                <li>AdscendMedia</li>
+                <li>timewall</li>
+                <li>PixyLabs</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cash-center.fun/ref/dcd8ecd4"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badhe-green"><b>Growing ⬈</b></div>
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cash4quest.png">
+            <div>
+            <h3><b>Cash4quests</b></h3>
+            <p>55-65% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>NOTIKME</li>
+                <li>PixyLabs</li>
+                <li>REVTOO</li>
+                <li>GemiAd</li>
+                <li>Playtime</li>
+                <li>Ayet Studios</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cash4quests.com/r/user_7e80f385"><b>Register ↗</b></a>
+            </div>
+
+        
+            
+            
+        
+            <div class="card">
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="ezz.png">
+            <div>
+            <h3><b>Ezz</b></h3>
+            <p>75-85% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>Exclusives</li>
+                <li>Ayet Studios</li>
+                <li>TOROX</li>
+                <li>LOOTABLY</li>
+                <li>Monlix</li>
+                <li>NOTIKME</li>
+                <li>Adtowall</li>
+                <li>AdscendMedia</li>
+                <li>GemiAd</li>
+                <li>Revlum</li>
+                <li>WANNADS</li>
+                <li>timewall</li>
+                <li>Bitlabs</li>
+                <li>MM WALL</li>
+                <li>MyLead</li>
+                <li>REVTOO</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://ezz.cash?ref=REFHUNTERLOVE"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cointiply1.png">
+            <div>
+            <h3><b>Coinitiply</b></h3>
+            <p>50-60% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>Ayet Studios</li>
+                <li>TOROX</li>
+                <li>LOOTABLY</li>
+                <li>Revenue Universe</li>
+                <li>AdscendMedia</li>
+                <li>mychips</li>
+                <li>ADGEM</li>
+                <li>WANNADS</li>
+                <li>timewall</li>
+                <li>Bitlabs</li>
+                <li>AdGatemedia</li>
+                <li>MM WALL</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://cointiply.mobi/vtucw6"><b>Register ↗</b></a>
+            </div>
+
+          <div class="card">
+          <div class="badge-white">
+            KYC   
+          </div>
+          <div class="titleRow">
+          <img class="logo" src="casheo.png">
+          <div>
+          <h3><b>Casheo</b></h3>
+          <p>65%-75% Rates</p>
+          </div>
+          </div>
+          <div class="stars">★★★</div>
+          <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+          <div class="offerwalls">
+          <ul>
+                   <li>Ayet Studios</li>
+                   <li>TOROX</li>
+                   <li>LOOTABLY</li>
+                   <li>Monlix</li>
+                   <li>NOTIKME</li>
+                   <li>Revenue Universe</li>
+                   <li>AdscendMedia</li>
+                   <li>Bitlabs</li>
+          </ul>
+          </div>
+          <a class="btn" href="https://casheo.co/r/BLQES5"><b>Register ↗</b></a>
+          </div>
+    
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-green"><b>Growing ⬈</b></div>
+            </div>
+            <div class="badge-white">
+             No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="earnopolis.png">
+            <div>
+            <h3><b>Earnopolis</b></h3>
+            <p>70-80% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                   <li>Ayet Studios</li>
+                   <li>TOROX</li>
+                   <li>mychips</li>
+                   <li>Adtowall</li>
+                   <li>AdscendMedia</li>
+                   <li>Prime Earn</li>
+                   <li>timewall</li>
+                   <li>Bitlabs</li>          
+          </ul>
+          </div>
+            <a class="btn" href="https://earnopolis.com/r/?r=refhunter"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-gold"><b>Old But Gold</b></div>
+            <div class="badge badge-red"><b>Premium</b></div>
+            </div>
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="earnably.png">
+            <div>
+            <h3><b>Earnably</b></h3>
+            <p>70-85% Rates</p>
+            </div>
+           </div>
+           <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+         <li>Monlix</li>
+         <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>HANGMYADS</li>
+         <li>AdscendMedia</li>
+         <li>WANNADS</li>
+         <li>timewall</li>
+         <li>Bitlabs</li>
+         <li>AdGatemedia</li>
+         <li>MM WALL</li>
+          </ul>
+          </div>
+           <a class="btn" href="https://earnably.com/join/3346387"><b>Register ↗</b></a>
+           </div>
+
+            <div class="card">
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="earnloop.jpg">
+            <div>
+            <h3><b>Earnloop</b></h3>
+            <p>70-80% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>Revenue Universe</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>Revlum</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>MyLead</li>
+          </ul>
+          </div>
+        <a class="btn" href="https://earnloop.net/r/AZRFYSZLGQ"><b>Register ↗</b></a>
+        </div>
+
+            <div class="card">
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cashtipay.png">
+            <div>
+            <h3><b>Cashtipay</b></h3>
+            <p>70-80% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>Revenue Universe</li>
+        <li>mychips</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>Revlum</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>MM WALL</li>
+        <li>MyLead</li>
+        <li>REVTOO</li>  
+          </ul>
+          </div>
+        <a class="btn" href="https://cashtipay.com/register?referral=l9zuki"><b>Register ↗</b></a>
+        </div>
+
+            <div class="card">
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="cashgun.png">
+            <div>
+            <h3><b>Cashgun</b></h3>
+            <p>60-70% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>LOOTABLY</li>
+                <li>NOTIKME</li>
+                <li>Revenue Universe</li>
+                <li>Adtowall</li>
+                <li>Mobivortex</li>
+                <li>Bitlabs</li>
+                <li>MyLead</li>
+                <li>REVTOO</li>
+                <li>ADSWEDMEDIA</li>
+                <li>UPWALL</li>      
+          </ul>
+          </div>
+            <a class="btn" href="https://cashgun.com?aid=174847"><b>Register ↗</b></a>
+            </div>
+    
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-red"><b>Premium</b></div>
+        <div class="badge badge-green"><b>+15% STAKE</b></div>
+        </div>
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="freecash.jpg">
+        <div>
+        <h3><b>Freecash</b></h3>
+        <p>60-95% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+            <li>Exclusives</li>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>mychips</li>
+        <li>AdscendMedia</li>
+        <li>ADGEM</li>
+         <li>Revlum</li>
+         <li>Prime Earn</li>
+         <li>Tyr Rewards</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>AdGatemedia</li>
+        <li>MM WALL</li>
+        <li>Farly</li>
+        <li>Fyber</li>
+        <li>Tapjoy</li>
+          </ul>
+          </div>
+        <a class="btn" href="https://freecash.com/r/2MIZRY"><b>Register ↗</b></a>
+        </div>
+
+    
+            
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-green"><b>Growing ⬈</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="dollvcash.png">
+        <div>
+        <h3><b>Dollvcash</b></h3>
+        <p>70-75% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Ayet Studios</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+         <li>Revlum</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+        <li>timewall</li>
+        <li>PixyLabs</li>
+        <li>Pubscale</li>
+        <li>Admantium</li>
+        <li>REVTOO</li>
+          </ul>
+          </div>
+        <a class="btn" href="https://dollvcash.com?ref=H9Mtst"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="pollpay.png">
+        <div>
+        <h3><b>Pollpay</b></h3>
+        <p>70-90% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                   <li>Exclusives</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://www.pollpay.app?rb=233802904"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="ysence.png">
+        <div>
+        <h3><b>Ysence</b></h3>
+        <p>70-90% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                   <li>Exclusives</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://www.ysense.com/?rb=233803069"><b>Register ↗</b></a>
+        </div>
+
+    
+        <div class="card">
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="bamboorush.png">
+        <div>
+        <h3><b>Bamboorush</b></h3>
+        <p>60-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                   <li>Ayet Studios</li>
+                   <li>LOOTABLY</li>
+                   <li>NOTIKME</li>
+                   <li>Adtowall</li>
+                   <li>ADBREAK</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://bamboorush.com?r=96SULLKA"><b>Register ↗</b></a>
+        </div>
+    
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-gold"><b>Old But Gold</b></div>
+        <div class="badge badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="freeward.png">
+        <div>
+        <h3><b>Freeward</b></h3>
+        <p>70-80% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+         <li>GemiAd</li>
+         <li>Prime Earn</li>
+        <li>timewall</li>
+        <li>MM WALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://freeward.net/ref/r27bo"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge-gold"><b>Old But Gold</b></div>
+        <div class="badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="gain.png">
+        <div>
+        <h3><b>Gain.gg</b></h3>
+        <p>70-80% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Revenue Universe</li>
+        <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>Prime Earn</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>AdGatemedia</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://gain.gg/r/mylove"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="gainify.png">
+        <div>
+        <h3><b>Gainify</b></h3>
+        <p>65-70% Rates</p>
+         </div>
+        </div>
+        <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>LOOTABLY</li>
+        <li>Revenue Universe</li>
+        <li>NOTIKME</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>timewall</li>
+        <li>AdGatemedia</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://gainify.net/ref/mylove"><b>Register ↗</b></a>
+        </div>
+    
+            <div class="card">
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="gamehag.jpg">
+            <div>
+            <h3><b>Gamehag</b></h3>
+            <p>60-70% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+            <li>Ayet Studios</li>
+            <li>TOROX</li>
+            <li>LOOTABLY</li>
+            <li>Revenue Universe</li>
+            <li>mychips</li>
+            <li>AdscendMedia</li>
+            <li>WANNADS</li>
+            <li>timewall</li>
+            <li>Bitlabs</li>
+           </ul>
+           </div>
+           <a class="btn" href="https://gamehag.com/r/EPY6AG4D"><b>Register ↗</b></a>
+           </div>
+
+            <div class="card">
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="gaintplay.png">
+            <div>
+            <h3><b>Gaintplay</b></h3>
+            <p>60-80% Rates</p>
+            </div>
+           </div>
+           <div class="stars">★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>HANGMYADS</li>
+        <li>AdscendMedia</li>
+        <li>ADGEM</li>
+         <li>ADBREAK</li>
+         <li>WANNADS</li>
+        <li>timewall</li>
+        <li>AdGatemedia</li>
+        <li>MM WALL</li>
+        <li>Farly</li>
+        <li>MyLead</li>
+           </ul>
+           </div>
+           <a class="btn" href="https://gaintplay.com/refer/69f1e58620812ca37a3a70ca"><b>Register ↗</b></a>
+           </div>
+
+            <div class="card">
+            <div class="badge-white">
+            KYC   
+            </div>
+           <div class="titleRow">
+           <img class="logo" src="mycashery.png">
+            <div>
+            <h3><b>Mycashery</b></h3>
+            <p>50-60% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+              <li>TOROX</li>
+              <li>Ayet Studios</li>
+              <li>Bitlabs</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://www.mycashery.com/l/k6djM8fz8aJbU6Kjkx4dDL"><b>Register ↗</b></a>
+           </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-gold"><b>Old But Gold</b></div>
+            <div class="badge badge-red"><b>Premium</b></div>
+            </div>
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="timebucks.png">
+            <div>
+            <h3><b>Timebucks</b></h3>
+            <p>70-85% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Exclusives</li>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>HANGMYADS</li>
+         <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>Prime Earn</li>
+        <li>Bitlabs</li>
+        <li>PixyLabs</li>
+        <li>PLAYFULL</li>
+           </ul>
+           </div>
+            <a class="btn" href="https://timebucks.com/?refID=228726538"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badhe-green"><b>Growing ⬈</b></div>
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="taskprize.png">
+        <div>
+        <h3><b>Taskprize</b></h3>
+        <p>65-80% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+                <li>WANNADS</li>
+                <li>NOTIKME</li>
+                <li>GemiAd</li>
+                <li>Kiwi Wall</li>
+                <li>AdscendMedia</li>
+                <li>ADBREAK</li>
+                <li>PixyLabs</li>
+                <li>ADSWEDMEDIA</li>
+                <li>Mobivortex</li>
+           </ul>
+           </div>
+           <a class="btn" href="https://taskprize.com/r/refhunter"><b>Register ↗</b></a>
+           </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge-gold"><b>Old But Gold</b></div>
+        <div class="badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="gg2u.jpg">
+        <div>
+        <h3><b>GG2u</b></h3>
+        <p>70-85% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>LOOTABLY</li>
+        <li>NOTIKME</li>
+         <li>Revenue Universe</li>
+         <li>HANGMYADS</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>WANNADS</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>MM WALL</li>
+        <li>MyLead</li>
+        <li>Admantium</li>
+        <li>Apps Prize</li>
+        <li>Kiwi Wall</li>
+           </ul>
+           </div>
+        <a class="btn" href="https://premium.gg2u.org?referrer=gooberreeeyad"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="grabtap.png">
+        <div>
+        <h3><b>Grabtap</b></h3>
+        <p>60-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Prime Earn</li>
+           </ul>
+           </div>
+        <a class="btn" href="https://grabtap.com/a/064d9f68-f40a-4fbd-8c78-af1108640a93"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge-gold"><b>Old But Gold</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="grindbux.jpg">
+        <div>
+        <h3><b>Grindbux</b></h3>
+        <p>65-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+         <li>Inbrain</li>
+         <li>Revenue Universe</li>
+         <li>HANGMYADS</li>
+         <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>ADGEM</li>
+        <li>Waxrewards</li>
+        <li>timewall</li>
+        <li>AdGatemedia</li>
+        <li>MM WALL</li>
+           </ul>
+           </div>
+        <a class="btn" href="https://grindbux.com/ref/mylove"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="mintalise.png">
+        <div>
+        <h3><b>Mintalise</b></h3>
+        <p>50-65% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+            <li>LOOTABLY</li>
+            <li>HANGMYADS</li>
+            <li>Revenue Universe</li>
+            <li>timewall</li>
+           </ul>
+           </div>
+        <a class="btn" href="https://mintalise.com/en/register?referral=2f186339-2f4a-11ee-be75-06a656f1f3a3"><b>Register ↗</b></a>
+        </div>
+    
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-green"><b>+15% Stake</b></div>
+            </div>
+            <div class="badge-white">
+             KYC   
+            </div>
+             <div class="titleRow">
+             <img class="logo" src="gimmebux.png.avif">
+             <div>
+            <h3><b>Gimmebux</b></h3>
+            <p>60-65% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+            <li>Ayet Studios</li>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>Bitlabs</li>
+        <li>MyLead</li>
+        <li>REVTOO</li>      
+            </ul>
+            </div>
+            <a class="btn" href="https://gimmebux.com/r/lmxwzjcm"><b>Register ↗</b></a>
+            </div>
+           
+           <div class="card">
+            <div class="badges">
+            <div class="badge badhe-green"><b>Growing ⬈</b></div>
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+             KYC  
+            </div>
+           <div class="titleRow">
+            <img class="logo" src="gotkash.png">
+            <div>
+            <h3><b>Gotkash</b></h3>
+            <p>65-70% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+            <li>Ayet Studios</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>HANGMYADS</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+        <li>MM WALL</li>
+        <li>Fyber</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://gotkash.com/r/xbbg58ic"><b>Register ↗</b></a>
+        </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+            Facescan
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="gaincash.png">
+            <div>
+            <h3><b>Gaincash</b></h3>
+            <p>60-70% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>NOTIKME</li>
+                <li>Pubscale</li>
+                <li>GemiAd</li>
+                <li>Adtowall</li>
+                <li>UPWALL</li>
+                <li>timewall</li>
+                <li>Monlix</li>
+                <li>PLAYFULL</li>
+                <li>LOOTABLY</li>
+                <li>ADBREAK</li>
+                <li>Mobivortex</li>
+                <li>MyLead</li>
+                <li>mychips</li>
+                <li>Revlum</li>
+                <li>AdcentMedia</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://gaincash.me/ref/F86158"><b>Register ↗</b></a>
+        </div>
+
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+            No Kyc
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="lootkeyz.png">
+            <div>
+            <h3><b>Lootkeyz</b></h3>
+            <p>55% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>NOTIKME</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://lootkeyz.com/ref/refhunter"><b>Register ↗</b></a>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="card">
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="giftably.png">
+        <div>
+        <h3><b>Giftably</b></h3>
+        <p>60-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>LOOTABLY</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>timewall</li>
+        <li>MyLead</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://giftably.net/login/MyLove"><b>Register ↗</b></a>
+        </div>
+    
+        <div class="card">
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="handbucks.png">
+        <div>
+        <h3><b>Handbucks</b></h3>
+        <p>60-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>Adtowall</li>
+        <li>WANNADS</li>
+        <li>timewall</li>
+        <li>Admantium</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://handbucks.com/?ref=refhunterlove"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-gold"><b>Old But Gold</b></div>
+         </div>
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="idle-empire.png">
+        <div>
+        <h3><b>Idle-Empire</b></h3>
+        <p>55-65% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>TOROX</li>
+                <li>LOOTABLY</li>
+                <li>Revenue Universe</li>
+                <li>mychips</li>
+                <li>AdscendMedia</li>
+                <li>ADGEM</li>
+                <li>WANNADS</li>
+                <li>AdGatemedia</li>
+                <li>Kiwi Wall</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://www.idle-empire.com?r=njamzc"><b>Register ↗</b></a>
+        </div>
+
+
+        <div class="card">
+            <div class="badges">
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="mobrog.png.avif">
+            <div>
+            <h3><b>Mobrog</b></h3>
+            <p>75-90% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Prime Earn</li>
+         <li>Inbrain</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://mobrog.com/?membership_promotion=0&i_invite=26778001-6a4c2d1b30624&rkm=38"><b>Register ↗</b></a>
+            </div>
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-blue"><b>New</b></div>
+            </div>
+            <div class="badge-white">
+            KYC   
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="loottask.png">
+            <div>
+            <h3><b>Loottask</b></h3>
+            <p>45-50% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>HANGMYADS</li>
+         <li>Mobivortex</li>
+        <li>GemiAd</li>
+        <li>NOTIKME</li>
+        <li>AdGatemedia</li>
+        <li>ADSWEDMEDIA</li>
+        <li>Pubscale</li>
+        <li>PixyLabs</li>
+        <li>ADBREAK</li>
+         <li>UPWALL</li>
+        <li>LOOTABLY</li>
+        <li>KlinkLabs</li>
+            </ul>
+            </div>
+            <a class="btn" href="https://loottask.com/register?ref=THAIAHVD"><b>Register ↗</b></a>
+            </div>
+    
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-gold"><b>Old But Gold</b></div>
+         </div>
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="jumptask.jpg">
+        <div>
+        <h3><b>Jumptask</b></h3>
+        <p>55-65% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+                <li>TOROX</li>
+                <li>Revenue Universe</li>
+                <li>HANGMYADS</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://www.jumptask.io/r/filixanujyha"><b>Register ↗</b></a>
+        </div>
+
+            <div class="card">
+                <div class="badges">
+            <div class="badge badge-green"><b>Growing ⬈</b></div>
+            </div>
+            <div class="badge-white">
+             KYC  
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="sharkearnings2.png">
+            <div>
+            <h3><b>Sharkearnings</b></h3>
+            <p>65-70%% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>HANGMYADS</li>
+        <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>MM WALL</li>
+        <li>Prime Earn</li>
+        <li>PixyLabs</li>
+        <li>Pubscale</li>              
+        </ul>
+        </div>
+            <a class="btn" href="https://sharkearnings.com/r/thailand"><b>Register ↗</b></a>
+            </div>
+        
+            <div class="card">         
+            <div class="badges">
+            <div class="badge badge-green"><b>Growing ⬈</b></div>
+            <div class="badge badge-red"><b>Premium</b></div>
+            </div>
+            <div class="badge-white">
+             KYC  
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="savebucks.png">
+            <div>
+            <h3><b>Savebucks</b></h3>
+            <p>60-85% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>Revenue Universe</li>
+        <li>mychips</li>
+        <li>Bitlabs</li>
+        <li>MM WALL</li>    
+        </ul>
+        </div>
+        <a class="btn" href="https://savebucks.app/register?referral=ke0vth"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+         KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="swagbucks.png">
+        <div>
+        <h3><b>Swagbucks</b></h3>
+        <p>60-90% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>Revenue Universe</li>
+        <li>mychips</li>
+        <li>Tapjoy</li>
+        <li>Exclusives</li>
+        </ul>
+        </div>
+         <a class="btn" href="https://www.swagbucks.com/p/register?rb=233799948&rp=1"><b>Register ↗</b></a>
+         </div>
+           
+            
+            <div class="card">
+            <div class="badge-white">
+              KYC  
+            </div>
+            <div class="titleRow">
+            <img class="logo" src="kashably.png">
+            <div>
+            <h3><b>Kashably</b></h3>
+            <p>55-65% Rates</p>
+            </div>
+            </div>
+            <div class="stars">★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+         <li>HANGMYADS</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+        <li>Prime Earn</li>
+        <li>timewall</li>
+        <li>MM WALL</li>
+        <li>PixyLabs</li>
+        <li>PLAYFULL</li>
+        <li>Fyber</li>
+        <li>Tapjoy</li>
+        <li>KlinkLabs</li>
+        </ul>
+        </div>
+            <a class="btn" href="https://kashably.com/ref/70DEC9"><b>Register ↗</b></a>
+            </div>
+
+        <div class="card">
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="kashrewards.png">
+        <div>
+        <h3><b>KashRewards</b></h3>
+        <p>60-65% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>Adtowall</li>
+        <li>Revlum</li>
+        <li>WANNADS</li>
+        <li>timewall</li>
+        <li>MyLead</li>
+        <li>REVTOO</li>
+        <li>Admantium</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://kashrewards.com?a=237"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+         <div class="badge-white">
+         KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="klink.png">
+        <div>
+        <h3><b>Klinkfinance</b></h3>
+        <p>60-80% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Exclusives</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://app.klinkfinance.com/?referralCode=ithcn62602"><b>Register ↗</b></a>
+        </div>
+
+            
+            
+        <div class="card">
+        <div class="badge-white">
+        No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="moonmiles2.png">
+        <div>
+        <h3><b>Moonmiles</b></h3>
+        <p>70-75% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Revenue Universe</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://moonmiles.io/r/ab97105d"><b>Register ↗</b></a>
+        </div>
+
+    <div class="card">
+    <div class="badge-white">
+     No KYC  
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="earng.png">
+    <div>
+    <h3><b>Earng</b></h3>
+    <p>50-60% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>Adtowall</li>
+        <li>ADBREAK</li>
+        <li>Mobivortex</li>
+        <li>Farly</li>
+        <li>UPWALL</li>   
+        </ul>
+        </div>
+    <a class="btn" href="https://earng.net/ref/BuTfjkf3"><b>Register ↗</b></a>
+    </div>
+    
+        <div class="card">
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="mistcash.png">
+        <div>
+        <h3><b>Mistcash</b></h3>
+        <p>50-60% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li> 
+        <li>HANGMYADS</li>
+        <li>Adtowall</li>
+        <li>ADBREAK</li>
+         <li>GemiAd</li>
+        <li>Bitlabs</li>
+        <li>Farly</li>
+        <li>PixyLabs</li>
+        <li>besitos</li>
+        <li>PLAYFULL</li>
+        <li>KlinkLabs</li>
+        <li>Pubscale</li>
+        <li>UPWALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://mistcash.co/r/XtGuC"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="cortaly.png">
+        <div>
+        <h3><b>Cortalycash</b></h3>
+        <p>50-60% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>NOTIKME</li> 
+        <li>HANGMYADS</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+        <li>Mobivortex</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>AdGatemedia</li>
+        <li>Farly</li>
+        <li>PixyLabs</li>
+        <li>PLAYFULL</li>
+        <li>Pubscale</li>
+        <li>UPWALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://cortalycash.com/ref/mylove"><b>Register ↗</b></a>
+        </div>
+            
+        <div class="card">
+        <div class="badge-white">
+         No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="nitroloot.svg">
+        <div>
+        <h3><b>NitroLoot</b></h3>
+        <p>65-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>Revenue Universe</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>timewall</li>
+        <li>Prime Earn</li>
+        <li>MM WALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://nitroloot.com/r/5815wi9yyj"><b>Register ↗</b></a>
+        </div>
+
+          <div class="card">
+           <div class="badge-white">
+            No KYC  
+            </div>
+           <div class="titleRow">
+          <img class="logo" src="viewcoins.png">
+          <div>
+          <h3><b>Viewcoins</b></h3>
+          <p>60-70% Rates</p>
+          </div>
+          </div>
+          <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+        <li>Ayet Studios</li>
+        <li>LOOTABLY</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>Mobivortex</li>
+        <li>MM WALL</li>
+        <li>Pubscale</li>
+        </ul>
+        </div>
+          <a class="btn" href="https://viewcoins.io/ref?code=Nzk1MDk="><b>Register ↗</b></a>
+           </div>
+
+        <div class="card">  
+        <div class="badges">
+        <div class="badge badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        KYC   
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="rewardflow.png">
+        <div>
+        <h3><b>Rewardflow</b></h3>
+        <p>70%-80% Rates</p>
+         </div>
+         </div>
+         <div class="stars">★★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+            <div class="offerwalls">
+            <ul>
+         <li>Exclusives</li>
+         <li>Ayet Studios</li>
+        <li>Bitlabs</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>mychips</li>
+         <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+        <li>Mobivortex</li>
+        <li>Waxrewards</li>
+        <li>WANNADS</li>
+        <li>timewall</li>
+        <li>UPWALL</li>
+        <li>PRIZIUM</li>
+        </ul>
+        </div>
+         <a class="btn" href="https://rewardflow.me?ref=REFHUNTER"><b>Register ↗</b></a>
+         </div>
+
+        <div class="card">
+        <div class="badge-white">
+            No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="lootgain.png">
+        <div>
+        <h3><b>Lootgain</b></h3>
+        <p>50-60% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>MyLead</li>
+        <li>ADSWEDMEDIA</li>
+        <li>UPWALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://lootgain.com/?referralCode=CejDLJJqHI"><b>Register ↗</b></a>
+        </div>
+
+
+            <div class="card">
+            <div class="badges">
+            <div class="badge"><b>Growing ⬈</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC  
+            </div>
+           <div class="titleRow">
+           <img class="logo" src="tapnoon.png">
+           <div>
+           <h3><b>Tapnoon</b></h3>
+           <p>55-65% Rates</p>
+          </div>
+          </div>
+          <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>Revenue Universe</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>ADBREAK</li>
+         <li>GemiAd</li>
+         <li>Mobivortex</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>MM WALL</li>
+        <li>Farly</li>
+        <li>MyLead</li>
+        <li>PLAYFULL</li>
+        <li>ADSWEDMEDIA</li>
+        <li>UPWALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://tapnoon.com/?referralCode=0h97T3ygpJriMFOk"><b>Register ↗</b></a>
+        </div>
+    
+        <div class="card">
+        <div class="badge-white">
+            No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="easybucks.png">
+        <div>
+        <h3><b>Easybucks</b></h3>
+        <p>55-60% Rates</p>
+        </div>
+        </div>
+       <div class="stars">★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>?</li>
+        </ul>
+        </div>
+       <a class="btn" href=""><b>Register ↗</b></a>
+       </div>
+    
+            <div class="card">
+            <div class="badges">
+            <div class="badge badge-gold"><b>Old But Gold</b></div>
+            </div>
+            <div class="badge-white">
+            No KYC  
+           </div>
+           <div class="titleRow">
+           <img class="logo" src="paidcash.png">
+           <div>
+            <h3><b>PaidCash</b></h3>
+            <p>60-65% Rates</p>
+            </div>
+           </div>
+            <div class="stars">★★★★</div>
+            <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>HANGMYADS</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+         <li>Mobivortex</li>
+        <li>MM WALL</li>
+        <li>Farly</li>
+        <li>MyLead</li>
+        <li>PLAYFULL</li>
+        <li>Pubscale</li>
+        </ul>
+        </div>
+           <a class="btn" href="https://paidcash.co/r/WCEVPJ"><b>Register ↗</b></a>
+           </div>
+
+        <div class="card">
+        <div class="badge-white">
+            No KYC  
+           </div>
+        <div class="titleRow">
+        <img class="logo" src="freemoneycoins.png">
+        <div>
+        <h3><b>Freemoneycoins</b></h3>
+        <p>60-65% Rates</p>
+        </div>
+       </div>
+       <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>Revlum</li>
+        <li>WANNADS</li>
+        <li>timewall</li>
+        <li>AdGatemedia</li>
+        <li>MM WALL</li>
+        <li>Kiwi Wall</li> 
+        </ul>
+        </div>
+       <a class="btn" href="https://freemoneycoins.com/referral/GLHOE0"><b>Register ↗</b></a>
+       </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="primeopinion.jpg">
+        <div>
+        <h3><b>PrimeOpinion</b></h3>
+        <p>90% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Prime Earn</li>
+        <li>Exclusives</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://primeopinion.com/register?ref=9fad6908-922b-4593-a817-c7194b82c369"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="prizebear.png">
+        <div>
+        <h3><b>PrizeBear</b></h3>
+        <p>60-75% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+            <li>NOTIKME</li>
+            <li>mychips</li>
+            <li>AdscendMedia</li>
+            <li>Revlum</li>
+            <li>Bitlabs</li>
+            <li>MM WALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://prizebear.com/r/NW3LTP"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="prizerebel.jpg">
+        <div>
+        <h3><b>PrizeRebel</b></h3>
+         <p>60-70% Rates</p>
+        </div>
+       </div>
+       <div class="stars">★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>Revenue Universe</li>
+        <li>mychips</li>
+        <li>AdscendMedia</li>
+        <li>AdGatemedia</li>
+        <li>Inbrain</li>
+        </ul>
+        </div>
+       <a class="btn" href="https://www.prizerebel.com/index.php?r=16044477"><b>Register ↗</b></a>
+       </div>
+
+        <div class="card">
+        <div class="badge-white">
+        No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="rbxrise.png">
+        <div>
+         <h3><b>RbxRise</b></h3>
+         <p>65-70% Rates</p>
+        </div>
+        </div>
+       <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>mychips</li>
+        <li>AdscendMedia</li>
+        <li>timewall</li>    
+        </ul>
+        </div>
+       <a class="btn" href="https://rbxfast.com/r/refhunter"><b>Register ↗</b></a>
+       </div>
+    
+        <div class="card">
+        <div class="badges">
+        <div class="badge"><b>Growing ⬈</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="rbxfast.png">
+        <div>
+        <h3><b>Rbxfast</b></h3>
+        <p>70-80% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>    
+        <li>Gemora</li>
+        <li>mychips</li>
+        <li>Adtowall</li>
+        <li>AdscendMedia</li>
+        <li>GemiAd</li>
+         <li>Mobivortex</li>
+        <li>Waxrewards</li>
+        <li>UPWALL</li>
+        <li>Bitlabs</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://rbxfast.com/r/37ARSHZ"><b>Register ↗</b></a>
+           </div>
+
+      <div class="card">
+      <div class="badge-white">
+        No KYC  
+      </div>
+      <div class="titleRow">
+      <img class="logo" src="cointo.png">
+      <div>
+      <h3><b>Cointo</b></h3>
+      <p>50-60% Rates</p>
+      </div>
+      </div>
+      <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Monlix</li>    
+        <li>mychips</li>
+        <li>Adtowall</li>
+        <li>GemiAd</li>
+        <li>Bitlabs</li>
+        <li>PixyLabs</li>
+        <li>PLAYFULL</li>
+        <li>Pubscale</li>
+        <li>ADSWEDMEDIA</li>
+        <li>UPWALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://cointo.co/ref/75cB2Evm"><b>Register ↗</b></a>
+        </div>
+
+    <div class="card">
+    <div class="badge-white">
+        No KYC  
+    </div>
+    <div class="titleRow">
+        <img class="logo" src="redmonkey.png">
+        <div>
+            <h3><b>Redmonkey</b></h3>
+            <p>50-60% Rates</p>
+        </div>
+    </div>
+    <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+            <li>Revenue Universe</li>
+            <li>Adtowall</li>
+            <li>GemiAd</li>
+            <li>Mobivortex</li>
+            <li>Farly</li>
+            <li>MyLead</li>
+            <li>PLAYFULL</li>
+        </ul>
+        </div>
+      <a class="btn" href="https://redmonkey.app/?referralCode=-nMR-ncj4i"><b>Register ↗</b></a>
+     </div>
+
+    <div class="card">
+    <div class="badge-white">
+        No KYC  
+    </div>
+    <div class="titleRow">
+        <img class="logo" src="coinzelo.png">
+        <div>
+            <h3><b>Coinzelo</b></h3>
+            <p>80-90% Rates</p>
+        </div>
+    </div>
+    <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+            <li>Adtowall</li>
+            <li>GemiAd</li>
+            <li>Mobivortex</li>
+            <li>Bitlabs</li>
+            <li>PixyLabs</li>
+            <li>ADSWEDMEDIA</li>
+            <li>UPWALL</li>
+        </ul>
+        </div>
+    <a class="btn" href="https://coinzelo.com/ref/BaxsjL3u"><b>Register ↗</b></a>
+    </div>
+    
+        <div class="card">
+        <div class="badge-white">
+        KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="rewardy.png">
+        <div>
+        <h3><b>Rewardy</b></h3>
+        <p>60-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Exclusives</li>
+        <li>mychips</li>
+        <li>AdscendMedia</li>
+        <li>Tyr Rewards</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>AdGatemedia</li>
+        <li>MM WALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://rewardy.io/?ref=refhunterlove"><b>Register ↗</b></a>
+        </div>
+
+        <div class="card">
+        <div class="badge-white">
+        No KYC  
+        </div>
+       <div class="titleRow">
+        <img class="logo" src="rewards1.png">
+        <div>
+        <h3><b>Rewards1</b></h3>
+         <p>60-70% Rates</p>
+      </div>
+     </div>
+     <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>Revenue Universe</li>
+        <li>AdscendMedia</li>
+        <li>WANNADS</li>
+        <li>Wallads</li>
+        </ul>
+        </div>
+       <a class="btn" href="https://www.rewards1.com/mylove21"><b>Register ↗</b></a>
+       </div>
+    
+        <div class="card">
+        <div class="badges">
+        <div class="badge badge-red"><b>Premium</b></div>
+        </div>
+        <div class="badge-white">
+        No KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="rewardxp.jpg">
+        <div>
+        <h3><b>RewardXP</b></h3>
+        <p>75-80% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+        <li>TOROX</li>
+        <li>mychips</li>
+        <li>AdscendMedia</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>Inbrain</li>
+        </ul>
+        </div>
+    <a class="btn" href="https://www.rewardxp.com/join/1402241"><b>Register ↗</b></a>
+    </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="rewardora.png">
+        <div>
+        <h3><b>Rewardora</b></h3>
+        <p>65-75% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+         <li>TOROX</li>
+         <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>mychips</li>
+        <li>AdscendMedia</li>
+        <li>Revlum</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://rewardora.com/?r=22392"><b>Register ↗</b></a>
+        </div>
+
+    <div class="card">
+    <div class="badge-white">
+      No KYC  
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="turtlecash.png">
+    <div>
+    <h3><b>Turtlecash</b></h3>
+    <p>50-60% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>HANGMYADS</li>
+        <li>Adtowall</li>
+        <li>ADBREAK</li>
+        <li>Bitlabs</li>
+        <li>Farly</li>
+        <li>Admantium</li>
+        </ul>
+        </div>
+    <a class="btn" href="https://turtlecash.eu/index.php?inscription&p=refhunterlove"><b>Register ↗</b></a>
+    </div>
+
+        <div class="card">
+        <div class="badge-white">
+        KYC  
+        </div>
+        <div class="titleRow">
+        <img class="logo" src="scrambly.png">
+        <div>
+        <h3><b>Scrambly</b></h3>
+        <p>60-70% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>?</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://go.scrambly.io/EWTmOk"><b>Register ↗</b></a>
+        </div>
+        
+
+    <div class="card">
+    <div class="badge-white">
+       No KYC  
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="wecash.png">
+    <div>
+    <h3><b>Wecash</b></h3>
+    <p>50-65% Rates</p>
+    </div>
+    </div>
+    <div class="stars">★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>Ayet Studios</li>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>      
+        <li>AdscendMedia</li>
+        <li>timewall</li>
+        <li>Bitlabs</li>
+        <li>AdGatemedia</li>
+        <li>MM WALL</li>
+        </ul>
+        </div>
+    <a class="btn" href="https://wecashapp.com?inviteCode=Iih3fGDchVhVIawVBqoH"><b>Register ↗</b></a>
+    </div>
+
+        <div class="card">
+        <div class="badge-white">
+        No KYC  
+         </div>
+        <div class="titleRow">
+        <img class="logo" src="zxearn.png">
+        <div>
+        <h3><b>Zxearn</b></h3>
+        <p>55-65% Rates</p>
+        </div>
+        </div>
+        <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>LOOTABLY</li>
+        <li>NOTIKME</li>      
+        <li>Adtowall</li>
+        <li>GemiAd</li>
+        <li>Mobivortex</li>
+        <li>PixyLabs</li>
+        <li>REVTOO</li>
+        <li>Pubscale</li>
+        <li>ADSWEDMEDIA</li>
+        <li>UPWALL</li>
+        </ul>
+        </div>
+        <a class="btn" href="https://zxearn.com/r/urh7td"><b>Register ↗</b></a>
+        </div>
+
+    <div class="card">
+    <div class="badge-white">
+        No KYC  
+    </div>
+    <div class="titleRow">
+    <img class="logo" src="ZemCrypto.png">
+    <div>
+    <h3><b>ZemCrypto</b></h3>
+     <p>60-65% Rates</p>
+     </div>
+    </div>
+    <div class="stars">★★★★</div>
+        <div class="offer-toggle"><b>Offerwalls ▼</b></div>
+        <div class="offerwalls">
+        <ul>
+        <li>TOROX</li>
+        <li>LOOTABLY</li>
+        <li>Monlix</li>
+        <li>NOTIKME</li>
+        <li>mychips</li>
+        <li>Adtowall</li>
+        <li>timewall</li>
+        <li>MyLead</li>
+        <li>ADBREAK</li>
+        <li>Farly</li>
+        </ul>
+        </div>
+    <a class="btn" href="https://zemcrypto.com?a=8603"><b>Register ↗</b></a>
+    </div>
+        </div>
+
+
+
+    </div>
+    <div class="footer">© Last updated 11th July 2026</div>
+    </div>
+
+    <script>
+const searchInput = document.getElementById("searchInput");
+const cardsContainer = document.querySelector(".cards");
+let cards = Array.from(document.querySelectorAll(".card"));
+const buttons = document.querySelectorAll(".filter-btn");
+
+let activeFilter = "all";
+        const newFilterBtn = document.getElementById("newFilterBtn");
+
+/* ---------------- SORT ---------------- */
+function getStars(card) {
+    const starsText = card.querySelector(".stars")?.innerText || "";
+    return (starsText.match(/★/g) || []).length;
+}
+
+function getTitle(card) {
+    return card.querySelector("h3")?.innerText.toLowerCase() || "";
+}
+
+function isPinned(card) {
+    return card.dataset.pinned === "true";
+}
+
+function sortCards() {
+    cards.sort((a, b) => {
+
+        if (isPinned(a) && !isPinned(b)) return -1;
+        if (!isPinned(a) && isPinned(b)) return 1;
+
+        const starDiff = getStars(b) - getStars(a);
+        if (starDiff !== 0) return starDiff;
+
+        return getTitle(a).localeCompare(getTitle(b));
+    });
+
+    cards.forEach(card => cardsContainer.appendChild(card));
+}
+
+sortCards();
+
+/* ---------------- FILTER + SEARCH COMBINED ---------------- */
+function updateView() {
+    const searchValue = searchInput.value.toLowerCase();
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+const isNew =
+    card.dataset.new === "true" ||
+    card.innerText.toLowerCase().includes("new");
+        const isPremium = card.innerText.toLowerCase().includes("premium");
+
+        let matchesFilter = false;
+
+        if (activeFilter === "all") matchesFilter = true;
+        if (activeFilter === "new") matchesFilter = isNew;
+        if (activeFilter === "premium") matchesFilter = isPremium;
+
+        const matchesSearch = text.includes(searchValue);
+
+        card.style.display = (matchesFilter && matchesSearch) ? "" : "none";
+    });
+}
+newFilterBtn.addEventListener("click", () => {
+
+    buttons.forEach(b => b.classList.remove("active"));
+
+    activeFilter = "new";
+
+    newFilterBtn.classList.toggle("active");
+
+    if (!newFilterBtn.classList.contains("active")) {
+        activeFilter = "all";
+    }
+
+    updateView();
+
+});
+/* SEARCH */
+let timeout;
+searchInput.addEventListener("keyup", function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(updateView, 120);
+});
+
+/* FILTER BUTTONS */
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        activeFilter = btn.innerText.toLowerCase();
+        updateView();
+    });
+});
+
+/* ---------------- LINKS FIX ---------------- */
+document.querySelectorAll('.btn').forEach(link => {
+    let href = link.getAttribute("href");
+
+    // wenn leer → redirect zu deiner Seite
+    if (!href || href.trim() === "") {
+        link.setAttribute("href", "https://refhunter.site/");
+    }
+
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+});
+</script>
+    <script>
+/* DEIN AKTUELLER CODE */
+const searchInput = document.getElementById("searchInput");
+const cardsContainer = document.querySelector(".cards");
+let cards = Array.from(document.querySelectorAll(".card"));
+const buttons = document.querySelectorAll(".filter-btn");
+
+/* ... kompletter restlicher code ... */
+
+document.querySelectorAll('.btn').forEach(link => {
+    let href = link.getAttribute("href");
+
+    if (!href || href.trim() === "") {
+        link.setAttribute("href", "https://refhunter.site/");
+    }
+
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+});
+</script>
+
+<!-- HIER EINFÜGEN -->
+<script>
+
+document.querySelectorAll('.offer-toggle').forEach(toggle => {
+
+    toggle.addEventListener('click', () => {
+
+        const card = toggle.closest('.card');
+
+        card.classList.toggle('active');
+
+    });
+
+});
+
+</script>
+<script>
+document.querySelectorAll('.offerwalls ul').forEach(ul => {
+
+    const items = Array.from(ul.querySelectorAll('li'));
+
+    items.sort((a, b) =>
+        a.textContent
+            .trim()
+            .localeCompare(
+                b.textContent.trim(),
+                'de',
+                { sensitivity: 'base' }
+            )
+    );
+
+    ul.innerHTML = '';
+
+    items.forEach(item => ul.appendChild(item));
+});
+</script>
+</body>
+</html>
+
